@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages — Brand Identity Design | Unpeel</title>
+  <meta name="description" content="Three clear branding packages by Arnaud Boone — Seed, Studio and Full Brand. Freelance brand designer in Ghent. Transparent scope, clear deliverables, no surprises.">
+  <meta property="og:title" content="Packages — Brand Identity Design | Unpeel">
+  <meta property="og:description" content="Three clear branding packages by Arnaud Boone — Seed, Studio and Full Brand. Freelance brand designer in Ghent. Transparent scope, clear deliverables, no surprises.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unpeeldesign.com/packages">
+  <meta property="og:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Packages — Brand Identity Design | Unpeel">
+  <meta name="twitter:description" content="Three clear branding packages by Arnaud Boone — Seed, Studio and Full Brand. Freelance brand designer in Ghent. Transparent scope, clear deliverables, no surprises.">
+  <meta name="twitter:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles v2.css">
+  <style>
+    /* ═══ PAGE PADDING ═══ */
+    .pkgp-header,
+    .pkgp-compare,
+    .pkgp-cards,
+    .pkgp-faq,
+    .pkgp-dark-cta { padding-left: 80px; padding-right: 80px; }
+
+    /* ═══ SECTION 1 — HEADER ═══ */
+    .pkgp-header {
+      padding-top: 120px; padding-bottom: 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pkgp-h1 {
+      font-family: var(--serif);
+      font-size: clamp(52px, 6.5vw, 96px);
+      line-height: .96; letter-spacing: -.01em;
+      margin: 16px 0 24px;
+    }
+    .pkgp-sub {
+      font-size: 15px; color: var(--gray);
+      line-height: 1.75; max-width: 560px;
+    }
+
+    /* ═══ SECTION 2 — COMPARISON TABLE ═══ */
+    #comparison { scroll-margin-top: 92px; }
+    .pkgp-compare {
+      padding-top: 120px; padding-bottom: 88px;
+      border-bottom: 1px solid var(--border);
+    }
+    .pkgp-compare-head { margin-bottom: 52px; }
+
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .compare-table {
+      width: 100%; border-collapse: collapse;
+      min-width: 580px;
+    }
+    .compare-table th,
+    .compare-table td {
+      padding: 14px 22px;
+      border: 1px solid var(--border);
+      font-weight: 400; font-size: 14px;
+      line-height: 1.4;
+    }
+    .compare-table thead th {
+      background: var(--bg);
+      font-family: var(--serif);
+      font-size: clamp(17px, 1.6vw, 20px);
+      vertical-align: middle;
+    }
+    .compare-table thead th:first-child {
+      font-family: var(--sans);
+      font-size: 10px; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--gray);
+    }
+    .compare-table tbody tr:nth-child(odd) td { background: var(--subtle); }
+    .compare-table tbody tr:nth-child(even) td { background: var(--bg); }
+    .compare-table td:first-child { color: var(--ink); font-size: 14px; }
+    .c-yes { text-align: center; color: var(--ink); font-size: 15px; }
+    .c-no  { text-align: center; color: #CCCCCC; font-size: 15px; }
+    .c-val { text-align: center; font-size: 13px; color: var(--ink); letter-spacing: .02em; }
+
+    .col-badge {
+      display: inline-flex; align-items: center;
+      background: var(--ink); color: var(--bg);
+      font-size: 9px; letter-spacing: .08em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 100px;
+      margin-left: 8px; vertical-align: middle;
+      font-family: var(--sans);
+    }
+    .pkgp-table-note {
+      text-align: center; font-size: 13px; color: var(--gray);
+      margin-top: 28px; line-height: 1.65;
+    }
+    .pkgp-table-note a {
+      color: var(--ink); border-bottom: 1px solid var(--border);
+      transition: border-color .2s;
+    }
+    .pkgp-table-note a:hover { border-color: var(--ink); }
+
+    .pkgp-cta-group .btn-p {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      white-space: nowrap !important;
+    }
+    #seed, #studio, #fullbrand { scroll-margin-top: 92px; }
+    .pkgp-cards { padding-top: 80px; padding-bottom: 88px; }
+
+    .pkgp-card {
+      border: 1px solid var(--border);
+      padding: 48px;
+      position: relative;
+    }
+    .pkgp-card + .pkgp-card { margin-top: -1px; }
+
+    .pkgp-card-badge {
+      position: absolute; top: 48px; right: 48px;
+      background: var(--ink); color: var(--bg);
+      font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .pkgp-card-num {
+      font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gray); display: block; margin-bottom: 14px;
+    }
+    .pkgp-card-name {
+      font-family: var(--serif);
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: .94; letter-spacing: -.01em;
+      margin-bottom: 16px;
+    }
+    .pkgp-card-desc {
+      font-size: 15px; color: var(--gray);
+      line-height: 1.65; max-width: 580px;
+    }
+
+    .pkgp-card-body {
+      display: grid; grid-template-columns: 1fr 300px;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+    .pkgp-col-left {
+      padding: 40px 56px 40px 0;
+      border-right: 1px solid var(--border);
+    }
+    .pkgp-col-right {
+      padding: 40px 0 40px 48px;
+      display: flex; flex-direction: column; gap: 32px;
+    }
+
+    .pkgp-del-label {
+      font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 20px; display: block;
+    }
+    .pkgp-del { list-style: none; padding: 0; margin: 0; }
+    .pkgp-del li {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+      font-size: 14px; line-height: 1.5; color: var(--ink);
+    }
+    .pkgp-del li:first-child { border-top: 1px solid var(--border); }
+    .pkgp-del .di { flex-shrink: 0; margin-top: 1px; }
+    .pkgp-del .di-check { color: var(--ink); }
+    .pkgp-del .di-none { color: #CCCCCC; }
+    .pkgp-del li.pkgp-not { color: #BBBBBB; }
+
+    .pkgp-meta-group { display: flex; flex-direction: column; gap: 8px; }
+    .pkgp-meta-label {
+      font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--gray); display: block; margin-bottom: 3px;
+    }
+    .pkgp-meta-val { font-size: 15px; color: var(--ink); }
+
+    .pkgp-cta-group { display: flex; flex-direction: column; gap: 14px; margin-top: auto; }
+    .pkgp-compare-link {
+      font-size: 12px; color: var(--gray); letter-spacing: .02em;
+      border-bottom: 1px solid transparent; transition: color .2s, border-color .2s;
+      align-self: flex-start;
+    }
+    .pkgp-compare-link:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* ═══ SECTION 4 — FAQ ═══ */
+    .pkgp-faq {
+      padding-top: 100px; padding-bottom: 100px;
+      background: var(--subtle);
+    }
+    .pkgp-faq .faq-head { margin-bottom: 56px; }
+    .pkgp-faq .faq-list { max-width: 760px; }
+
+    /* ═══ SECTION 5 — DARK CTA ═══ */
+    .pkgp-dark-cta {
+      background: #111111; color: #fff;
+      padding-top: 120px; padding-bottom: 120px;
+      text-align: center;
+    }
+    .pkgp-dark-cta-h {
+      font-family: var(--serif);
+      font-size: clamp(34px, 4.5vw, 64px);
+      line-height: 1.04; margin-bottom: 22px;
+    }
+    .pkgp-dark-cta-sub {
+      font-size: 15px; color: rgba(255,255,255,.55);
+      line-height: 1.75; max-width: 500px;
+      margin: 0 auto 44px;
+    }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 36px; background: #fff; color: #111;
+      border: 1px solid #fff; font-size: 13px; letter-spacing: .04em;
+      transition: background .2s, color .2s;
+    }
+    .btn-white:hover { background: transparent; color: #fff; }
+
+    /* ═══ FADE FROM LEFT ═══ */
+    .fade-left {
+      opacity: 0; transform: translateX(-18px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .fade-left.visible { opacity: 1; transform: none; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 1024px) {
+      .pkgp-header, .pkgp-compare, .pkgp-cards,
+      .pkgp-faq, .pkgp-dark-cta { padding-left: 48px; padding-right: 48px; }
+      .pkgp-card-badge { top: 32px; right: 32px; }
+      .pkgp-col-left { padding-right: 36px; }
+      .pkgp-col-right { padding-left: 36px; }
+    }
+    @media (max-width: 768px) {
+      .pkgp-header, .pkgp-compare, .pkgp-cards,
+      .pkgp-faq, .pkgp-dark-cta { padding-left: 24px; padding-right: 24px; }
+      .pkgp-header { padding-top: 80px; padding-bottom: 48px; }
+      .pkgp-compare { padding-top: 64px; padding-bottom: 56px; }
+      .pkgp-cards { padding-top: 56px; padding-bottom: 56px; }
+      .pkgp-card { padding: 32px 24px; }
+      .pkgp-card-badge { top: 24px; right: 24px; }
+      .pkgp-card-body { grid-template-columns: 1fr; }
+      .pkgp-col-left {
+        padding: 32px 0 32px;
+        border-right: none; border-bottom: 1px solid var(--border);
+      }
+      .pkgp-col-right { padding: 32px 0 0; }
+      .pkgp-faq { padding-top: 64px; padding-bottom: 64px; }
+      .pkgp-dark-cta { padding-top: 80px; padding-bottom: 80px; }
+    }
+  </style>
+  <link rel="canonical" href="https://unpeeldesign.com/packages">
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<div class="mob-overlay" id="mobOverlay">
+  <button class="mob-close" id="mobClose" aria-label="Close menu">×</button>
+  <a href="index.html" class="mob-logo-link" aria-label="Unpeel Design — Home">
+    <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" class="mob-logo-img" loading="eager">
+  </a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="approach.html">Approach</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="mob-cta">Start a project</a>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="Unpeel Design — Home">
+    <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" loading="eager">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="approach.html">Approach</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="avail-pill"><span class="avail-dot"></span>Available</div>
+    <a href="contact.html" class="nav-cta">Start a project</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<section class="pkgp-header">
+  <p class="section-label">Packages</p>
+  <h1 class="pkgp-h1">Find the right fit.</h1>
+  <p class="pkgp-sub">Three clear packages with transparent scope and no hidden costs. Starting points — not ceilings.</p>
+</section>
+
+<!-- ═══ PACKAGES OVERVIEW (COMPARISON TABLE) ═══ -->
+<section id="comparison" class="pkgp-compare">
+  <div class="pkgp-compare-head">
+    <p class="section-label fade-up">Packages Overview</p>
+    <h2 class="section-title fade-up d1">Everything, side by side.</h2>
+  </div>
+
+  <button id="pkgRevealBtn" style="display:none;margin:0 auto 32px;padding:12px 28px;background:#fff;border:1px solid #111;color:#111;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;display:none">Compare all packages ↓</button>
+  <div class="table-scroll">
+    <table class="compare-table" role="table">
+      <thead>
+        <tr>
+          <th scope="col">Deliverable</th>
+          <th scope="col">Seed</th>
+          <th scope="col">Studio <span class="col-badge">★ Most Popular</span></th>
+          <th scope="col">Full Brand</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="fade-left" style="transition-delay:.04s">
+          <td>Logo design</td>
+          <td class="c-yes">✓</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.07s">
+          <td>Colour palette &amp; typography</td>
+          <td class="c-yes">✓</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.10s">
+          <td>All file formats</td>
+          <td class="c-yes">✓</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.13s">
+          <td>Mini brand card</td>
+          <td class="c-yes">✓</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.16s">
+          <td>Discovery session</td>
+          <td class="c-no">—</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.19s">
+          <td>Brand strategy document</td>
+          <td class="c-no">—</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.22s">
+          <td>Moodboard</td>
+          <td class="c-no">—</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.25s">
+          <td>Brand guidelines (15–20p)</td>
+          <td class="c-no">—</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.28s">
+          <td>Social media kit</td>
+          <td class="c-no">—</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.31s">
+          <td>Extended brand workshop</td>
+          <td class="c-no">—</td><td class="c-no">—</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.34s">
+          <td>Professional presentation</td>
+          <td class="c-no">—</td><td class="c-no">—</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.37s">
+          <td>Motion asset</td>
+          <td class="c-no">—</td><td class="c-no">—</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.40s">
+          <td>Web design (homepage)</td>
+          <td class="c-no">—</td><td class="c-no">—</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.43s">
+          <td>Packaging design</td>
+          <td class="c-no">—</td><td class="c-no">—</td><td class="c-yes">✓</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.46s">
+          <td>Revision rounds</td>
+          <td class="c-val">2</td><td class="c-val">3</td><td class="c-val">4</td>
+        </tr>
+        <tr class="fade-left" style="transition-delay:.49s">
+          <td>Delivery time</td>
+          <td class="c-val">1–2 weeks</td><td class="c-val">3–4 weeks</td><td class="c-val">6–8 weeks</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="pkgp-table-note fade-up">Need something between packages? I work on custom scope too — <a href="contact.html">just get in touch</a>.</p>
+</section>
+
+<!-- ═══ SECTION 3 — PACKAGE CARDS ═══ -->
+<section class="pkgp-cards">
+
+  <!-- CARD 1 — SEED -->
+  <div id="seed" class="pkgp-card fade-up">
+    <span class="pkgp-card-num">01</span>
+    <h2 class="pkgp-card-name">Seed</h2>
+    <p class="pkgp-card-desc">For founders who need a strong logo without a large budget.</p>
+    <div class="pkgp-card-body">
+      <div class="pkgp-col-left">
+        <span class="pkgp-del-label">Included</span>
+        <ul class="pkgp-del">
+          <li><span class="di di-check">✓</span><span>Logo design (primary logo + horizontal variant)</span></li>
+          <li><span class="di di-check">✓</span><span>Colour palette (2–3 colours)</span></li>
+          <li><span class="di di-check">✓</span><span>Typography selection (1–2 fonts)</span></li>
+          <li><span class="di di-check">✓</span><span>File formats: PNG, SVG, PDF (white + black + colour version)</span></li>
+          <li><span class="di di-check">✓</span><span>Mini brand card (1 A4 — logo, colours, fonts overview)</span></li>
+          <li class="pkgp-not"><span class="di di-none">—</span><span>Brand strategy or moodboard</span></li>
+          <li class="pkgp-not"><span class="di di-none">—</span><span>Brand guidelines document</span></li>
+          <li class="pkgp-not"><span class="di di-none">—</span><span>Social media templates</span></li>
+          <li class="pkgp-not"><span class="di di-none">—</span><span>Motion or web</span></li>
+        </ul>
+      </div>
+      <div class="pkgp-col-right">
+        <div class="pkgp-meta-group">
+          <span class="pkgp-meta-label">Revision rounds</span>
+          <span class="pkgp-meta-val">2 rounds</span>
+        </div>
+        <div class="pkgp-meta-group">
+          <span class="pkgp-meta-label">Delivery time</span>
+          <span class="pkgp-meta-val">1–2 weeks</span>
+        </div>
+        <div class="pkgp-cta-group">
+          <a href="contact.html" class="btn-p">Request a quote →</a>
+          <a href="#comparison" class="pkgp-compare-link">Compare all packages ↑</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2 — STUDIO -->
+  <div id="studio" class="pkgp-card fade-up d1">
+    <span class="pkgp-card-badge">★ Most Popular</span>
+    <span class="pkgp-card-num">02</span>
+    <h2 class="pkgp-card-name">Studio</h2>
+    <p class="pkgp-card-desc">For founders and small brands who want a fully considered identity — with strategy as the foundation.</p>
+    <div class="pkgp-card-body">
+      <div class="pkgp-col-left">
+        <span class="pkgp-del-label">Included</span>
+        <ul class="pkgp-del">
+          <li><span class="di di-check">✓</span><span>Discovery session (1h video call — your story, goals, audience)</span></li>
+          <li><span class="di di-check">✓</span><span>Brand strategy document — positioning, tone, personality, audience</span></li>
+          <li><span class="di di-check">✓</span><span>Moodboard — visual direction locked before we begin</span></li>
+          <li><span class="di di-check">✓</span><span>Logo design (primary + horizontal + icon variant)</span></li>
+          <li><span class="di di-check">✓</span><span>Colour palette (4–6 colours, primary + secondary)</span></li>
+          <li><span class="di di-check">✓</span><span>Typography system (heading + body + accent font)</span></li>
+          <li><span class="di di-check">✓</span><span>Brand guidelines document (15–20 pages)</span></li>
+          <li><span class="di di-check">✓</span><span>File formats: PNG, SVG, PDF, AI — all variants</span></li>
+          <li><span class="di di-check">✓</span><span>Social media kit — 3 ready-made post templates (Canva or Figma)</span></li>
+          <li class="pkgp-not"><span class="di di-none">—</span><span>Website design</span></li>
+          <li class="pkgp-not"><span class="di di-none">—</span><span>Motion / animation</span></li>
+          <li class="pkgp-not"><span class="di di-none">—</span><span>Packaging</span></li>
+        </ul>
+      </div>
+      <div class="pkgp-col-right">
+        <div class="pkgp-meta-group">
+          <span class="pkgp-meta-label">Revision rounds</span>
+          <span class="pkgp-meta-val">3 rounds</span>
+        </div>
+        <div class="pkgp-meta-group">
+          <span class="pkgp-meta-label">Delivery time</span>
+          <span class="pkgp-meta-val">3–4 weeks</span>
+        </div>
+        <div class="pkgp-cta-group">
+          <a href="contact.html" class="btn-p">Request a quote →</a>
+          <a href="#comparison" class="pkgp-compare-link">Compare all packages ↑</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3 — FULL BRAND -->
+  <div id="fullbrand" class="pkgp-card fade-up d2">
+    <span class="pkgp-card-num">03</span>
+    <h2 class="pkgp-card-name">Full Brand</h2>
+    <p class="pkgp-card-desc">For brands that want everything in order — from strategy to website, motion and packaging. Fully guided from A to Z.</p>
+    <div class="pkgp-card-body">
+      <div class="pkgp-col-left">
+        <span class="pkgp-del-label">Included</span>
+        <ul class="pkgp-del">
+          <li><span class="di di-check">✓</span><span>Extended discovery session (2h — in-depth brand workshop)</span></li>
+          <li><span class="di di-check">✓</span><span>Brand strategy document — fully developed with competitor analysis, positioning, tone of voice, audience personas</span></li>
+          <li><span class="di di-check">✓</span><span>Moodboard + concept presentation — 2 visual directions to choose from</span></li>
+          <li><span class="di di-check">✓</span><span>Logo system (primary + horizontal + icon)</span></li>
+          <li><span class="di di-check">✓</span><span>Full colour palette (primary, secondary, neutral, functional)</span></li>
+          <li><span class="di di-check">✓</span><span>Typography system (full hierarchy developed)</span></li>
+          <li><span class="di di-check">✓</span><span>Extended brand guidelines (30–40 pages)</span></li>
+          <li><span class="di di-check">✓</span><span>Professional PDF presentation of the complete identity</span></li>
+          <li><span class="di di-check">✓</span><span>File formats: everything — PNG, SVG, PDF, AI, EPS</span></li>
+          <li><span class="di di-check">✓</span><span>Social media kit — 6 templates (feed post, story, highlight cover)</span></li>
+          <li><span class="di di-check">✓</span><span>1 motion asset — animated logo or brand intro (5–10 sec)</span></li>
+          <li><span class="di di-check">✓</span><span>Web design — homepage design in Figma (handoff-ready)</span></li>
+          <li><span class="di di-check">✓</span><span>Packaging design — 1 packaging or print item of your choice</span></li>
+        </ul>
+      </div>
+      <div class="pkgp-col-right">
+        <div class="pkgp-meta-group">
+          <span class="pkgp-meta-label">Revision rounds</span>
+          <span class="pkgp-meta-val">4 rounds</span>
+        </div>
+        <div class="pkgp-meta-group">
+          <span class="pkgp-meta-label">Delivery time</span>
+          <span class="pkgp-meta-val">6–8 weeks</span>
+        </div>
+        <div class="pkgp-cta-group">
+          <a href="contact.html" class="btn-p">Request a quote →</a>
+          <a href="#comparison" class="pkgp-compare-link">Compare all packages ↑</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══ SECTION 4 — FAQ ═══ -->
+<section class="pkgp-faq">
+  <div class="faq-head">
+    <p class="section-label fade-up">FAQ</p>
+    <h2 class="section-title fade-up d1">Frequently asked questions about the packages.</h2>
+  </div>
+  <div class="faq-list">
+
+    <div class="faq-item open">
+      <div class="faq-q">
+        <h3>Can I customise a package to my specific needs?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-ans"><p>Yes. The packages are a starting point, not a fixed formula. If you need something between two packages, or want a specific addition, I'm happy to discuss it. I always work with a clear, custom quote.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>What if I need more revision rounds than included?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-ans"><p>Extra revision rounds are possible and are charged separately at a fixed hourly rate. This is always communicated upfront — no surprises afterwards.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>What is the difference between Seed and Studio?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-ans"><p>Seed gives you a strong logo and the core visual elements. Studio goes further: it begins with a strategy session, builds a complete brand system, and delivers a guidelines document that you — or anyone else — can work from consistently. If you want to build a serious brand, Studio is the minimum starting point.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>Can I start with Seed and upgrade to Studio or Full Brand later?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-ans"><p>Yes, that's possible. The Seed investment is credited if you upgrade later. I'll always advise honestly whether it makes more sense to start directly with Studio — sometimes that's the smarter choice in the long run.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>When do I pay?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-ans"><p>Every project starts with a 50% deposit before kick-off. The remaining 50% is invoiced at final delivery. Payment term: 14 days.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <h3>Do I receive the source files?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-ans"><p>Yes. With all packages you receive the editable source files (AI, PDF) alongside the export formats. You are the full owner of your brand after delivery.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SECTION 5 — DARK CTA ═══ -->
+<section class="pkgp-dark-cta">
+  <h2 class="pkgp-dark-cta-h fade-up">Not sure which package fits?</h2>
+  <p class="pkgp-dark-cta-sub fade-up d1">Send me a message — I'll help you figure it out and give you an honest recommendation without obligation.</p>
+  <a href="contact.html" class="btn-white fade-up d2">Start a conversation →</a>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer data-layout="a">
+  <div class="f-news">
+    <p class="f-news-text">Stay inspired. No spam, ever.</p>
+    <form class="f-news-form" id="newsForm">
+      <input type="email" placeholder="your@email.com" aria-label="Email for newsletter">
+      <button type="submit">Subscribe →</button>
+    </form>
+  </div>
+  <div class="f-main">
+    <div>
+      <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" class="f-logo" loading="eager">
+      <p class="f-tag">Freelance brand designer based in Ghent, Belgium</p>
+    </div>
+    <div>
+      <p class="f-col-title">Navigate</p>
+      <ul class="f-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="approach.html">Approach</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Connect</p>
+      <ul class="f-links">
+        <li><a href="mailto:design.arnaudboone@gmail.com">Email</a></li>
+        <li><a href="https://instagram.com/unpeel.design" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://linkedin.com/in/arnaud-boone-95a8162b6" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>©2025 Unpeel Design — Arnaud Boone</span>
+    <span>BE1036122524</span>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+</footer>
+
+<script src="script v2.js"></script>
+<script>
+  /* ── Fade-left observer for table rows ── */
+  (function () {
+    const leftObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          leftObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.fade-left').forEach(function (el) {
+      leftObs.observe(el);
+    });
+
+    /* ── Stagger package cards ── */
+    var cards = document.querySelectorAll('.pkgp-card');
+    cards.forEach(function (card, i) {
+      card.style.transitionDelay = (i * 0.15) + 's';
+    });
+  })();
+</script>
+
+
+<!-- ═══ COOKIE BANNER ═══ -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#111111;color:#fff;padding:20px 80px;z-index:9998;align-items:center;justify-content:space-between;gap:24px;transform:translateY(100%);transition:transform 400ms ease;">
+  <p style="font-size:13px;line-height:1.6;margin:0;flex:1;">We use cookies to improve your experience and analyse site traffic. <a href="privacy.html" style="color:#fff;text-underline-offset:3px;">Learn more</a></p>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button id="cookieAccept" style="background:#fff;color:#111;border:none;padding:10px 24px;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:background .2s;">Accept all</button>
+    <button id="cookieDecline" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:10px 24px;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:border-color .2s;">Decline</button>
+  </div>
+</div>
+<style>
+  @media(max-width:768px){
+    #cookieBanner{padding:20px 24px!important;flex-direction:column!important;align-items:flex-start!important;}
+    #cookieBanner>div{display:flex;width:100%;gap:8px;}
+    #cookieBanner button{flex:1;}
+  }
+  #cookieAccept:hover{background:#E8E8E8!important;}
+  #cookieDecline:hover{border-color:#fff!important;}
+</style>
+<script>
+(function(){
+  var banner  = document.getElementById('cookieBanner');
+  var accept  = document.getElementById('cookieAccept');
+  var decline = document.getElementById('cookieDecline');
+
+  function loadGoogleAnalytics() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-295D1F09W3';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-295D1F09W3');
+  }
+
+  function hideBanner() {
+    banner.style.transform  = 'translateY(100%)';
+    banner.style.transition = 'transform 400ms ease';
+    setTimeout(function(){ banner.style.display = 'none'; }, 400);
+  }
+
+  function showBanner() {
+    banner.style.display = 'flex';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ banner.style.transform = 'translateY(0)'; });
+    });
+  }
+
+  /* On every page load — check stored consent */
+  var consent = localStorage.getItem('unpeel_cookie_consent');
+  if (consent === 'accepted') {
+    loadGoogleAnalytics();
+  } else if (!consent) {
+    setTimeout(function(){ showBanner(); }, 1000);
+  }
+
+  accept.addEventListener('click', function(){
+    localStorage.setItem('unpeel_cookie_consent', 'accepted');
+    loadGoogleAnalytics();
+    hideBanner();
+  });
+
+  decline.addEventListener('click', function(){
+    localStorage.setItem('unpeel_cookie_consent', 'declined');
+    hideBanner();
+  });
+})();
+</script>
+
+</body>
+</html>

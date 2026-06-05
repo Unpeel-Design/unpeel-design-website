@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Start a Brand Project | Unpeel Design</title>
+  <meta name="description" content="Get in touch with Arnaud Boone — freelance brand designer in Ghent. Available for brand identity, UX/UI, motion and artificial design projects across Belgium and Europe. Response within 24 hours.">
+  <meta property="og:title" content="Contact — Start a Brand Project | Unpeel Design">
+  <meta property="og:description" content="Get in touch with Arnaud Boone — freelance brand designer in Ghent. Available for brand identity, UX/UI, motion and artificial design projects across Belgium and Europe. Response within 24 hours.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unpeeldesign.com/contact">
+  <meta property="og:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact — Start a Brand Project | Unpeel Design">
+  <meta name="twitter:description" content="Get in touch with Arnaud Boone — freelance brand designer in Ghent. Available for brand identity, UX/UI, motion and artificial design projects across Belgium and Europe. Response within 24 hours.">
+  <meta name="twitter:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles v2.css">
+  <style>
+    /* ═══ PAGE PADDING ═══ */
+    .ct-header, .ct-main, .ct-next, .ct-faq { padding-left: 80px; padding-right: 80px; }
+
+    /* ═══ SECTION 1 — HEADER ═══ */
+    .ct-header { padding-top: 120px; padding-bottom: 80px; border-bottom: 1px solid var(--border); }
+    .ct-h1 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 6vw, 88px);
+      line-height: .96; letter-spacing: -.01em;
+      margin: 16px 0 24px;
+    }
+    .ct-sub { font-size: 15px; color: var(--gray); line-height: 1.75; max-width: 580px; margin-bottom: 24px; }
+    .ct-avail-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 14px; background: var(--subtle);
+      border: 1px solid var(--border); font-size: 12px; color: var(--ink);
+    }
+    .ct-avail-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); flex-shrink: 0; }
+
+    /* ═══ SECTION 2 — MAIN CONTACT ═══ */
+    .ct-main {
+      padding-top: 80px; padding-bottom: 88px;
+      display: grid; grid-template-columns: 55fr 45fr;
+      gap: 80px; align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+    /* Left — form */
+    .ct-email-link {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.5vw, 28px);
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s; display: inline-block;
+      margin-bottom: 40px; line-height: 1.2;
+    }
+    .ct-email-link:hover { border-color: var(--ink); }
+
+    /* Right — portrait + details */
+    @keyframes ctFromRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: none; } }
+    .ct-right { animation: ctFromRight .7s ease .4s both; }
+    .ct-portrait-wrap { display: flex; justify-content: flex-end; margin-bottom: 40px; }
+    .ct-portrait {
+      width: 100%; max-width: 360px; max-height: 480px;
+      object-fit: cover; object-position: center top; display: block;
+    }
+    .ct-details-label { margin-bottom: 20px; }
+    .ct-detail-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+    }
+    .ct-detail-row:first-child { border-top: 1px solid var(--border); }
+    .ct-detail-label {
+      font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gray); flex-shrink: 0;
+    }
+    .ct-detail-val {
+      font-size: 13px; color: var(--ink); text-decoration: none;
+      text-align: right;
+    }
+    a.ct-detail-val {
+      border-bottom: 1px solid transparent; transition: border-color .2s;
+    }
+    a.ct-detail-val:hover { border-color: var(--ink); }
+    .ct-avail-note {
+      font-size: 12px; color: var(--gray); margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    /* ═══ SECTION 3 — WHAT HAPPENS NEXT ═══ */
+    .ct-next { padding-top: 88px; padding-bottom: 88px; background: var(--subtle); }
+    .ct-next-head { margin-bottom: 52px; }
+    .ct-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+    }
+    .ct-step { padding: 44px 40px; border-right: 1px solid var(--border); }
+    .ct-step:last-child { border-right: none; }
+    .ct-step-num {
+      font-family: var(--serif);
+      font-size: clamp(40px, 4vw, 56px);
+      color: #E8E8E8; line-height: 1; margin-bottom: 20px;
+      display: block;
+    }
+    .ct-step-title { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .ct-step-text { font-size: 14px; color: var(--gray); line-height: 1.75; }
+
+    /* ═══ SECTION 4 — FAQ ═══ */
+    .ct-faq { padding-top: 100px; padding-bottom: 100px; }
+    .ct-faq .faq-head { margin-bottom: 56px; }
+    .ct-faq .faq-list { max-width: 760px; }
+
+    /* ═══ SECTION 5 — SOCIALS STRIP ═══ */
+    .ct-socials {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      display: flex;
+    }
+    .ct-social {
+      flex: 1; text-align: center; padding: 28px 24px;
+      border-right: 1px solid var(--border); text-decoration: none;
+      transition: background .2s;
+    }
+    .ct-social:last-child { border-right: none; }
+    .ct-social:hover { background: var(--subtle); }
+    .ct-social-label {
+      font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 8px; display: block;
+    }
+    .ct-social-val {
+      font-size: 13px; color: var(--ink); display: inline-block;
+      border-bottom: 1px solid transparent; transition: border-color .2s;
+    }
+    .ct-social:hover .ct-social-val { border-color: var(--ink); }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 1024px) {
+      .ct-header, .ct-main, .ct-next, .ct-faq { padding-left: 48px; padding-right: 48px; }
+      .ct-main { gap: 56px; }
+    }
+    @media (max-width: 768px) {
+      .ct-header, .ct-main, .ct-next, .ct-faq { padding-left: 24px; padding-right: 24px; }
+      .ct-header { padding-top: 80px; padding-bottom: 48px; }
+      .ct-main { grid-template-columns: 1fr; gap: 56px; padding-top: 56px; padding-bottom: 64px; }
+      .ct-portrait-wrap { justify-content: flex-start; }
+      .ct-portrait {
+        width: 75% !important;
+        height: auto !important;
+        max-width: 75% !important;
+        max-height: none !important;
+        aspect-ratio: 3/4 !important;
+        object-fit: cover !important;
+        object-position: center 15% !important;
+        border-radius: 12px !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        display: block !important;
+      }
+      .ct-next { padding-top: 64px; padding-bottom: 64px; }
+      .ct-steps { grid-template-columns: 1fr; }
+      .ct-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .ct-step:last-child { border-bottom: none; }
+      .ct-faq { padding-top: 64px; padding-bottom: 64px; }
+      .ct-social-label { display: none; }
+      .ct-social { padding: 20px 16px; }
+      /* Direct contact strip — respect page padding */
+      .ct-socials {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .ct-socials > * {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+    }
+  </style>
+  <link rel="canonical" href="https://unpeeldesign.com/contact">
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<div class="mob-overlay" id="mobOverlay">
+  <button class="mob-close" id="mobClose" aria-label="Close menu">×</button>
+  <a href="index.html" class="mob-logo-link" aria-label="Unpeel Design — Home">
+    <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" class="mob-logo-img" loading="eager">
+  </a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="approach.html">Approach</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="mob-cta">Start a project</a>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="Unpeel Design — Home">
+    <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" loading="eager">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="approach.html">Approach</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="avail-pill"><span class="avail-dot"></span>Available</div>
+    <a href="contact.html" class="nav-cta">Start a project</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ SECTION 1 — HEADER ═══ -->
+<section class="ct-header">
+  <p class="section-label fade-up">Contact</p>
+  <h1 class="ct-h1 fade-up d1">Let's build<br>something real.</h1>
+  <p class="ct-sub fade-up d2">Have a project in mind? Fill in the form below — I'll get back to you within 24 hours with honest thoughts on how I can help.</p>
+  <div class="fade-up d3">
+    <span class="ct-avail-badge"><span class="ct-avail-dot"></span>Currently available for new projects</span>
+  </div>
+</section>
+
+<!-- ═══ SECTION 2 — MAIN CONTACT ═══ -->
+<section class="ct-main">
+
+  <!-- LEFT — FORM -->
+  <div class="ct-left">
+    <a href="mailto:design.arnaudboone@gmail.com" class="ct-email-link fade-up">design.arnaudboone@gmail.com</a>
+
+    <form class="c-form" id="contactForm" action="https://formspree.io/f/xgobvrgy" method="POST">
+      <input type="hidden" name="_subject" value="New project inquiry — Unpeel Design">
+      <div class="c-field fade-up" style="transition-delay:.10s">
+        <label for="ct-name">Name</label>
+        <input type="text" id="ct-name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="c-field fade-up" style="transition-delay:.15s">
+        <label for="ct-email">Email</label>
+        <input type="email" id="ct-email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="c-field fade-up" style="transition-delay:.20s">
+        <label for="ct-type">Type of project</label>
+        <select id="ct-type" name="type">
+          <option value="" disabled selected>Select...</option>
+          <option value="branding">Branding</option>
+          <option value="uxui">UX/UI Design</option>
+          <option value="motion">Motion Design</option>
+          <option value="artificial">Artificial Design</option>
+          <option value="notsure">Not sure yet</option>
+        </select>
+      </div>
+      <div class="c-field fade-up" style="transition-delay:.25s">
+        <label for="ct-desc">Tell me about your project</label>
+        <textarea id="ct-desc" name="desc" placeholder="What are you building?" rows="5"></textarea>
+      </div>
+      <div class="c-field fade-up" style="transition-delay:.30s">
+        <label for="ct-budget">Budget range</label>
+        <select id="ct-budget" name="budget">
+          <option value="" disabled selected>Select...</option>
+          <option value="under1k">Under €1.000</option>
+          <option value="1k3k">€1.000 – €3.000</option>
+          <option value="3kplus">€3.000+</option>
+          <option value="discuss">Let's discuss</option>
+        </select>
+      </div>
+      <div class="fade-up" style="transition-delay:.35s">
+        <button type="submit" class="c-submit">Send message →</button>
+        <p class="c-note" style="margin-top:12px">I respond within 24 hours.</p>
+      </div>
+    </form>
+
+    <div class="c-success" id="formSuccess" style="display:none;flex-direction:column;gap:12px;padding:48px 0;">
+      <p style="font-family:var(--serif);font-size:clamp(22px,3vw,36px);line-height:1.3;">Message sent.<br>I'll be in touch within 24 hours.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT — PORTRAIT + DETAILS -->
+  <div class="ct-right">
+    <div class="ct-portrait-wrap">
+      <img class="ct-portrait" src="https://framerusercontent.com/images/Ewd3Lvi96rp4d2DuWdqZr1v6gg.webp" alt="Arnaud Boone — Unpeel Design" loading="eager">
+    </div>
+
+    <p class="section-label ct-details-label">Direct Contact</p>
+    <div class="ct-detail-row">
+      <span class="ct-detail-label">Email</span>
+      <a href="mailto:design.arnaudboone@gmail.com" class="ct-detail-val">design.arnaudboone@gmail.com</a>
+    </div>
+    <div class="ct-detail-row">
+      <span class="ct-detail-label">Phone</span>
+      <a href="tel:+32493547401" class="ct-detail-val">+32 493 54 74 01</a>
+    </div>
+    <div class="ct-detail-row">
+      <span class="ct-detail-label">Location</span>
+      <span class="ct-detail-val">Ghent, Belgium</span>
+    </div>
+    <div class="ct-detail-row">
+      <span class="ct-detail-label">Instagram</span>
+      <a href="https://instagram.com/unpeel.design" target="_blank" rel="noopener" class="ct-detail-val">@unpeel.design</a>
+    </div>
+    <div class="ct-detail-row">
+      <span class="ct-detail-label">LinkedIn</span>
+      <a href="https://linkedin.com/in/arnaud-boone-95a8162b6" target="_blank" rel="noopener" class="ct-detail-val">Arnaud Boone</a>
+    </div>
+    <p class="ct-avail-note">Available for projects in Belgium and across Europe. Remote-friendly.</p>
+  </div>
+
+</section>
+
+<!-- ═══ SECTION 3 — WHAT HAPPENS NEXT ═══ -->
+<section class="ct-next">
+  <div class="ct-next-head">
+    <p class="section-label fade-up">What Happens Next</p>
+    <h2 class="section-title fade-up d1">No guesswork. Just a clear next step.</h2>
+  </div>
+  <div class="ct-steps">
+    <div class="ct-step fade-up">
+      <span class="ct-step-num">01</span>
+      <p class="ct-step-title">You send a message</p>
+      <p class="ct-step-text">Fill in the form above with as much detail as you can. The more context you give, the better I can respond.</p>
+    </div>
+    <div class="ct-step fade-up d1">
+      <span class="ct-step-num">02</span>
+      <p class="ct-step-title">I come back within 24 hours</p>
+      <p class="ct-step-text">I'll read your brief carefully and come back with honest thoughts — whether that's a proposed scope, a question or a recommendation.</p>
+    </div>
+    <div class="ct-step fade-up d2">
+      <span class="ct-step-num">03</span>
+      <p class="ct-step-title">We set up a call</p>
+      <p class="ct-step-text">If it feels like a good fit, we schedule a short intro call to align on scope, timeline and budget. No obligation, no pressure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 4 — FAQ ═══ -->
+<section class="ct-faq">
+  <div class="faq-head">
+    <p class="section-label fade-up">FAQ</p>
+    <h2 class="section-title fade-up d1">Before you reach out.</h2>
+  </div>
+  <div class="faq-list">
+
+    <div class="faq-item open">
+      <div class="faq-q"><h3>How quickly do you respond?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>I respond to every message within 24 hours, usually faster. If you send a message on a weekend, I'll be back in touch on Monday morning at the latest.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>What information should I include in my message?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>The more context the better — what you're building, who it's for, what your timeline looks like, and roughly what budget you have in mind. You don't need to have everything figured out. A rough idea is enough to start a conversation.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>Do you take on small projects?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Yes. Not every project needs to be a full brand system. If you need a focused logo, a landing page, a motion asset or a social media campaign — I'm open to scoped, smaller projects too. Just describe what you need and I'll tell you honestly if it's a good fit.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>Can I book a call without filling in the form?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Absolutely. If you prefer, send a direct email to design.arnaudboone@gmail.com or reach out via Instagram @unpeel.design. The form is just the easiest way to give me the context I need upfront.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>Do you work with clients outside Belgium?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Yes. I work remotely with clients across Europe. Everything happens over video call and shared digital tools. If you're based outside Belgium, just reach out — location is never a barrier.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>What if I'm not sure what I need?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>That is completely normal and honestly one of the most common situations I work with. Send me a message describing where you are and what you're trying to achieve — I'll help you figure out the right scope and approach. No commitment needed.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SECTION 5 — SOCIALS STRIP ═══ -->
+<div class="ct-socials">
+  <a href="mailto:design.arnaudboone@gmail.com" class="ct-social">
+    <span class="ct-social-label">Email</span>
+    <span class="ct-social-val">design.arnaudboone@gmail.com</span>
+  </a>
+  <a href="https://instagram.com/unpeel.design" target="_blank" rel="noopener" class="ct-social">
+    <span class="ct-social-label">Instagram</span>
+    <span class="ct-social-val">@unpeel.design</span>
+  </a>
+  <a href="https://linkedin.com/in/arnaud-boone-95a8162b6" target="_blank" rel="noopener" class="ct-social">
+    <span class="ct-social-label">LinkedIn</span>
+    <span class="ct-social-val">Arnaud Boone</span>
+  </a>
+</div>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer data-layout="a">
+  <div class="f-news">
+    <p class="f-news-text">Stay inspired. No spam, ever.</p>
+    <form class="f-news-form" id="newsForm">
+      <input type="email" placeholder="your@email.com" aria-label="Email for newsletter">
+      <button type="submit">Subscribe →</button>
+    </form>
+  </div>
+  <div class="f-main">
+    <div>
+      <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" class="f-logo" loading="eager">
+      <p class="f-tag">Freelance brand designer based in Ghent, Belgium</p>
+    </div>
+    <div>
+      <p class="f-col-title">Navigate</p>
+      <ul class="f-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="approach.html">Approach</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Connect</p>
+      <ul class="f-links">
+        <li><a href="mailto:design.arnaudboone@gmail.com">Email</a></li>
+        <li><a href="https://instagram.com/unpeel.design" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://linkedin.com/in/arnaud-boone-95a8162b6" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>©2025 Unpeel Design — Arnaud Boone</span>
+    <span>BE1036122524</span>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+</footer>
+
+<script src="script v2.js"></script>
+
+
+<!-- ═══ COOKIE BANNER ═══ -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#111111;color:#fff;padding:20px 80px;z-index:9998;align-items:center;justify-content:space-between;gap:24px;transform:translateY(100%);transition:transform 400ms ease;">
+  <p style="font-size:13px;line-height:1.6;margin:0;flex:1;">We use cookies to improve your experience and analyse site traffic. <a href="privacy.html" style="color:#fff;text-underline-offset:3px;">Learn more</a></p>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button id="cookieAccept" style="background:#fff;color:#111;border:none;padding:10px 24px;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:background .2s;">Accept all</button>
+    <button id="cookieDecline" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:10px 24px;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:border-color .2s;">Decline</button>
+  </div>
+</div>
+<style>
+  @media(max-width:768px){
+    #cookieBanner{padding:20px 24px!important;flex-direction:column!important;align-items:flex-start!important;}
+    #cookieBanner>div{display:flex;width:100%;gap:8px;}
+    #cookieBanner button{flex:1;}
+  }
+  #cookieAccept:hover{background:#E8E8E8!important;}
+  #cookieDecline:hover{border-color:#fff!important;}
+</style>
+<script>
+(function(){
+  var banner  = document.getElementById('cookieBanner');
+  var accept  = document.getElementById('cookieAccept');
+  var decline = document.getElementById('cookieDecline');
+
+  function loadGoogleAnalytics() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-295D1F09W3';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-295D1F09W3');
+  }
+
+  function hideBanner() {
+    banner.style.transform  = 'translateY(100%)';
+    banner.style.transition = 'transform 400ms ease';
+    setTimeout(function(){ banner.style.display = 'none'; }, 400);
+  }
+
+  function showBanner() {
+    banner.style.display = 'flex';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ banner.style.transform = 'translateY(0)'; });
+    });
+  }
+
+  /* On every page load — check stored consent */
+  var consent = localStorage.getItem('unpeel_cookie_consent');
+  if (consent === 'accepted') {
+    loadGoogleAnalytics();
+  } else if (!consent) {
+    setTimeout(function(){ showBanner(); }, 1000);
+  }
+
+  accept.addEventListener('click', function(){
+    localStorage.setItem('unpeel_cookie_consent', 'accepted');
+    loadGoogleAnalytics();
+    hideBanner();
+  });
+
+  decline.addEventListener('click', function(){
+    localStorage.setItem('unpeel_cookie_consent', 'declined');
+    hideBanner();
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Branding, UX/UI, Motion &amp; Artificial Design | Unpeel</title>
+  <meta name="description" content="Freelance design services by Arnaud Boone in Ghent — brand identity, UX/UI design, motion graphics and artificial design for startups, restaurants, hotels and creative founders across Belgium.">
+  <meta property="og:title" content="Services — Branding, UX/UI, Motion & Artificial Design | Unpeel">
+  <meta property="og:description" content="Freelance design services by Arnaud Boone in Ghent — brand identity, UX/UI design, motion graphics and artificial design for startups, restaurants, hotels and creative founders across Belgium.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unpeeldesign.com/services">
+  <meta property="og:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Services — Branding, UX/UI, Motion & Artificial Design | Unpeel">
+  <meta name="twitter:description" content="Freelance design services by Arnaud Boone in Ghent — brand identity, UX/UI design, motion graphics and artificial design for startups, restaurants, hotels and creative founders across Belgium.">
+  <meta name="twitter:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Unpeel Design",
+    "url": "https://unpeeldesign.com",
+    "founder": { "@type": "Person", "name": "Arnaud Boone" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Ghent", "addressCountry": "BE" },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Design Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UX/UI Design" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Motion Design" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Artificial Design" } }
+      ]
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles v2.css">
+  <style>
+    /* ═══ PAGE PADDING ═══ */
+    .svcp-header, .svc-section, .svc-stats,
+    .svcp-faq, .svcp-cta { padding-left: 80px; padding-right: 80px; }
+
+    /* ═══ SECTION 1 — HEADER ═══ */
+    .svcp-header {
+      padding-top: 120px; padding-bottom: 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .svcp-h1 {
+      font-family: var(--serif);
+      font-size: clamp(44px, 5.5vw, 80px);
+      line-height: .98; letter-spacing: -.01em;
+      margin: 16px 0 24px;
+    }
+    .svcp-sub {
+      font-size: 15px; color: var(--gray);
+      line-height: 1.75; max-width: 600px;
+    }
+
+    /* ═══ SECTION 2 — SERVICE SECTIONS ═══ */
+    #branding, #uxui, #motion, #artificial { scroll-margin-top: 92px; }
+    .svc-section {
+      padding-top: 80px; padding-bottom: 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .svc-top {
+      display: flex; align-items: baseline; gap: 28px;
+      padding-bottom: 36px; margin-bottom: 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .svc-num {
+      font-family: var(--serif);
+      font-size: clamp(52px, 6.5vw, 88px);
+      color: #E8E8E8; line-height: 1; flex-shrink: 0;
+      user-select: none;
+    }
+    .svc-name {
+      font-family: var(--serif);
+      font-size: clamp(36px, 4.2vw, 60px);
+      line-height: 1; flex-shrink: 0;
+    }
+    .svc-tagline {
+      flex: 1; text-align: right;
+      font-size: 14px; color: var(--gray);
+      align-self: flex-end;
+      padding-bottom: 4px;
+    }
+    .svc-body {
+      display: grid; grid-template-columns: 55fr 45fr;
+      gap: 64px; align-items: start;
+    }
+    .svc-desc {
+      font-size: 15px; color: var(--gray);
+      line-height: 1.82; margin-bottom: 36px;
+    }
+    .svc-items { list-style: none; border-top: 1px solid var(--border); }
+    .svc-item {
+      display: grid; grid-template-columns: 28px 1fr;
+      gap: 0 14px; padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .svc-item-n {
+      font-size: 10px; letter-spacing: .1em;
+      color: var(--gray); padding-top: 3px;
+    }
+    .svc-item-name {
+      font-size: 14px; font-weight: 500;
+      color: var(--ink); margin-bottom: 5px; display: block;
+    }
+    .svc-item-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* Project cards */
+    .svc-cards { display: flex; flex-direction: column; gap: 16px; }
+    .svc-card {
+      display: block; text-decoration: none;
+      aspect-ratio: 16/10; position: relative;
+      overflow: hidden; background: #111;
+      transition: transform .4s ease;
+    }
+    .svc-card:hover { transform: scale(1.015); z-index: 2; }
+    .svc-card video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 1;
+    }
+    .svc-ghost {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity .3s;
+    }
+    .svc-card:hover .svc-ghost { opacity: 0; }
+    .svc-ghost-name {
+      font-family: var(--serif); font-style: normal; font-weight: 500;
+      font-size: clamp(15px, 1.5vw, 20px);
+      color: rgba(255,255,255,.16); text-align: center; padding: 16px;
+    }
+    .svc-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.78) 0%, transparent 55%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .svc-card:hover .svc-overlay { opacity: 1; }
+    .svc-card-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px 24px;
+      transform: translateY(8px); opacity: 0;
+      transition: transform .3s ease, opacity .3s;
+    }
+    .svc-card:hover .svc-card-info { transform: none; opacity: 1; }
+    .svc-card-title {
+      font-family: var(--serif); font-size: 18px;
+      color: #fff; margin-bottom: 4px; line-height: 1.1;
+    }
+    .svc-card-tags {
+      font-size: 10px; color: rgba(255,255,255,.6);
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    /* Placeholder */
+    .svc-ph {
+      aspect-ratio: 16/10; background: #111111;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .svc-ph-label {
+      font-size: 12px; color: rgba(255,255,255,.28);
+      }
+
+    /* Fade + scale for cards */
+    .fade-scale {
+      opacity: 0; transform: translateY(16px) scale(.97);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-scale.visible { opacity: 1; transform: translateY(0) scale(1); }
+
+    /* ═══ SECTION 3 — STATS ═══ */
+    .svc-stats { padding-top: 88px; padding-bottom: 88px; background: var(--subtle); }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border); margin-bottom: 36px;
+    }
+    .stat-box {
+      padding: 44px 40px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-box:last-child { border-right: none; }
+    .stat-n {
+      font-family: var(--serif);
+      font-size: clamp(38px, 4vw, 56px);
+      line-height: 1; margin-bottom: 10px;
+    }
+    .stat-l { font-size: 13px; color: var(--gray); line-height: 1.5; }
+    .stats-note {
+      text-align: center; font-size: 14px; color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ═══ SECTION 4 — FAQ ═══ */
+    .svcp-faq { padding-top: 100px; padding-bottom: 100px; }
+    .svcp-faq .faq-head { margin-bottom: 56px; }
+    .svcp-faq .faq-list { max-width: 760px; }
+
+    /* ═══ SECTION 5 — DARK CTA ═══ */
+    .svcp-cta {
+      background: #111111; color: #fff;
+      padding-top: 120px; padding-bottom: 120px;
+      text-align: center;
+    }
+    .svcp-cta-h {
+      font-family: var(--serif);
+      font-size: clamp(34px, 4.5vw, 64px);
+      line-height: 1.04; margin-bottom: 22px;
+    }
+    .svcp-cta-sub {
+      font-size: 15px; color: rgba(255,255,255,.55);
+      line-height: 1.75; max-width: 500px;
+      margin: 0 auto 44px;
+    }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 36px; background: #fff; color: #111;
+      border: 1px solid #fff; font-size: 13px; letter-spacing: .04em;
+      transition: background .2s, color .2s;
+    }
+    .btn-white:hover { background: transparent; color: #fff; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 1024px) {
+      .svcp-header, .svc-section, .svc-stats,
+      .svcp-faq, .svcp-cta { padding-left: 48px; padding-right: 48px; }
+      .svc-body { gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .svcp-header, .svc-section, .svc-stats,
+      .svcp-faq, .svcp-cta { padding-left: 24px; padding-right: 24px; }
+      .svcp-header { padding-top: 80px; padding-bottom: 48px; }
+      .svc-section { padding-top: 56px; padding-bottom: 56px; }
+      .svc-top { flex-wrap: wrap; gap: 12px; }
+      .svc-tagline { text-align: left; flex-basis: 100%; }
+      .svc-body { grid-template-columns: 1fr; gap: 40px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-box:nth-child(2) { border-right: none; }
+      .stat-box:nth-child(3) { border-top: 1px solid var(--border); }
+      .svcp-faq { padding-top: 64px; padding-bottom: 64px; }
+      .svcp-cta { padding-top: 80px; padding-bottom: 80px; }
+    }
+  </style>
+  <link rel="canonical" href="https://unpeeldesign.com/services">
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<div class="mob-overlay" id="mobOverlay">
+  <button class="mob-close" id="mobClose" aria-label="Close menu">×</button>
+  <a href="index.html" class="mob-logo-link" aria-label="Unpeel Design — Home">
+    <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" class="mob-logo-img" loading="eager">
+  </a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="approach.html">Approach</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="mob-cta">Start a project</a>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="Unpeel Design — Home">
+    <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" loading="eager">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="approach.html">Approach</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="avail-pill"><span class="avail-dot"></span>Available</div>
+    <a href="contact.html" class="nav-cta">Start a project</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ SECTION 1 — HEADER ═══ -->
+<section class="svcp-header">
+  <p class="section-label fade-up">Services</p>
+  <h1 class="svcp-h1 fade-up d1">Four disciplines.<br>One coherent vision.</h1>
+  <p class="svcp-sub fade-up d2">Whether you need a full brand identity, a website, motion graphics or AI-driven content — every service is rooted in the same principle: design that is honest, strategic and built to last.</p>
+</section>
+
+<!-- ═══ SERVICE 1 — BRANDING ═══ -->
+<section id="branding" class="svc-section">
+  <div class="svc-top fade-up">
+    <span class="svc-num">01</span>
+    <h2 class="svc-name">Branding</h2>
+    <p class="svc-tagline">From first mark to full system.</p>
+  </div>
+  <div class="svc-body">
+    <div class="svc-left">
+      <p class="svc-desc fade-up">A brand identity is more than a logo. It is the complete visual and strategic system that tells people who you are, what you stand for, and why they should choose you. I work from the inside out — strategy first, design second — to build identities that feel inevitable rather than arbitrary. Every project starts with unpeeling the idea behind your brand.</p>
+      <ul class="svc-items">
+        <li class="svc-item fade-up">
+          <span class="svc-item-n">01</span>
+          <div><span class="svc-item-name">Logo Design</span><span class="svc-item-desc">A distinctive, versatile mark that works at every size and in every context.</span></div>
+        </li>
+        <li class="svc-item fade-up d1">
+          <span class="svc-item-n">02</span>
+          <div><span class="svc-item-name">Brand Strategy</span><span class="svc-item-desc">Positioning, personality, tone of voice and audience definition — the foundation everything else is built on.</span></div>
+        </li>
+        <li class="svc-item fade-up d2">
+          <span class="svc-item-n">03</span>
+          <div><span class="svc-item-name">Brand Guidelines</span><span class="svc-item-desc">A comprehensive document that keeps your brand consistent across every touchpoint, every time.</span></div>
+        </li>
+        <li class="svc-item fade-up d3">
+          <span class="svc-item-n">04</span>
+          <div><span class="svc-item-name">Rebranding</span><span class="svc-item-desc">When your current identity no longer reflects where you are going. A strategic refresh built on what already works.</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="svc-right">
+      <div class="svc-cards">
+        <a class="svc-card fade-scale" href="works/tuinen-arnaud.html">
+          <video preload="none" src="https://framerusercontent.com/assets/YXTMW11ZQrDM06YdtTzwwHI8xfA.mp4" autoplay muted loop playsinline loading="lazy"></video>
+          <div class="svc-ghost"><p class="svc-ghost-name">Tuinen Arnaud</p></div>
+          <div class="svc-overlay"></div>
+          <div class="svc-card-info"><p class="svc-card-title">Tuinen Arnaud</p><p class="svc-card-tags">Branding · Web Design</p></div>
+        </a>
+        <a class="svc-card fade-scale" href="works/melabody.html" style="transition-delay:.1s">
+          <video preload="none" src="https://framerusercontent.com/assets/wV5rrjFoD0UmrLmC4ldwBKDcgk.mp4" autoplay muted loop playsinline loading="lazy"></video>
+          <div class="svc-ghost"><p class="svc-ghost-name">Melabody</p></div>
+          <div class="svc-overlay"></div>
+          <div class="svc-card-info"><p class="svc-card-title">Melabody</p><p class="svc-card-tags">Branding · Packaging</p></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICE 2 — UX/UI ═══ -->
+<section id="uxui" class="svc-section">
+  <div class="svc-top fade-up">
+    <span class="svc-num">02</span>
+    <h2 class="svc-name">UX/UI Design</h2>
+    <p class="svc-tagline">Interfaces that feel as good as they look.</p>
+  </div>
+  <div class="svc-body">
+    <div class="svc-left">
+      <p class="svc-desc fade-up">Good digital design is invisible. It guides people effortlessly from where they are to where they want to go. I design websites and digital interfaces that are clear, fast and on-brand — built to show your product or service at its absolute best. Every screen is a brand touchpoint. Every interaction is an opportunity to build trust.</p>
+      <ul class="svc-items">
+        <li class="svc-item fade-up">
+          <span class="svc-item-n">01</span>
+          <div><span class="svc-item-name">Web Design</span><span class="svc-item-desc">Strategic, brand-led website design. From single landing pages to full multi-page sites. Designed in Figma, handed off developer-ready.</span></div>
+        </li>
+        <li class="svc-item fade-up d1">
+          <span class="svc-item-n">02</span>
+          <div><span class="svc-item-name">App Design</span><span class="svc-item-desc">Mobile and web app interfaces designed around real user behaviour. Clear flows, consistent components, intuitive experience.</span></div>
+        </li>
+        <li class="svc-item fade-up d2">
+          <span class="svc-item-n">03</span>
+          <div><span class="svc-item-name">Responsive Design Solutions</span><span class="svc-item-desc">Every design works flawlessly across all devices — desktop, tablet and mobile — without compromise.</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="svc-right">
+      <div class="svc-cards">
+        <a class="svc-card fade-scale" href="works/shared-ground.html">
+          <video preload="none" src="https://framerusercontent.com/assets/Mbin4nL2GlXWiaW6jQGfWaVZ4I.mp4" autoplay muted loop playsinline loading="lazy"></video>
+          <div class="svc-ghost"><p class="svc-ghost-name">Shared Ground</p></div>
+          <div class="svc-overlay"></div>
+          <div class="svc-card-info"><p class="svc-card-title">Shared Ground</p><p class="svc-card-tags">Branding · Motion · Web</p></div>
+        </a>
+        <a class="svc-card fade-scale" href="works/aaronblommaert.html" style="transition-delay:.1s">
+          <video preload="none" src="https://framerusercontent.com/assets/Vg51fPRpcSsYYgGT7TL8Sva1eIE.mp4" autoplay muted loop playsinline loading="lazy"></video>
+          <div class="svc-ghost"><p class="svc-ghost-name">Aaron Blommaert</p></div>
+          <div class="svc-overlay"></div>
+          <div class="svc-card-info"><p class="svc-card-title">Aaron Blommaert</p><p class="svc-card-tags">Branding · Motion · Web</p></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICE 3 — MOTION ═══ -->
+<section id="motion" class="svc-section">
+  <div class="svc-top fade-up">
+    <span class="svc-num">03</span>
+    <h2 class="svc-name">Motion Design</h2>
+    <p class="svc-tagline">Your brand, in motion.</p>
+  </div>
+  <div class="svc-body">
+    <div class="svc-left">
+      <p class="svc-desc fade-up">Motion is the most underused tool in branding. A well-crafted animation makes your brand feel alive, premium and memorable in a way static design simply cannot. I create motion that feels like a natural extension of your identity — not decoration layered on top. From animated logos to full campaign videos, every frame is intentional.</p>
+      <ul class="svc-items">
+        <li class="svc-item fade-up">
+          <span class="svc-item-n">01</span>
+          <div><span class="svc-item-name">Motion Graphics</span><span class="svc-item-desc">Animated brand assets, explainer videos, social media motion and campaign visuals that capture attention and communicate clearly.</span></div>
+        </li>
+        <li class="svc-item fade-up d1">
+          <span class="svc-item-n">02</span>
+          <div><span class="svc-item-name">Animation</span><span class="svc-item-desc">Logo animations, brand intros, kinetic typography and motion sequences that bring your identity to life across digital touchpoints.</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="svc-right">
+      <div class="svc-cards">
+        <a class="svc-card fade-scale" href="works/tuillerien.html">
+          <video preload="none" src="https://framerusercontent.com/assets/ExAYxAsVkAaiyHVXURuYujmDbh4.mp4" autoplay muted loop playsinline loading="lazy"></video>
+          <div class="svc-ghost"><p class="svc-ghost-name">Tuillerien</p></div>
+          <div class="svc-overlay"></div>
+          <div class="svc-card-info"><p class="svc-card-title">Tuillerien</p><p class="svc-card-tags">Branding · Motion</p></div>
+        </a>
+        <a class="svc-card fade-scale" href="works/hella-fast.html" style="transition-delay:.1s">
+          <video preload="none" src="https://framerusercontent.com/assets/D3xdzH1rOmKb7rVMOsAAksN3X4.mp4" autoplay muted loop playsinline loading="lazy"></video>
+          <div class="svc-ghost"><p class="svc-ghost-name">HELLA FAST</p></div>
+          <div class="svc-overlay"></div>
+          <div class="svc-card-info"><p class="svc-card-title">HELLA FAST</p><p class="svc-card-tags">Branding · Motion</p></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICE 4 — ARTIFICIAL ═══ -->
+<section id="artificial" class="svc-section">
+  <div class="svc-top fade-up">
+    <span class="svc-num">04</span>
+    <h2 class="svc-name">Artificial Design</h2>
+    <p class="svc-tagline">AI-powered content at production scale.</p>
+  </div>
+  <div class="svc-body">
+    <div class="svc-left">
+      <p class="svc-desc fade-up">Artificial design combines creative direction with AI generation tools to produce high-quality visual content at a speed and scale that traditional production cannot match. This is not about replacing creativity — it is about amplifying it. I use AI as a tool, not a shortcut, to produce content that is strategically aligned, visually consistent and built to perform across platforms.</p>
+      <ul class="svc-items">
+        <li class="svc-item fade-up">
+          <span class="svc-item-n">01</span>
+          <div><span class="svc-item-name">UGC Generated Content</span><span class="svc-item-desc">AI-assisted user-generated style content for social media — authentic-feeling, brand-aligned, produced fast.</span></div>
+        </li>
+        <li class="svc-item fade-up d1">
+          <span class="svc-item-n">02</span>
+          <div><span class="svc-item-name">TV Campaigns</span><span class="svc-item-desc">Broadcast-quality campaign visuals produced with AI generation tools. High impact, lower production cost.</span></div>
+        </li>
+        <li class="svc-item fade-up d2">
+          <span class="svc-item-n">03</span>
+          <div><span class="svc-item-name">Social Media Campaigns</span><span class="svc-item-desc">Full campaign content sets for Instagram, TikTok, LinkedIn and beyond — consistent, scroll-stopping and on-brand.</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="svc-right">
+      <div class="svc-cards">
+        <div class="svc-card fade-scale">
+          <video preload="none" src="uploads/hf_20260127_083958_d2e49b0d-a7ca-45f5-846e-87b2b7811d3e.mp4" autoplay muted loop playsinline></video>
+          <div class="svc-ghost"><p class="svc-ghost-name">AI Generated Content</p></div>
+          <div class="svc-overlay"></div>
+          <div class="svc-card-info">
+            <p class="svc-card-title">AI Generated Content</p>
+            <p class="svc-card-tags">Artificial Design · UGC Content</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 3 — STATS ═══ -->
+<section class="svc-stats">
+  <div class="stats-grid">
+    <div class="stat-box fade-up">
+      <p class="stat-n" data-count="9" data-suffix="+">9+</p>
+      <p class="stat-l">Projects delivered</p>
+    </div>
+    <div class="stat-box fade-up d1">
+      <p class="stat-n" data-count="4" data-suffix="">4</p>
+      <p class="stat-l">Design disciplines</p>
+    </div>
+    <div class="stat-box fade-up d2">
+      <p class="stat-n">2–8</p>
+      <p class="stat-l">Weeks per project</p>
+    </div>
+    <div class="stat-box fade-up d3">
+      <p class="stat-n" data-count="100" data-suffix="%">100%</p>
+      <p class="stat-l">Brand ownership transferred</p>
+    </div>
+  </div>
+  <p class="stats-note fade-up">Every project — regardless of scope — is handled with the same level of care, strategy and craft.</p>
+</section>
+
+<!-- ═══ SECTION 4 — FAQ ═══ -->
+<section class="svcp-faq">
+  <div class="faq-head">
+    <p class="section-label fade-up">FAQ</p>
+    <h2 class="section-title fade-up d1">Common questions about my services.</h2>
+  </div>
+  <div class="faq-list">
+
+    <div class="faq-item open">
+      <div class="faq-q"><h3>What is the difference between branding and logo design?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Logo design is the creation of a single visual mark. Branding is the complete strategic and visual system built around it — including typography, colour, tone of voice, imagery style, usage guidelines and brand positioning. A logo tells people your name. A brand tells them who you are. For businesses that want long-term recognition and consistency, full branding delivers significantly more value than a logo alone.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>Do you offer web design as a standalone service?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Yes. Web design is available as a standalone service or as part of a Full Brand package. I design in Figma and deliver developer-ready handoff files. I can also recommend trusted developers if you need someone to build it.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>What is artificial design and how is it different from regular design?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Artificial design uses AI generation tools — guided by creative direction and brand strategy — to produce visual content at a speed and scale that traditional production cannot match. The difference from regular design is in the production process, not the output quality. Every piece of AI-generated content I produce is creatively directed, brand-aligned and refined to meet the same standard as traditionally produced work.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>Can I combine services from different disciplines?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Yes — and most projects do. A brand identity project often includes motion for a logo animation and web design for a landing page. I build custom scopes that combine exactly what you need. Just describe your project and I'll propose the right combination.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>Do you work with restaurants and hospitality businesses?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Yes. Restaurants, cafés, hotels and hospitality businesses are some of my favourite clients to work with. A strong brand identity is especially valuable in hospitality — it shapes the first impression before a guest ever walks through the door. I understand the specific needs of the industry: menus, signage, packaging, social media and digital presence.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>What deliverables do I receive after a branding project?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>All logo files in every format (AI, PDF, SVG, PNG — light, dark and mono versions), a brand guidelines document, and all supporting assets included in your package. You own everything outright after final delivery — no licensing, no ongoing fees.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>Do you also help with implementing the brand after delivery?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Yes. After delivery I'm available for follow-up design work — social media assets, new touchpoints, print materials, campaign content. Many clients work with me on an ongoing basis after the initial brand project is complete.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SECTION 5 — DARK CTA ═══ -->
+<section class="svcp-cta">
+  <h2 class="svcp-cta-h fade-up">Not sure which service fits?</h2>
+  <p class="svcp-cta-sub fade-up d1">Tell me what you're building — I'll come back with an honest recommendation and a clear scope.</p>
+  <a href="contact.html" class="btn-white fade-up d2">Get in touch →</a>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer data-layout="a">
+  <div class="f-news">
+    <p class="f-news-text">Stay inspired. No spam, ever.</p>
+    <form class="f-news-form" id="newsForm">
+      <input type="email" placeholder="your@email.com" aria-label="Email for newsletter">
+      <button type="submit">Subscribe →</button>
+    </form>
+  </div>
+  <div class="f-main">
+    <div>
+      <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" class="f-logo" loading="eager">
+      <p class="f-tag">Freelance brand designer based in Ghent, Belgium</p>
+    </div>
+    <div>
+      <p class="f-col-title">Navigate</p>
+      <ul class="f-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="approach.html">Approach</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Connect</p>
+      <ul class="f-links">
+        <li><a href="mailto:design.arnaudboone@gmail.com">Email</a></li>
+        <li><a href="https://instagram.com/unpeel.design" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://linkedin.com/in/arnaud-boone-95a8162b6" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>©2025 Unpeel Design — Arnaud Boone</span>
+    <span>BE1036122524</span>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+</footer>
+
+<script src="script v2.js"></script>
+<script>
+(function () {
+  /* ── Cursor hover on cards ── */
+  var cur = document.getElementById('cursor');
+  if (cur) {
+    document.querySelectorAll('.svc-card').forEach(function (card) {
+      card.addEventListener('mouseenter', function () { cur.classList.add('hover'); });
+      card.addEventListener('mouseleave', function () { cur.classList.remove('hover'); });
+    });
+  }
+
+  /* ── Fade-scale observer for project cards ── */
+  var scaleObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); scaleObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-scale').forEach(function (el) { scaleObs.observe(el); });
+
+  /* ── Stats count-up ── */
+  var counted = false;
+  var statsObs = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting && !counted) {
+      counted = true;
+      document.querySelectorAll('.stat-n[data-count]').forEach(function (el) {
+        var target = parseInt(el.dataset.count, 10);
+        var suffix = el.dataset.suffix || '';
+        var start = 0;
+        var duration = 900;
+        var step = target / (duration / 16);
+        var timer = setInterval(function () {
+          start = Math.min(start + step, target);
+          el.textContent = Math.round(start) + suffix;
+          if (start >= target) clearInterval(timer);
+        }, 16);
+      });
+    }
+  }, { threshold: 0.3 });
+  var statsSection = document.querySelector('.svc-stats');
+  if (statsSection) statsObs.observe(statsSection);
+})();
+</script>
+
+
+<!-- ═══ COOKIE BANNER ═══ -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#111111;color:#fff;padding:20px 80px;z-index:9998;align-items:center;justify-content:space-between;gap:24px;transform:translateY(100%);transition:transform 400ms ease;">
+  <p style="font-size:13px;line-height:1.6;margin:0;flex:1;">We use cookies to improve your experience and analyse site traffic. <a href="privacy.html" style="color:#fff;text-underline-offset:3px;">Learn more</a></p>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button id="cookieAccept" style="background:#fff;color:#111;border:none;padding:10px 24px;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:background .2s;">Accept all</button>
+    <button id="cookieDecline" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:10px 24px;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:border-color .2s;">Decline</button>
+  </div>
+</div>
+<style>
+  @media(max-width:768px){
+    #cookieBanner{padding:20px 24px!important;flex-direction:column!important;align-items:flex-start!important;}
+    #cookieBanner>div{display:flex;width:100%;gap:8px;}
+    #cookieBanner button{flex:1;}
+  }
+  #cookieAccept:hover{background:#E8E8E8!important;}
+  #cookieDecline:hover{border-color:#fff!important;}
+</style>
+<script>
+(function(){
+  var banner  = document.getElementById('cookieBanner');
+  var accept  = document.getElementById('cookieAccept');
+  var decline = document.getElementById('cookieDecline');
+
+  function loadGoogleAnalytics() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-295D1F09W3';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-295D1F09W3');
+  }
+
+  function hideBanner() {
+    banner.style.transform  = 'translateY(100%)';
+    banner.style.transition = 'transform 400ms ease';
+    setTimeout(function(){ banner.style.display = 'none'; }, 400);
+  }
+
+  function showBanner() {
+    banner.style.display = 'flex';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ banner.style.transform = 'translateY(0)'; });
+    });
+  }
+
+  /* On every page load — check stored consent */
+  var consent = localStorage.getItem('unpeel_cookie_consent');
+  if (consent === 'accepted') {
+    loadGoogleAnalytics();
+  } else if (!consent) {
+    setTimeout(function(){ showBanner(); }, 1000);
+  }
+
+  accept.addEventListener('click', function(){
+    localStorage.setItem('unpeel_cookie_consent', 'accepted');
+    loadGoogleAnalytics();
+    hideBanner();
+  });
+
+  decline.addEventListener('click', function(){
+    localStorage.setItem('unpeel_cookie_consent', 'declined');
+    hideBanner();
+  });
+})();
+</script>
+
+</body>
+</html>

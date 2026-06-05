@@ -1,0 +1,236 @@
+/* ═══════════════════════════════════════
+   Unpeel — Works & Case Study pages
+   ═══════════════════════════════════════ */
+
+/* ═══ PAGE HEADER ═══ */
+.page-header { padding: 120px 64px 72px; }
+.page-h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(44px, 5.5vw, 76px);
+  line-height: 1.04; letter-spacing: -.01em;
+  margin: 16px 0 20px;
+}
+.page-sub {
+  font-size: 15px; color: var(--gray);
+  max-width: 520px; line-height: 1.7;
+}
+
+/* ═══ FILTER BAR ═══ */
+.filter-bar {
+  padding: 24px 64px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.filter-pill {
+  padding: 8px 20px; font-size: 11px;
+  letter-spacing: .09em; text-transform: uppercase;
+  border: 1px solid var(--border); background: var(--bg);
+  color: var(--ink); cursor: none; border-radius: 100px;
+  transition: background .18s, color .18s, border-color .18s;
+}
+.filter-pill:hover,
+.filter-pill.active { background: var(--ink); color: var(--bg); border-color: var(--ink); border-radius: 100px; }
+
+/* ═══ WORKS FULL GRID ═══ */
+.wfg-section { padding: 48px 64px 80px; }
+.wfg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.wfg-card {
+  display: block; text-decoration: none;
+  aspect-ratio: 16/10;
+  position: relative; overflow: hidden;
+  background: #111;
+  transition: transform .4s ease, opacity .2s;
+}
+.wfg-card:hover { transform: scale(1.015); z-index: 2; }
+
+.wfg-card video,
+.wfg-card > img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  opacity: .85; transition: opacity .3s;
+}
+.wfg-card:hover video,
+.wfg-card:hover > img { opacity: 1; }
+
+.wfg-placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: #111;
+}
+.wfg-placeholder-name {
+  font-family: 'Inter', sans-serif; font-style: normal;
+  font-size: clamp(24px, 2.2vw, 34px);
+  color: rgba(255,255,255,.13); text-align: center; padding: 24px; line-height: 1.1;
+}
+
+.wfg-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,0) 55%);
+  opacity: 0; transition: opacity .3s;
+}
+.wfg-card:hover .wfg-overlay { opacity: 1; }
+
+.wfg-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 24px 28px;
+  transform: translateY(10px); opacity: 0;
+  transition: transform .35s ease, opacity .3s ease;
+}
+.wfg-card:hover .wfg-info { transform: translateY(0); opacity: 1; }
+
+.wfg-name {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(18px, 1.8vw, 26px);
+  color: #fff; margin-bottom: 10px; line-height: 1.1;
+}
+.wfg-tags { display: flex; gap: 0; }
+.wfg-tag {
+  font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+}
+.wfg-tag + .wfg-tag::before { content: ' · '; color: rgba(255,255,255,.3); }
+
+/* ═══ FOOTER CTA ═══ */
+.footer-cta {
+  padding: 80px 64px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+}
+.footer-cta-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(22px, 2.8vw, 36px); line-height: 1.2;
+}
+.footer-cta-link {
+  font-size: 12px; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--ink); padding-bottom: 2px;
+  white-space: nowrap; flex-shrink: 0;
+  transition: opacity .2s;
+}
+.footer-cta-link:hover { opacity: .5; }
+
+/* ═══ CASE STUDY — HEADER ═══ */
+.cs-header { padding: 100px 80px 60px; border-bottom: 1px solid var(--border); }
+.cs-cats {
+  font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 28px;
+}
+.cs-h1 { /* Syne 700 via 'Inter', sans-serif */
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: .98; letter-spacing: -.01em; margin-bottom: 18px;
+}
+.cs-tagline {
+  font-size: clamp(15px, 1.5vw, 18px); color: var(--gray);
+  line-height: 1.6; max-width: 600px; margin-bottom: 40px;
+}
+.cs-meta {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; max-width: 680px;
+  border-top: 1px solid var(--border); padding-top: 32px;
+}
+.cs-meta-col { padding-right: 48px; }
+.cs-meta-label {
+  font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 6px; display: block;
+}
+.cs-meta-val { font-size: 13px; color: var(--ink); line-height: 1.7; }
+.cs-live-link {
+  display: inline-block; margin-top: 24px;
+  font-size: 13px; color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--border); padding-bottom: 2px;
+  transition: border-color .2s;
+}
+.cs-live-link:hover { border-color: var(--ink); }
+
+/* ═══ CASE STUDY — HERO ═══ */
+.cs-hero { width: 100%; }
+.cs-hero video,
+.cs-hero img {
+  width: 100%; height: 65vh; max-height: 65vh;
+  object-fit: cover; object-position: center; display: block;
+}
+
+/* ═══ CASE STUDY — BODY ═══ */
+.cs-body { padding: 80px 80px; }
+.cs-desc-grid {
+  display: grid; grid-template-columns: 2fr 3fr; gap: 80px; align-items: start;
+}
+.cs-pull {
+  font-family: 'Inter', sans-serif; font-style: normal;
+  font-size: clamp(20px, 1.8vw, 26px); line-height: 1.45;
+  color: var(--ink); position: sticky; top: 96px;
+}
+.cs-desc-text { font-size: 15px; line-height: 1.82; color: var(--gray); }
+.cs-credits { font-size: 12px; color: #bbb; margin-top: 20px; font-style: normal; }
+
+/* ═══ CASE STUDY — GALLERY ═══ */
+.cs-gallery { display: flex; flex-direction: column; gap: 24px; padding: 0 80px 24px; }
+.gallery-full img,
+.gallery-full video {
+  width: 100%; height: 65vh; max-height: 65vh;
+  display: block; object-fit: cover; object-position: center;
+}
+/* Side-by-side pairs: 3/4 portrait ratio, 16px gap, no fixed vh height */
+.gallery-pair {
+  display: flex; gap: 16px;
+}
+.gallery-pair img,
+.gallery-pair video {
+  width: calc(50% - 8px); flex-shrink: 0;
+  aspect-ratio: 3/4;
+  display: block; object-fit: cover; object-position: center;
+}
+
+/* ═══ CASE STUDY — NEXT PROJECTS ═══ */
+.cs-next { padding: 80px 80px; border-top: 1px solid var(--border); }
+.cs-next-label {
+  font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 36px;
+}
+.cs-next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1024px) {
+  .cs-hero video, .cs-hero img,
+  .gallery-full img, .gallery-full video { height: 60vh; max-height: 60vh; }
+}
+@media (max-width: 1100px) {
+  .page-header, .wfg-section, .footer-cta { padding-left: 40px; padding-right: 40px; }
+  .filter-bar { padding-left: 40px; padding-right: 40px; }
+}
+/* ── Tablet: 768px–1024px ── */
+@media (max-width: 1024px) {
+  .cs-header { padding-left: 48px; padding-right: 48px; }
+  .cs-body { padding-left: 48px; padding-right: 48px; }
+  .cs-next { padding-left: 48px; padding-right: 48px; }
+  .cs-gallery { padding-left: 48px; padding-right: 48px; }
+}
+@media (max-width: 768px) {
+  .page-header { padding: 80px 24px 48px; }
+  .filter-bar { padding: 18px 24px; }
+  .wfg-section { padding: 32px 24px 56px; }
+  .wfg-grid { grid-template-columns: 1fr; }
+  .footer-cta { padding: 56px 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
+
+  .cs-header { padding: 72px 24px 40px; }
+  .cs-meta { gap: 24px; }
+  .cs-body { padding: 48px 24px; }
+  .cs-gallery { padding-left: 24px; padding-right: 24px; }
+  .cs-desc-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cs-pull { position: static; }
+  .cs-hero video, .cs-hero img,
+  .gallery-full img, .gallery-full video { height: 45vh; max-height: 45vh; }
+  .gallery-pair { flex-direction: column; gap: 16px; }
+  .gallery-pair img,
+  .gallery-pair video { width: 100%; }
+  .cs-next { padding: 48px 24px; }
+  .cs-next-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Rounded gallery images ── */
+.gallery-full img, .gallery-full video { border-radius: 16px; overflow: hidden; }
+.gallery-pair img, .gallery-pair video { border-radius: 12px; overflow: hidden; }
+.cs-gallery { overflow: hidden; }

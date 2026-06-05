@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelance Brand Designer Ghent | Arnaud Boone — Unpeel</title>
+  <meta name="description" content="Freelance brand designer in Ghent. I help startups, restaurants and founders build strong brand identities — logo, strategy, motion and web. Arnaud Boone — Unpeel Design.">
+  <meta property="og:title" content="Freelance Brand Designer Ghent | Arnaud Boone — Unpeel">
+  <meta property="og:description" content="Freelance brand designer in Ghent. I help startups, restaurants and founders build strong brand identities — logo, strategy, motion and web. Arnaud Boone — Unpeel Design.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unpeeldesign.com/">
+  <meta property="og:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Freelance Brand Designer Ghent | Arnaud Boone — Unpeel">
+  <meta name="twitter:description" content="Freelance brand designer in Ghent. I help startups, restaurants and founders build strong brand identities — logo, strategy, motion and web. Arnaud Boone — Unpeel Design.">
+  <meta name="twitter:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Unpeel Design",
+    "description": "Freelance brand designer in Ghent, Belgium",
+    "url": "https://unpeeldesign.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Arnaud Boone",
+      "jobTitle": "Freelance Brand Designer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ghent",
+        "addressCountry": "BE"
+      }
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ghent",
+      "addressCountry": "BE"
+    },
+    "email": "design.arnaudboone@gmail.com",
+    "telephone": "+32493547401",
+    "vatID": "BE1036122524",
+    "sameAs": [
+      "https://instagram.com/unpeel.design",
+      "https://linkedin.com/in/arnaud-boone-95a8162b6"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Brand Design Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Brand Identity Design"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "UX/UI Design"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Motion Design"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Artificial Design"}}
+      ]
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="styles v2.css">
+  <style>
+    /* ═══ HERO — image strip layout ═══ */
+    #hero {
+      height: 100vh;
+      min-height: 600px;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch;
+      gap: 0 !important;
+      padding: 0 !important;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-top {
+      height: 45vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 32px;
+    }
+    .hero-h1 {
+      font-size: clamp(48px, 8vw, 120px) !important;
+      font-weight: 500 !important;
+      letter-spacing: -0.03em !important;
+      text-align: center !important;
+      line-height: 1.0 !important;
+      color: #111 !important;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 16px !important;
+      font-weight: 400 !important;
+      color: #888888 !important;
+      text-align: center !important;
+      max-width: 600px !important;
+      line-height: 1.6 !important;
+    }
+    .image-strip-wrapper {
+      flex: 1;
+      overflow: hidden;
+      width: 100%;
+    }
+    .image-strip {
+      display: flex;
+      gap: 12px;
+      width: max-content;
+      will-change: transform;
+    }
+    .image-strip img {
+      height: 55vh;
+      width: auto;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      border-radius: 20px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .hero-label {
+      position: absolute !important;
+      bottom: 24px !important;
+      left: 32px !important;
+      font-size: 11px !important;
+      color: #999999 !important;
+      letter-spacing: .06em;
+      z-index: 10;
+    }
+    @media (max-width: 768px) {
+      .hero-h1 {
+        font-size: clamp(36px, 10vw, 72px) !important;
+      }
+      .image-strip img {
+        height: 35vh !important;
+      }
+      .hero-label {
+        left: 20px !important;
+        bottom: 16px !important;
+      }
+    }
+    @media (max-width: 768px) {
+      img[src*="Ewd3Lvi96rp4d2DuWdqZr1v6gg"] {
+        width: 75% !important;
+        height: auto !important;
+        max-width: 75% !important;
+        max-height: none !important;
+        aspect-ratio: 3/4 !important;
+        object-fit: cover !important;
+        object-position: center 15% !important;
+        border-radius: 12px !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        display: block !important;
+      }
+    }
+    /* ── Hero label + image strip — mobile layout ── */
+    @media (max-width: 768px) {
+      /* Let hero shrink to its content — no more full-viewport gap */
+      #hero {
+        height: auto !important;
+        min-height: unset !important;
+      }
+      /* Give the strip a fixed height so it doesn't collapse */
+      .image-strip-wrapper {
+        height: 36vh !important;
+        flex: none !important;
+      }
+      /* Label: pulled out of absolute flow, centered, tight below images */
+      .hero-label {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+        padding: 0 24px !important;
+        margin-top: 12px !important;
+        margin-bottom: 8px !important;
+      }
+    }
+    /* ── Trust bar — mobile layout ── */
+    @media (max-width: 768px) {
+      #trust {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 24px 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      /* Pill — static label */
+      .trust-label {
+        background: #F7F7F7 !important;
+        border-radius: 40px !important;
+        padding: 12px 20px !important;
+        font-size: 13px !important;
+        color: #888888 !important;
+        text-align: center !important;
+        width: auto !important;
+        max-width: 90% !important;
+        line-height: 1.5 !important;
+      }
+      /* Marquee — full-width, breaks out of padding */
+      .trust-marquee-wrap {
+        width: 100vw !important;
+        margin-left: -24px !important;
+        overflow: hidden !important;
+        background: transparent !important;
+      }
+      .trust-marquee {
+        max-width: none !important;
+      }
+      .trust-track {
+        font-size: 11px !important;
+        letter-spacing: 0.15em !important;
+        color: #111111 !important;
+        text-transform: uppercase !important;
+      }
+    }
+  </style>
+  <link rel="canonical" href="https://unpeeldesign.com/">
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- Mobile nav overlay -->
+<div class="mob-overlay" id="mobOverlay">
+  <button class="mob-close" id="mobClose" aria-label="Close menu">×</button>
+  <a href="index.html" class="mob-logo-link" aria-label="Unpeel Design — Home">
+    <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" class="mob-logo-img" loading="eager">
+  </a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="approach.html">Approach</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="mob-cta">Start a project</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="Unpeel Design — Home">
+    <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" loading="eager">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="approach.html">Approach</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="avail-pill">
+      <span class="avail-dot"></span>
+      Available
+    </div>
+    <a href="contact.html" class="nav-cta">Start a project</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-top">
+    <h1 class="hero-h1 hero-anim ha0">Creating brands that feel honest and last.</h1>
+    <p class="hero-sub hero-anim ha1">Freelance brand designer in Ghent. Startups, restaurants and founders.</p>
+  </div>
+  <div class="image-strip-wrapper hero-anim ha4">
+    <div class="image-strip">
+      <img src="https://framerusercontent.com/images/ZSHTbXMqr4PaBGUaZW6xuggvw.jpg" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/FTuHrt8cIocY31RFKDNbOsiFdjw.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/qWr0EuA6QxGaaYY4IRKM0szW7AI.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/DxReF3hEYILE1bxnM8JqR7p0Xk8.jpg" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/oPASpV8uJxwLmwEArshN7hzxxIY.jpg" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/9rPhXGrGC3s2ZlTxA8LRwKUJk.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/OUJbxBSonmCcsMA0UOzdcDBXl0.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/0Qbdnok8brKGhCGieAqNjkTdtmI.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/g1ApK8geCgZGUgfuqX1S739V03Q.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/HRPDjBAtDzMjIr6q3XvwFD7g5c.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/ygIrzPLoAQOpGMP64LudUuG08A.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/h8pacO8WJilabLHJ64rAFYK29U.png" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/uBLJ2gtOn7uOOOhDrfzG6OTV7Wg.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/swoE1kyb0Myl2bVEfv77xGBalI.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <img src="https://framerusercontent.com/images/xDupEWpKd6tFrfT5LIOzF9qM.webp" alt="Unpeel Design portfolio — brand identity work by Arnaud Boone" loading="lazy">
+      <!-- Duplicate set for seamless loop -->
+      <img src="https://framerusercontent.com/images/ZSHTbXMqr4PaBGUaZW6xuggvw.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/FTuHrt8cIocY31RFKDNbOsiFdjw.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/qWr0EuA6QxGaaYY4IRKM0szW7AI.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/DxReF3hEYILE1bxnM8JqR7p0Xk8.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/oPASpV8uJxwLmwEArshN7hzxxIY.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/9rPhXGrGC3s2ZlTxA8LRwKUJk.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/OUJbxBSonmCcsMA0UOzdcDBXl0.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/0Qbdnok8brKGhCGieAqNjkTdtmI.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/g1ApK8geCgZGUgfuqX1S739V03Q.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/HRPDjBAtDzMjIr6q3XvwFD7g5c.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/ygIrzPLoAQOpGMP64LudUuG08A.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/h8pacO8WJilabLHJ64rAFYK29U.png" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/uBLJ2gtOn7uOOOhDrfzG6OTV7Wg.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/swoE1kyb0Myl2bVEfv77xGBalI.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://framerusercontent.com/images/xDupEWpKd6tFrfT5LIOzF9qM.webp" alt="" aria-hidden="true" loading="lazy">
+    </div>
+  </div>
+  <p class="hero-label hero-anim ha3">Arnaud Boone — Unpeel Design — Ghent, BE</p>
+</section>
+
+<!-- ═══ TRUST BAR ═══ -->
+<section id="trust">
+  <p class="trust-label">Trusted by startups, hotels, artists and creative founders across Belgium</p>
+  <div class="trust-marquee-wrap">
+    <div class="trust-marquee">
+      <span class="trust-track">Tuinen Arnaud · Melabody · Tuillerien · Shared Ground · Shakeys · HELLA FAST · Aaron Blommaert · Stellar Secrets · </span>
+      <span class="trust-track">Tuinen Arnaud · Melabody · Tuillerien · Shared Ground · Shakeys · HELLA FAST · Aaron Blommaert · Stellar Secrets · </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" data-layout="a">
+  <div>
+    <p class="section-label fade-up">The Designer</p>
+    <h2 class="section-title fade-up d1">Designing brands with care from the inside out.</h2>
+    <p class="about-body fade-up d2">Based in Ghent, I've worked with over 10 brands — from startups to hotels — helping them uncover their story and express it through honest, strategic design. Before I design anything, I unpeel the idea behind your brand.</p>
+    <div class="stats-row fade-up d3">
+      <div><p class="stat-n">10+</p><p class="stat-l">Brands built</p></div>
+      <div><p class="stat-n">4</p><p class="stat-l">Disciplines</p></div>
+      <div><p class="stat-n">Ghent</p><p class="stat-l">Based</p></div>
+    </div>
+  </div>
+  <img src="https://framerusercontent.com/images/Ewd3Lvi96rp4d2DuWdqZr1v6gg.webp" alt="Arnaud Boone — Unpeel Design" class="about-img fade-up d2" loading="lazy">
+</section>
+
+<!-- ═══ WORKS ═══ -->
+<section id="works" data-layout="a" data-video="a">
+  <div class="works-head">
+    <p class="section-label fade-up">Selected Works</p>
+    <h2 class="section-title fade-up d1">A few things I'm proud of.</h2>
+  </div>
+  <div class="works-grid">
+
+    <a class="work-card" href="works/tuinen-arnaud.html">
+      <video preload="auto" src="https://framerusercontent.com/assets/YXTMW11ZQrDM06YdtTzwwHI8xfA.mp4" autoplay muted loop playsinline></video>
+      <div class="work-overlay"></div>
+      <div class="work-ghost"><p class="work-ghost-name">Tuinen Arnaud</p></div>
+      <div class="work-info">
+        <p class="work-name">Tuinen Arnaud</p>
+        <p class="work-tagline">Craftsmanship in every garden</p>
+        <div class="work-tags"><span class="work-tag">Brand Identity</span><span class="work-tag">Web</span></div>
+      </div>
+    </a>
+
+    <a class="work-card" href="works/melabody.html">
+      <video preload="auto" src="https://framerusercontent.com/assets/wV5rrjFoD0UmrLmC4ldwBKDcgk.mp4" autoplay muted loop playsinline></video>
+      <div class="work-overlay"></div>
+      <div class="work-ghost"><p class="work-ghost-name">Melabody</p></div>
+      <div class="work-info">
+        <p class="work-name">Melabody</p>
+        <p class="work-tagline">Thoughtful care for melanin-rich skin</p>
+        <div class="work-tags"><span class="work-tag">Brand Identity</span><span class="work-tag">Packaging</span></div>
+      </div>
+    </a>
+
+    <a class="work-card" href="works/smashed.html">
+      <video preload="auto" src="https://framerusercontent.com/assets/GMhUNoPReTRI8UXw45EpLL2g.mp4" autoplay muted loop playsinline></video>
+      <div class="work-overlay"></div>
+      <div class="work-ghost"><p class="work-ghost-name">Smashed</p></div>
+      <div class="work-info">
+        <p class="work-name">Smashed</p>
+        <p class="work-tagline">A playful take on modern street food</p>
+        <div class="work-tags"><span class="work-tag">Brand Identity</span></div>
+      </div>
+    </a>
+
+    <a class="work-card" href="works/shared-ground.html">
+      <video preload="auto" src="https://framerusercontent.com/assets/Mbin4nL2GlXWiaW6jQGfWaVZ4I.mp4" autoplay muted loop playsinline></video>
+      <div class="work-overlay"></div>
+      <div class="work-ghost"><p class="work-ghost-name">Shared Ground</p></div>
+      <div class="work-info">
+        <p class="work-name">Shared Ground</p>
+        <p class="work-tagline">Walk and connect</p>
+        <div class="work-tags"><span class="work-tag">Brand Identity</span><span class="work-tag">Motion</span><span class="work-tag">Web</span></div>
+      </div>
+    </a>
+
+    <a class="work-card" href="works/tuillerien.html">
+      <video preload="auto" src="https://framerusercontent.com/assets/ExAYxAsVkAaiyHVXURuYujmDbh4.mp4" autoplay muted loop playsinline></video>
+      <div class="work-overlay"></div>
+      <div class="work-ghost"><p class="work-ghost-name">Tuillerien</p></div>
+      <div class="work-info">
+        <p class="work-name">Tuillerien</p>
+        <p class="work-tagline">Timeless boutique luxury</p>
+        <div class="work-tags"><span class="work-tag">Brand Identity</span><span class="work-tag">Motion</span></div>
+      </div>
+    </a>
+
+    <a class="work-card" href="works/aaronblommaert.html">
+      <video preload="auto" src="https://framerusercontent.com/assets/Vg51fPRpcSsYYgGT7TL8Sva1eIE.mp4" autoplay muted loop playsinline></video>
+      <div class="work-overlay"></div>
+      <div class="work-ghost"><p class="work-ghost-name">Aaron Blommaert</p></div>
+      <div class="work-info">
+        <p class="work-name">Aaron Blommaert</p>
+        <p class="work-tagline">Unfiltered by nature</p>
+        <div class="work-tags"><span class="work-tag">Brand Identity</span><span class="work-tag">Motion</span><span class="work-tag">Web</span></div>
+      </div>
+    </a>
+
+  </div>
+  <div class="works-cta fade-up">
+    <a href="works.html" class="text-link">See all works →</a>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services">
+  <div class="services-head">
+    <p class="section-label fade-up">What I Do</p>
+    <h2 class="section-title fade-up d1">Four disciplines.<br>One coherent vision.</h2>
+  </div>
+  <div class="accordion-list">
+
+    <div class="acc-item">
+      <div class="acc-header">
+        <span class="acc-num">(01)</span>
+        <span class="acc-name">Branding</span>
+        <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body">
+        <ul class="acc-subs">
+          <li>Logo Design</li>
+          <li>Brand Strategy</li>
+          <li>Brand Guidelines</li>
+          <li>Rebranding Services</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header">
+        <span class="acc-num">(02)</span>
+        <span class="acc-name">UX/UI Design</span>
+        <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body">
+        <ul class="acc-subs">
+          <li>Web Design</li>
+          <li>App Design</li>
+          <li>Responsive Design Solutions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header">
+        <span class="acc-num">(03)</span>
+        <span class="acc-name">Motion Design</span>
+        <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body">
+        <ul class="acc-subs">
+          <li>Motion Graphics</li>
+          <li>Animation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header">
+        <span class="acc-num">(04)</span>
+        <span class="acc-name">Artificial Design</span>
+        <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body">
+        <ul class="acc-subs">
+          <li>UGC Generated Content</li>
+          <li>TV Campaigns</li>
+          <li>Social Media Campaigns</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="services-cta fade-up">
+    <a href="approach.html" class="text-link">See my approach →</a>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS ═══ -->
+<section id="reviews">
+  <div class="reviews-head">
+    <p class="section-label fade-up">What Clients Say</p>
+    <h2 class="section-title fade-up d1">Honest words from real projects.</h2>
+  </div>
+
+  <div class="reviews-window" id="reviewsWindow">
+    <div class="reviews-track" id="reviewsTrack">
+
+      <div class="review-card">
+        <blockquote class="review-quote">"We wouden iets moderns en betrouwbaar — Arnaud heeft dat precies geleverd. De nieuwe identiteit voelt volledig als wij. Clean, professioneel en consistent op elk vlak."</blockquote>
+        <div class="review-author">
+          <div>
+            <p class="review-author-name">Tuinen Arnaud</p>
+            <p class="review-author-role">Brand Identity · Web Design</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <blockquote class="review-quote">"Arnaud understood the vision from day one. The brand system he built — the palette, the packaging, the whole feeling — communicates exactly what Melabody stands for. Thoughtful work."</blockquote>
+        <div class="review-author">
+          <div>
+            <p class="review-author-name">Melabody</p>
+            <p class="review-author-role">Brand Identity · Packaging Design</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <blockquote class="review-quote">"We needed something bold and playful without losing credibility. Arnaud nailed it. The identity is fun, strong, and works across everything — print, digital, in-store."</blockquote>
+        <div class="review-author">
+          <div>
+            <p class="review-author-name">Smashed</p>
+            <p class="review-author-role">Brand Identity</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <blockquote class="review-quote">"From the first strategy call to the final delivery, the process was clear and collaborative. The result is an identity that actually tells our story — not just a logo."</blockquote>
+        <div class="review-author">
+          <div>
+            <p class="review-author-name">Shared Ground</p>
+            <p class="review-author-role">Brand Identity · Motion Design · Web Design</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <blockquote class="review-quote">"Tijdloos was de briefing. Arnaud heeft iets afgeleverd dat verheven, doordacht en gebouwd om te blijven aanvoelt. Exact de juiste toon voor een luxe boetiek."</blockquote>
+        <div class="review-author">
+          <div>
+            <p class="review-author-name">Tuillerien</p>
+            <p class="review-author-role">Brand Identity · Motion Design</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <blockquote class="review-quote">"Samenwerken met Arnaud voelde moeiteloos van begin tot einde. Hij begrijpt creatieve mensen. De identiteit die hij voor me heeft gebouwd is eerlijk, een beetje onverwacht, en volledig juist."</blockquote>
+        <div class="review-author">
+          <div>
+            <p class="review-author-name">Universal Music</p>
+            <p class="review-author-role">Brand Identity · Motion Design · Web Design</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="reviews-nav">
+    <div class="r-dots-wrap" id="rDots"></div>
+    <div class="r-arrows">
+      <button class="r-arrow" id="rPrev" aria-label="Previous">←</button>
+      <button class="r-arrow" id="rNext" aria-label="Next">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PACKAGES ═══ -->
+<section id="packages">
+  <div class="pkg-head">
+    <p class="section-label fade-up">Packages</p>
+    <h2 class="section-title fade-up d1">Find the right fit.</h2>
+    <p class="pkg-sub fade-up d2">Every project is different. These packages are a starting point — not a ceiling.</p>
+  </div>
+  <div class="pkg-grid">
+
+    <div class="pkg-card fade-up d1">
+      <div class="pkg-card-top">
+        <h3 class="pkg-title">Seed</h3>
+        <p class="pkg-subtitle">For founders who need a strong logo to get started.</p>
+      </div>
+      <ul class="pkg-list">
+        <li>Logo design (2 variants)</li>
+        <li>Colour palette &amp; typography</li>
+        <li>All file formats</li>
+        <li>Mini brand card</li>
+      </ul>
+      <p class="pkg-footer">2 revision rounds · 1–2 weeks</p>
+      <div class="pkg-ctas">
+        <a href="contact.html" class="btn-p pkg-btn">Request a quote →</a>
+        <a href="packages.html#seed" class="text-link pkg-detail">See full details →</a>
+      </div>
+    </div>
+
+    <div class="pkg-card pkg-featured fade-up d2">
+      <span class="pkg-badge">★ Most Popular</span>
+      <div class="pkg-card-top">
+        <h3 class="pkg-title">Studio</h3>
+        <p class="pkg-subtitle">For founders who want to build a fully considered brand.</p>
+      </div>
+      <ul class="pkg-list">
+        <li>Discovery session + brand strategy</li>
+        <li>Moodboard + visual direction</li>
+        <li>Full logo system</li>
+        <li>Brand guidelines (15–20p)</li>
+        <li>Social media kit (3 templates)</li>
+      </ul>
+      <p class="pkg-footer">3 revision rounds · 3–4 weeks</p>
+      <div class="pkg-ctas">
+        <a href="contact.html" class="btn-p pkg-btn">Request a quote →</a>
+        <a href="packages.html#studio" class="text-link pkg-detail">See full details →</a>
+      </div>
+    </div>
+
+    <div class="pkg-card fade-up d3">
+      <div class="pkg-card-top">
+        <h3 class="pkg-title">Full Brand</h3>
+        <p class="pkg-subtitle">For brands that want everything in order — from A to Z.</p>
+      </div>
+      <ul class="pkg-list">
+        <li>Everything in Studio</li>
+        <li>Extended brand workshop</li>
+        <li>Professional presentation</li>
+        <li>Motion asset + web design</li>
+        <li>Packaging design</li>
+      </ul>
+      <p class="pkg-footer">4 revision rounds · 6–8 weeks</p>
+      <div class="pkg-ctas">
+        <a href="contact.html" class="btn-p pkg-btn">Request a quote →</a>
+        <a href="packages.html#fullbrand" class="text-link pkg-detail">See full details →</a>
+      </div>
+    </div>
+
+  </div>
+  <p class="pkg-note fade-up">Not sure which package fits? <a href="contact.html" class="pkg-note-link">Send me a message</a> — I'd love to help you figure it out.</p>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section id="faq">
+  <div class="faq-head">
+    <p class="section-label fade-up">FAQ</p>
+    <h2 class="section-title fade-up d1">Your questions, answered.</h2>
+    <p class="faq-sub fade-up d2">Everything you need to know before we start.</p>
+  </div>
+  <div class="faq-list">
+
+    <div class="faq-item open">
+      <div class="faq-q"><h3>How long does a branding project take?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Most brand identity projects run between 2 and 4 weeks from kick-off to final delivery. A focused logo and guidelines package can be completed in 2 weeks. A full brand system including motion design and web design takes 4 to 6 weeks. Every project starts with a clear timeline so you always know where we are.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>What does a brand identity project cost?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Brand identity projects vary in scope and investment. At Unpeel, projects start from around €1.000 for a focused logo and brand foundation. A full brand system — including strategy, guidelines, motion and web — typically sits between €1.000 and €3.000+. Every project receives a clear, itemised quote upfront. No hidden costs, no surprises.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>What is the difference between a logo and a brand identity?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>A logo is a single mark. A brand identity is the full visual and verbal system around it — typography, colour, tone of voice, imagery style and usage guidelines. The logo is one piece; the identity is what makes your brand recognisable and consistent everywhere it appears.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>When does a startup need professional branding?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Earlier than most founders think. A strong identity from the start sets the tone for everything — your website, your pitch deck, your packaging, your social presence. Getting it right early means you build on a solid foundation instead of retrofitting credibility later. That said, a focused logo package can be a smart starting point if budget is tight.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>What do I receive at the end of a brand identity project?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>All brand files in every format you need (AI, PDF, PNG, SVG), a brand guidelines document, and support for applying the identity to print, web, social and packaging.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>What types of clients do you work with?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Unpeel works with startups, restaurants and hospitality businesses, product-based brands, hotels, artists and creative founders — both new brands and rebrands. The common thread is founders and businesses who want design that is honest, strategic and built to last. If you are building something from scratch or feel your current identity no longer reflects where you are going, we are probably a good fit.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>Do you work with clients outside Ghent or Belgium?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Yes. I work remotely with clients across Europe. Everything happens over video call and shared tools — location is never a barrier.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><h3>What makes a strong brand identity?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Clarity, consistency and character. A strong identity knows what it stands for, looks the same everywhere, and has a distinct personality that people recognise and remember. It starts with strategy — understanding your purpose, your audience and your positioning — and ends with a visual system that expresses all of that without explanation.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="c-form-side">
+    <p class="section-label fade-up">Get in Touch</p>
+    <a href="mailto:design.arnaudboone@gmail.com" class="c-email fade-up d1">design.arnaudboone@gmail.com</a>
+    <p class="c-sub fade-up d2">Have a project in mind? Fill in the form below — I'll get back to you within 24 hours.</p>
+    <form class="c-form" id="contactForm" action="https://formspree.io/f/xgobvrgy" method="POST">
+      <input type="hidden" name="_subject" value="New project inquiry — Unpeel Design">
+      <div class="c-field">
+        <label for="c-name">Name</label>
+        <input type="text" id="c-name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="c-field">
+        <label for="c-email">Email</label>
+        <input type="email" id="c-email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="c-field">
+        <label for="c-type">Type of project</label>
+        <select id="c-type" name="type">
+          <option value="" disabled selected>Select...</option>
+          <option value="branding">Branding</option>
+          <option value="uxui-design">UX/UI Design</option>
+          <option value="motion-design">Motion Design</option>
+          <option value="artificial-design">Artificial Design</option>
+          <option value="not-sure">Not sure yet</option>
+        </select>
+      </div>
+      <div class="c-field">
+        <label for="c-desc">Tell me about your project</label>
+        <textarea id="c-desc" name="desc" placeholder="What are you building?" rows="4"></textarea>
+      </div>
+      <div class="c-field">
+        <label for="c-budget">Budget range</label>
+        <select id="c-budget" name="budget">
+          <option value="" disabled selected>Select...</option>
+          <option value="under-1000">Under €1.000</option>
+          <option value="1000-3000">€1.000 – €3.000</option>
+          <option value="3000+">€3.000+</option>
+          <option value="discuss">Let's discuss</option>
+        </select>
+      </div>
+      <button type="submit" class="c-submit">Send message →</button>
+      <p class="c-note">I respond within 24 hours.</p>
+    </form>
+    <div class="c-success" id="formSuccess">
+      <p>Message sent.<br>I'll be in touch within 24 hours.</p>
+    </div>
+  </div>
+  <div class="c-img-side">
+    <img src="https://framerusercontent.com/images/Ewd3Lvi96rp4d2DuWdqZr1v6gg.webp" alt="Arnaud Boone" loading="lazy">
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer data-layout="a">
+  <div class="f-news">
+    <p class="f-news-text">Stay inspired. No spam, ever.</p>
+    <form class="f-news-form" id="newsForm">
+      <input type="email" placeholder="your@email.com" aria-label="Email for newsletter">
+      <button type="submit">Subscribe →</button>
+    </form>
+  </div>
+  <div class="f-main">
+    <div>
+      <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" class="f-logo" loading="eager">
+      <p class="f-tag">Freelance brand designer based in Ghent, Belgium</p>
+    </div>
+    <div>
+      <p class="f-col-title">Navigate</p>
+      <ul class="f-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="approach.html">Approach</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Connect</p>
+      <ul class="f-links">
+        <li><a href="mailto:design.arnaudboone@gmail.com">Email</a></li>
+        <li><a href="https://instagram.com/unpeel.design" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://linkedin.com/in/arnaud-boone-95a8162b6" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>©2025 Unpeel Design — Arnaud Boone</span>
+    <span>BE1036122524</span>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+</footer>
+
+
+<script src="script v2.js"></script>
+<script>
+/* ═══ IMAGE STRIP — JS SCROLL ═══ */
+(function () {
+  var strip   = document.querySelector('.image-strip');
+  var wrapper = document.querySelector('.image-strip-wrapper');
+  if (!strip || !wrapper) return;
+
+  strip.style.animation = 'none';
+
+  var position    = 0;
+  var speed       = 0.5;
+  var targetSpeed = 0.5;
+  var normalSpeed = 0.5;
+  var slowSpeed   = 0.15;
+  var totalWidth  = 0;
+
+  function measureStrip() {
+    totalWidth = strip.scrollWidth / 2;
+  }
+  measureStrip();
+  window.addEventListener('load', measureStrip);
+
+  wrapper.addEventListener('mouseenter', function () { targetSpeed = slowSpeed; });
+  wrapper.addEventListener('mouseleave', function () { targetSpeed = normalSpeed; });
+
+  function animate() {
+    speed += (targetSpeed - speed) * 0.03;
+    position += speed;
+    if (totalWidth > 0 && position >= totalWidth) {
+      position -= totalWidth;
+    }
+    strip.style.transform = 'translateX(-' + position + 'px)';
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+})();
+</script>
+
+<script>
+/* ═══ WORK CARD VIDEOS — always play ═══ */
+document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="project"] video').forEach(function (video) {
+  video.muted      = true;
+  video.autoplay   = true;
+  video.loop       = true;
+  video.playsInline = true;
+  video.play().catch(function () {});
+});
+</script>
+
+<!-- ═══ COOKIE BANNER ═══ -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#111111;color:#fff;padding:20px 80px;z-index:9998;align-items:center;justify-content:space-between;gap:24px;transform:translateY(100%);transition:transform 400ms ease;">
+  <p style="font-size:13px;line-height:1.6;margin:0;flex:1;">We use cookies to improve your experience and analyse site traffic. <a href="privacy.html" style="color:#fff;text-underline-offset:3px;">Learn more</a></p>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button id="cookieAccept" style="background:#fff;color:#111;border:none;padding:10px 24px;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:background .2s;">Accept all</button>
+    <button id="cookieDecline" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:10px 24px;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:border-color .2s;">Decline</button>
+  </div>
+</div>
+<style>
+  @media(max-width:768px){
+    #cookieBanner{padding:20px 24px!important;flex-direction:column!important;align-items:flex-start!important;}
+    #cookieBanner>div{display:flex;width:100%;gap:8px;}
+    #cookieBanner button{flex:1;}
+  }
+  #cookieAccept:hover{background:#E8E8E8!important;}
+  #cookieDecline:hover{border-color:#fff!important;}
+</style>
+<script>
+(function(){
+  var banner  = document.getElementById('cookieBanner');
+  var accept  = document.getElementById('cookieAccept');
+  var decline = document.getElementById('cookieDecline');
+
+  function loadGoogleAnalytics() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-295D1F09W3';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-295D1F09W3');
+  }
+
+  function hideBanner() {
+    banner.style.transform  = 'translateY(100%)';
+    banner.style.transition = 'transform 400ms ease';
+    setTimeout(function(){ banner.style.display = 'none'; }, 400);
+  }
+
+  function showBanner() {
+    banner.style.display = 'flex';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ banner.style.transform = 'translateY(0)'; });
+    });
+  }
+
+  /* On every page load — check stored consent */
+  var consent = localStorage.getItem('unpeel_cookie_consent');
+  if (consent === 'accepted') {
+    loadGoogleAnalytics();
+  } else if (!consent) {
+    setTimeout(function(){ showBanner(); }, 1000);
+  }
+
+  accept.addEventListener('click', function(){
+    localStorage.setItem('unpeel_cookie_consent', 'accepted');
+    loadGoogleAnalytics();
+    hideBanner();
+  });
+
+  decline.addEventListener('click', function(){
+    localStorage.setItem('unpeel_cookie_consent', 'declined');
+    hideBanner();
+  });
+})();
+</script>
+
+</body>
+</html>

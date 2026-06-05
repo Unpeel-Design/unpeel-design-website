@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Approach — Brand Design Process | Unpeel</title>
+  <meta name="description" content="How Arnaud Boone works — from brand strategy workshop to final delivery. A clear, collaborative process for startups, restaurants and founders. Unpeel Design, Ghent.">
+  <meta property="og:title" content="My Approach — Brand Design Process | Unpeel">
+  <meta property="og:description" content="How Arnaud Boone works — from brand strategy workshop to final delivery. A clear, collaborative process for startups, restaurants and founders. Unpeel Design, Ghent.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://unpeeldesign.com/approach">
+  <meta property="og:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="My Approach — Brand Design Process | Unpeel">
+  <meta name="twitter:description" content="How Arnaud Boone works — from brand strategy workshop to final delivery. A clear, collaborative process for startups, restaurants and founders. Unpeel Design, Ghent.">
+  <meta name="twitter:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles v2.css">
+  <style>
+    /* ═══ PAGE PADDING ═══ */
+    .app-header, .app-process, .app-diff,
+    .app-timeline, .app-faq, .app-dark-cta { padding-left: 80px; padding-right: 80px; }
+
+    /* ═══ SECTION 1 — HEADER ═══ */
+    .app-header {
+      padding-top: 120px; padding-bottom: 80px;
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 64px;
+    }
+    .app-header-text { flex: 1; min-width: 0; }
+    .app-h1 {
+      font-family: var(--serif);
+      font-size: clamp(52px, 6.5vw, 96px);
+      line-height: .96; letter-spacing: -.01em;
+      margin: 16px 0 24px;
+    }
+    .app-sub { font-size: 15px; color: var(--gray); line-height: 1.75; max-width: 480px; }
+
+    /* ═══ HEADER CARD ═══ */
+    .feat-label {
+      display: block; font-size: 10px; letter-spacing: .2em;
+      text-transform: uppercase; color: #999; margin-bottom: 14px;
+    }
+    .app-header-card { flex: 0 0 42%; max-width: 600px; display: flex; flex-direction: column; }
+    @keyframes cardIn { from { opacity: 0; } to { opacity: 1; } }
+    .rnd-card {
+      display: block; text-decoration: none;
+      width: 100%; aspect-ratio: 16/10; position: relative;
+      overflow: hidden; background: #111;
+      transition: transform .4s ease;
+      opacity: 0; animation: cardIn .6s ease .3s forwards;
+    }
+    .rnd-card:hover { transform: scale(1.015); }
+    .rnd-card video, .rnd-card img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      opacity: .85; transition: opacity .3s;
+    }
+    .rnd-card:hover video, .rnd-card:hover img { opacity: 1; }
+    .rnd-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,0) 55%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .rnd-card:hover .rnd-overlay { opacity: 1; }
+    .rnd-info {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 28px;
+      transform: translateY(10px); opacity: 0;
+      transition: transform .35s ease, opacity .3s ease;
+    }
+    .rnd-card:hover .rnd-info { transform: translateY(0); opacity: 1; }
+    .rnd-name { font-family: var(--serif); font-size: 22px; color: #fff; margin-bottom: 6px; line-height: 1.1; }
+    .rnd-tags { font-size: 11px; color: rgba(255,255,255,.6); letter-spacing: .06em; }
+
+    /* ═══ SECTION 2 — PROCESS STEPS ═══ */
+    .app-process { padding-top: 0; padding-bottom: 0; }
+    .process-list { border-top: 1px solid var(--border); }
+    .process-item { border-bottom: 1px solid var(--border); }
+
+    .process-header {
+      display: grid;
+      grid-template-columns: clamp(64px, 7vw, 96px) 1fr 32px;
+      align-items: center; gap: 32px;
+      padding: 24px 0; cursor: none;
+    }
+    .process-num {
+      font-family: var(--serif);
+      font-size: clamp(44px, 5.5vw, 72px);
+      color: #E8E8E8; line-height: 1;
+      user-select: none;
+    }
+    .process-item.open .process-num { color: #CCCCCC; }
+    .process-title {
+      font-size: clamp(16px, 1.8vw, 22px);
+      font-weight: 500; color: var(--ink); line-height: 1.2;
+    }
+    .process-item:not(.open) .process-title { opacity: .65; }
+    .process-item.open .process-title { opacity: 1; }
+    .process-icon {
+      font-size: 22px; color: var(--gray); line-height: 1;
+      transition: transform 350ms ease; text-align: right;
+    }
+    .process-item.open .process-icon { transform: rotate(45deg); }
+    .process-body { max-height: 0; overflow: hidden; transition: max-height 350ms ease; }
+    .process-item.open .process-body { max-height: 300px; }
+    .process-desc {
+      padding-bottom: 32px;
+      padding-left: calc(clamp(64px, 7vw, 96px) + 32px);
+      font-size: 15px; color: var(--gray);
+      line-height: 1.82; max-width: 660px;
+    }
+
+    /* ═══ SECTION 3 — WHAT MAKES THIS DIFFERENT ═══ */
+    .app-diff {
+      padding-top: 100px; padding-bottom: 100px;
+      background: var(--subtle);
+    }
+    .app-diff-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .app-diff-left { position: sticky; top: 96px; }
+    .app-diff-heading {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.2vw, 46px);
+      line-height: 1.1; letter-spacing: -.015em;
+      margin-top: 16px;
+    }
+    .diff-item {
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .diff-item:first-child { border-top: 1px solid var(--border); }
+    .diff-title {
+      font-size: 15px; font-weight: 500;
+      color: var(--ink); margin-bottom: 10px;
+    }
+    .diff-text { font-size: 14px; color: var(--gray); line-height: 1.75; }
+
+    /* ═══ SECTION 4 — TIMELINE ═══ */
+    .app-timeline { padding-top: 100px; padding-bottom: 100px; }
+    .app-timeline-head { margin-bottom: 56px; }
+    .timeline-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+    }
+    .timeline-col {
+      padding: 40px 40px 40px 40px;
+      border-right: 1px solid var(--border);
+    }
+    .timeline-col:last-child { border-right: none; }
+    .timeline-col-name {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.2vw, 30px);
+      margin-bottom: 8px; line-height: 1;
+    }
+    .timeline-col-num {
+      font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--gray); display: block; margin-bottom: 36px;
+    }
+
+    /* Timeline line + phases */
+    .timeline-phases { position: relative; padding-left: 22px; }
+    .timeline-phases::before {
+      content: ''; position: absolute;
+      left: 4px; top: 6px; bottom: 6px;
+      width: 1px; background: var(--border);
+    }
+    .timeline-phase { position: relative; margin-bottom: 26px; }
+    .timeline-phase:last-child { margin-bottom: 0; }
+    .timeline-phase::before {
+      content: ''; position: absolute;
+      left: -19px; top: 5px;
+      width: 10px; height: 10px;
+      border-radius: 50%; border: 1px solid #AAAAAA;
+      background: var(--bg);
+    }
+    .tl-week {
+      display: block; font-size: 10px; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--gray); margin-bottom: 3px;
+    }
+    .tl-label { display: block; font-size: 13px; color: var(--ink); line-height: 1.5; }
+
+    .timeline-duration {
+      margin-top: 32px; padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--gray);
+    }
+    .timeline-duration strong { color: var(--ink); font-weight: 500; }
+
+    /* ═══ SECTION 5 — FAQ ═══ */
+    .app-faq {
+      padding-top: 100px; padding-bottom: 100px;
+      background: var(--subtle);
+    }
+    .app-faq .faq-head { margin-bottom: 56px; }
+    .app-faq .faq-list { max-width: 760px; }
+
+    /* ═══ SECTION 6 — CTA ═══ */
+    .app-dark-cta {
+      background: #F7F7F7; color: #111111;
+      padding-top: 120px; padding-bottom: 120px;
+      text-align: center;
+      border-radius: 20px;
+      margin-left: 80px; margin-right: 80px;
+    }
+    .app-dark-cta-h {
+      font-size: clamp(34px, 4.5vw, 64px);
+      line-height: 1.04; margin-bottom: 22px; color: #111111;
+    }
+    .app-dark-cta-sub {
+      font-size: 15px; color: #666666;
+      line-height: 1.75; max-width: 480px;
+      margin: 0 auto 44px; text-align: center;
+    }
+    .app-dark-cta .btn-white {
+      background: #111111 !important; color: #fff !important;
+      border: 1px solid #111111 !important; border-radius: 100px !important;
+    }
+    .app-dark-cta .btn-white:hover { background: #fff !important; color: #111111 !important; }
+    @media (max-width: 1024px) { .app-dark-cta { margin-left: 48px; margin-right: 48px; } }
+    @media (max-width: 768px) { .app-dark-cta { margin-left: 16px; margin-right: 16px; padding-top: 64px; padding-bottom: 64px; } }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 36px; background: #fff; color: #111;
+      border: 1px solid #fff; font-size: 13px; letter-spacing: .04em;
+      transition: background .2s, color .2s;
+    }
+    .btn-white:hover { background: transparent; color: #fff; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 1024px) {
+      .app-header, .app-process, .app-diff,
+      .app-timeline, .app-faq, .app-dark-cta { padding-left: 48px; padding-right: 48px; }
+      .app-header { gap: 40px; }
+      .app-diff-grid { gap: 56px; }
+    }
+    @media (max-width: 768px) {
+      .app-header, .app-process, .app-diff,
+      .app-timeline, .app-faq, .app-dark-cta { padding-left: 24px; padding-right: 24px; }
+      .app-header { padding-top: 80px; padding-bottom: 48px; flex-direction: column; }
+      .app-header-card { display: none; }
+      .app-diff { padding-top: 64px; padding-bottom: 64px; }
+      .app-diff-grid { grid-template-columns: 1fr; gap: 40px; }
+      .app-diff-left { position: static; }
+      .app-timeline { padding-top: 64px; padding-bottom: 64px; }
+      .timeline-grid { grid-template-columns: 1fr; }
+      .timeline-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .timeline-col:last-child { border-bottom: none; }
+      .process-desc { padding-left: 0; }
+      .process-header { grid-template-columns: 48px 1fr 28px; gap: 20px; }
+      .app-faq { padding-top: 64px; padding-bottom: 64px; }
+      .app-dark-cta { padding-top: 80px; padding-bottom: 80px; }
+    }
+  </style>
+  <link rel="canonical" href="https://unpeeldesign.com/approach">
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<div class="mob-overlay" id="mobOverlay">
+  <button class="mob-close" id="mobClose" aria-label="Close menu">×</button>
+  <a href="index.html" class="mob-logo-link" aria-label="Unpeel Design — Home">
+    <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" class="mob-logo-img" loading="eager">
+  </a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="works.html">Works</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="approach.html">Approach</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="mob-cta">Start a project</a>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo" aria-label="Unpeel Design — Home">
+    <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" loading="eager">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="works.html">Works</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="approach.html">Approach</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="avail-pill"><span class="avail-dot"></span>Available</div>
+    <a href="contact.html" class="nav-cta">Start a project</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ SECTION 1 — HEADER ═══ -->
+<section class="app-header">
+  <div class="app-header-text">
+    <p class="section-label fade-up">Approach</p>
+    <h1 class="app-h1 fade-up d1">How I work.</h1>
+    <p class="app-sub fade-up d2">Every project starts with listening. Before designing anything, I unpeel the idea behind your brand — your purpose, your story, your direction.</p>
+  </div>
+  <div class="app-header-card">
+    <span class="feat-label">Featured Work</span>
+    <div id="randCard"></div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 2 — PROCESS STEPS ═══ -->
+<section class="app-process">
+  <div class="process-list">
+
+    <div class="process-item open fade-up">
+      <div class="process-header">
+        <span class="process-num">01</span>
+        <span class="process-title">Strategy Workshop</span>
+        <span class="process-icon">+</span>
+      </div>
+      <div class="process-body">
+        <p class="process-desc">Every project starts with a workshop where we unpeel your brand together. We look at your story, your goals, your audience and your challenges. This gives us a clear, shared foundation before anything visual happens. For most projects this is a 1–2 hour video call. For Full Brand projects it is a deeper 2-hour session with a written output.</p>
+      </div>
+    </div>
+
+    <div class="process-item fade-up d1">
+      <div class="process-header">
+        <span class="process-num">02</span>
+        <span class="process-title">From Insights to Strategy</span>
+        <span class="process-icon">+</span>
+      </div>
+      <div class="process-body">
+        <p class="process-desc">I turn everything we discovered into a focused brand strategy document — your positioning, personality, tone of voice and visual direction. This is the guide that keeps every design decision consistent and intentional. You review and approve it before we move forward.</p>
+      </div>
+    </div>
+
+    <div class="process-item fade-up d2">
+      <div class="process-header">
+        <span class="process-num">03</span>
+        <span class="process-title">Concept Development</span>
+        <span class="process-icon">+</span>
+      </div>
+      <div class="process-body">
+        <p class="process-desc">I explore creative concepts that express the core of your brand. Visual ideas, mood, style and storytelling take form. I present 2 directions for you to respond to — not to pick one blindly, but to use as a conversation. Together we choose the direction that feels honest and right.</p>
+      </div>
+    </div>
+
+    <div class="process-item fade-up d3">
+      <div class="process-header">
+        <span class="process-num">04</span>
+        <span class="process-title">Visual Identity</span>
+        <span class="process-icon">+</span>
+      </div>
+      <div class="process-body">
+        <p class="process-desc">I develop the full identity system — logo, colours, typography, layout, imagery, motion and more. Every element is designed to work together. We refine through revision rounds until it feels strong, simple and true. Nothing ships until you are confident in it.</p>
+      </div>
+    </div>
+
+    <div class="process-item fade-up d3">
+      <div class="process-header">
+        <span class="process-num">05</span>
+        <span class="process-title">Delivery &amp; Support</span>
+        <span class="process-icon">+</span>
+      </div>
+      <div class="process-body">
+        <p class="process-desc">You receive all brand assets and guidelines in every format you need. I help translate the brand into real applications — print, web, social, packaging. Your brand doesn't end at delivery. I'm available for questions and support as you grow.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SECTION 3 — WHAT MAKES THIS DIFFERENT ═══ -->
+<section class="app-diff">
+  <div class="app-diff-grid">
+    <div class="app-diff-left">
+      <p class="section-label fade-up">Why It Works</p>
+      <h2 class="app-diff-heading fade-up d1">Design without strategy is decoration.</h2>
+    </div>
+    <div class="app-diff-right">
+      <div class="diff-item fade-up">
+        <p class="diff-title">Strategy first.</p>
+        <p class="diff-text">Every visual decision is rooted in a clear brand strategy. Not aesthetic preference — intentional direction.</p>
+      </div>
+      <div class="diff-item fade-up d1">
+        <p class="diff-title">Collaborative, not transactional.</p>
+        <p class="diff-text">You're involved at every key moment. Your input shapes the outcome. I'm a thinking partner, not a service provider.</p>
+      </div>
+      <div class="diff-item fade-up d2">
+        <p class="diff-title">Honest advice.</p>
+        <p class="diff-text">If something isn't right, I'll say so. If a simpler solution works better, I'll recommend it — even if it means less work for me.</p>
+      </div>
+      <div class="diff-item fade-up d3">
+        <p class="diff-title">Built to last.</p>
+        <p class="diff-text">I design identities that grow with your brand. Not trendy. Not arbitrary. Built on clarity that stays relevant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SECTION 4 — TIMELINE ═══ -->
+<section class="app-timeline">
+  <div class="app-timeline-head">
+    <p class="section-label fade-up">Timeline</p>
+    <h2 class="section-title fade-up d1">How long does it take?</h2>
+  </div>
+  <div class="timeline-grid">
+
+    <div class="timeline-col fade-up">
+      <span class="timeline-col-num">01</span>
+      <p class="timeline-col-name">Seed</p>
+      <div class="timeline-phases">
+        <div class="timeline-phase">
+          <span class="tl-week">Week 1</span>
+          <span class="tl-label">Strategy call + concept development</span>
+        </div>
+        <div class="timeline-phase">
+          <span class="tl-week">Week 1–2</span>
+          <span class="tl-label">Logo design + revisions</span>
+        </div>
+        <div class="timeline-phase">
+          <span class="tl-week">Week 2</span>
+          <span class="tl-label">Final delivery</span>
+        </div>
+      </div>
+      <p class="timeline-duration">Total: <strong>1–2 weeks</strong></p>
+    </div>
+
+    <div class="timeline-col fade-up d1">
+      <span class="timeline-col-num">02</span>
+      <p class="timeline-col-name">Studio</p>
+      <div class="timeline-phases">
+        <div class="timeline-phase">
+          <span class="tl-week">Week 1</span>
+          <span class="tl-label">Strategy workshop + brand document</span>
+        </div>
+        <div class="timeline-phase">
+          <span class="tl-week">Week 1–2</span>
+          <span class="tl-label">Moodboard + concept presentation</span>
+        </div>
+        <div class="timeline-phase">
+          <span class="tl-week">Week 2–3</span>
+          <span class="tl-label">Identity development + revisions</span>
+        </div>
+        <div class="timeline-phase">
+          <span class="tl-week">Week 3–4</span>
+          <span class="tl-label">Guidelines + social kit + final delivery</span>
+        </div>
+      </div>
+      <p class="timeline-duration">Total: <strong>3–4 weeks</strong></p>
+    </div>
+
+    <div class="timeline-col fade-up d2">
+      <span class="timeline-col-num">03</span>
+      <p class="timeline-col-name">Full Brand</p>
+      <div class="timeline-phases">
+        <div class="timeline-phase">
+          <span class="tl-week">Week 1</span>
+          <span class="tl-label">Deep strategy workshop + research</span>
+        </div>
+        <div class="timeline-phase">
+          <span class="tl-week">Week 1–2</span>
+          <span class="tl-label">Strategy document + moodboard + 2 concepts</span>
+        </div>
+        <div class="timeline-phase">
+          <span class="tl-week">Week 2–4</span>
+          <span class="tl-label">Full identity development + revisions</span>
+        </div>
+        <div class="timeline-phase">
+          <span class="tl-week">Week 4–6</span>
+          <span class="tl-label">Guidelines + motion + web design</span>
+        </div>
+        <div class="timeline-phase">
+          <span class="tl-week">Week 6–8</span>
+          <span class="tl-label">Packaging + final delivery + handoff</span>
+        </div>
+      </div>
+      <p class="timeline-duration">Total: <strong>6–8 weeks</strong></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SECTION 5 — FAQ ═══ -->
+<section class="app-faq">
+  <div class="faq-head">
+    <p class="section-label fade-up">FAQ</p>
+    <h2 class="section-title fade-up d1">Everything about the process.</h2>
+  </div>
+  <div class="faq-list">
+
+    <div class="faq-item open">
+      <div class="faq-q"><h3>How does a brand identity project actually start?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Every project starts with a strategy workshop — a focused conversation where we uncover what your brand is really about. We look at your goals, your audience, your competitors, and what makes you different. This session shapes everything that follows. Nothing visual happens until we have strategic clarity.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>Do I need to prepare anything before we start?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>No formal preparation is needed. I'll send you a short briefing questionnaire before our first call to help you think about your brand, your audience and your goals. The more honestly you answer it, the stronger the strategy session will be.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>How do revision rounds work?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>After each design phase I present the work clearly with context and rationale. You give feedback — what feels right, what doesn't, what you want to explore further. I then refine based on your input. Each package includes a set number of revision rounds per phase. Extra rounds are possible at an agreed rate.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>What if I don't like the first concept?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>That's what the revision rounds are for. I present 2 concept directions for Studio and Full Brand projects — so we're never locked into one path. If neither direction feels right after revisions, we talk openly about why and find a better approach together.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>Can I be involved throughout the process?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Yes — and I encourage it. You'll have clear input moments at every phase: strategy approval, concept direction, identity refinement and final delivery. I work with you, not just for you.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>What happens after the project is delivered?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>You receive everything — all files, guidelines, and brand assets. I'm available for questions and follow-up support after delivery. If you need ongoing design work — social media assets, new touchpoints, campaigns — I'm happy to discuss a retainer or per-project basis.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><h3>Do you sign an NDA?</h3><span class="faq-icon">+</span></div>
+      <div class="faq-ans"><p>Yes, if requested. Confidentiality is standard practice. I don't share work-in-progress or client information without explicit permission.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SECTION 6 — DARK CTA ═══ -->
+<section class="app-dark-cta">
+  <h2 class="app-dark-cta-h fade-up" style="text-align:center!important;">Ready to start?</h2>
+  <p class="app-dark-cta-sub fade-up d1" style="text-align:center!important;width:100%!important;max-width:480px!important;margin-left:auto!important;margin-right:auto!important;display:block!important;">Tell me about your project — I'll come back to you within 24 hours with honest thoughts on how I can help.</p>
+  <a href="contact.html" class="btn-white fade-up d2" style="display:block!important;margin-left:auto!important;margin-right:auto!important;width:fit-content!important;">Get in touch →</a>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer data-layout="a">
+  <div class="f-news">
+    <p class="f-news-text">Stay inspired. No spam, ever.</p>
+    <form class="f-news-form" id="newsForm">
+      <input type="email" placeholder="your@email.com" aria-label="Email for newsletter">
+      <button type="submit">Subscribe →</button>
+    </form>
+  </div>
+  <div class="f-main">
+    <div>
+      <img src="uploads/LOGO ICON-02 2.jpg" alt="Unpeel Design" class="f-logo" loading="eager">
+      <p class="f-tag">Freelance brand designer based in Ghent, Belgium</p>
+    </div>
+    <div>
+      <p class="f-col-title">Navigate</p>
+      <ul class="f-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="approach.html">Approach</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Connect</p>
+      <ul class="f-links">
+        <li><a href="mailto:design.arnaudboone@gmail.com">Email</a></li>
+        <li><a href="https://instagram.com/unpeel.design" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://linkedin.com/in/arnaud-boone-95a8162b6" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>©2025 Unpeel Design — Arnaud Boone</span>
+    <span>BE1036122524</span>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+</footer>
+
+<script src="script v2.js"></script>
+<script>
+(function () {
+  /* ── Process accordion ── */
+  var processItems = Array.from(document.querySelectorAll('.process-item'));
+
+  processItems.forEach(function (item) {
+    var header = item.querySelector('.process-header');
+    header.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      processItems.forEach(function (i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* ── Random project card ── */
+  var projects = [
+    { name: 'Tuinen Arnaud',   tags: 'Branding · Web Design',  video: 'https://framerusercontent.com/assets/YXTMW11ZQrDM06YdtTzwwHI8xfA.mp4', url: 'works/tuinen-arnaud.html' },
+    { name: 'Melabody',        tags: 'Branding · Packaging',   video: 'https://framerusercontent.com/assets/wV5rrjFoD0UmrLmC4ldwBKDcgk.mp4',  url: 'works/melabody.html' },
+    { name: 'Smashed',         tags: 'Branding',               video: 'https://framerusercontent.com/assets/GMhUNoPReTRI8UXw45EpLL2g.mp4',     url: 'works/smashed.html' },
+    { name: 'Shared Ground',   tags: 'Branding · Motion · Web',video: 'https://framerusercontent.com/assets/Mbin4nL2GlXWiaW6jQGfWaVZ4I.mp4',  url: 'works/shared-ground.html' },
+    { name: 'Tuillerien',      tags: 'Branding · Motion',      video: 'https://framerusercontent.com/assets/ExAYxAsVkAaiyHVXURuYujmDbh4.mp4', url: 'works/tuillerien.html' },
+    { name: 'Aaron Blommaert', tags: 'Branding · Motion · Web',video: 'https://framerusercontent.com/assets/Vg51fPRpcSsYYgGT7TL8Sva1eIE.mp4', url: 'works/aaronblommaert.html' },
+    { name: 'HELLA FAST',      tags: 'Branding · Motion',      video: 'https://framerusercontent.com/assets/D3xdzH1rOmKb7rVMOsAAksN3X4.mp4',  url: 'works/hella-fast.html' },
+    { name: 'Walter Swennen',  tags: 'Branding · Packaging',   image: 'https://framerusercontent.com/images/0Qbdnok8brKGhCGieAqNjkTdtmI.webp', url: 'works/walter-swennen.html' },
+    { name: 'STELLAR SECRETS', tags: 'Branding · Packaging',   image: 'https://framerusercontent.com/images/g1ApK8geCgZGUgfuqX1S739V03Q.webp', url: 'works/stellar-secrets.html' }
+  ];
+  var pick = projects[Math.floor(Math.random() * projects.length)];
+  var wrap = document.getElementById('randCard');
+  if (wrap) {
+    var card = document.createElement('a');
+    card.className = 'rnd-card'; card.href = pick.url;
+    var media;
+    if (pick.video) {
+      media = document.createElement('video');
+      media.src = pick.video; media.autoplay = true;
+      media.muted = true; media.loop = true;
+      media.setAttribute('playsinline', '');
+    } else {
+      media = document.createElement('img');
+      media.src = pick.image; media.alt = pick.name; media.loading = 'lazy';
+    }
+    var ov = document.createElement('div'); ov.className = 'rnd-overlay';
+    var inf = document.createElement('div'); inf.className = 'rnd-info';
+    inf.innerHTML = '<p class="rnd-name">' + pick.name + '</p><p class="rnd-tags">' + pick.tags + '</p>';
+    card.appendChild(media); card.appendChild(ov); card.appendChild(inf);
+    wrap.appendChild(card);
+    var cur2 = document.getElementById('cursor');
+    if (cur2) {
+      card.addEventListener('mouseenter', function () { cur2.classList.add('hover'); });
+      card.addEventListener('mouseleave', function () { cur2.classList.remove('hover'); });
+    }
+  }
+
+  /* ── Cursor hover on process headers ── */
+  var cur = document.getElementById('cursor');
+  if (cur) {
+    processItems.forEach(function (item) {
+      var h = item.querySelector('.process-header');
+      h.addEventListener('mouseenter', function () { cur.classList.add('hover'); });
+      h.addEventListener('mouseleave', function () { cur.classList.remove('hover'); });
+    });
+  }
+})();
+</script>
+
+
+<!-- ═══ COOKIE BANNER ═══ -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#111111;color:#fff;padding:20px 80px;z-index:9998;align-items:center;justify-content:space-between;gap:24px;transform:translateY(100%);transition:transform 400ms ease;">
+  <p style="font-size:13px;line-height:1.6;margin:0;flex:1;">We use cookies to improve your experience and analyse site traffic. <a href="privacy.html" style="color:#fff;text-underline-offset:3px;">Learn more</a></p>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button id="cookieAccept" style="background:#fff;color:#111;border:none;padding:10px 24px;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:background .2s;">Accept all</button>
+    <button id="cookieDecline" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:10px 24px;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:border-color .2s;">Decline</button>
+  </div>
+</div>
+<style>
+  @media(max-width:768px){
+    #cookieBanner{padding:20px 24px!important;flex-direction:column!important;align-items:flex-start!important;}
+    #cookieBanner>div{display:flex;width:100%;gap:8px;}
+    #cookieBanner button{flex:1;}
+  }
+  #cookieAccept:hover{background:#E8E8E8!important;}
+  #cookieDecline:hover{border-color:#fff!important;}
+</style>
+<script>
+(function(){
+  var banner  = document.getElementById('cookieBanner');
+  var accept  = document.getElementById('cookieAccept');
+  var decline = document.getElementById('cookieDecline');
+
+  function loadGoogleAnalytics() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-295D1F09W3';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-295D1F09W3');
+  }
+
+  function hideBanner() {
+    banner.style.transform  = 'translateY(100%)';
+    banner.style.transition = 'transform 400ms ease';
+    setTimeout(function(){ banner.style.display = 'none'; }, 400);
+  }
+
+  function showBanner() {
+    banner.style.display = 'flex';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ banner.style.transform = 'translateY(0)'; });
+    });
+  }
+
+  /* On every page load — check stored consent */
+  var consent = localStorage.getItem('unpeel_cookie_consent');
+  if (consent === 'accepted') {
+    loadGoogleAnalytics();
+  } else if (!consent) {
+    setTimeout(function(){ showBanner(); }, 1000);
+  }
+
+  accept.addEventListener('click', function(){
+    localStorage.setItem('unpeel_cookie_consent', 'accepted');
+    loadGoogleAnalytics();
+    hideBanner();
+  });
+
+  decline.addEventListener('click', function(){
+    localStorage.setItem('unpeel_cookie_consent', 'declined');
+    hideBanner();
+  });
+})();
+</script>
+
+</body>
+</html>
+

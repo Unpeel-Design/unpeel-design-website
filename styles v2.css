@@ -183,6 +183,18 @@ nav .nav-cta { border-radius: 100px !important; }
 }
 .nav-cta:hover { background: #fff; color: #111; }
 .nav-cta::after { display: none; }
+
+/* ═══ LANGUAGE TOGGLE (EN / NL) ═══ */
+.lang-toggle { display: inline-flex; align-items: center; border: 1px solid var(--border); }
+.lang-toggle a,
+.lang-toggle span {
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  padding: 6px 9px; line-height: 1; color: var(--gray);
+  transition: background .2s, color .2s;
+}
+.lang-toggle .active { background: var(--ink); color: #fff; }
+.lang-toggle a:hover { color: var(--ink); }
+.mob-lang { margin: 28px auto 0; }
 /* Mobile overlay CTA */
 .mob-cta {
   display: block; margin-top: 32px;
@@ -713,7 +725,7 @@ footer[data-layout="b"] .f-bottom span { color: #AAAAAA; }
 }
 
 @media (max-width: 768px) {
-  .nav-links, .avail-pill { display: none; }
+  .nav-links, .avail-pill, .nav-right .lang-toggle { display: none; }
   .hamburger { display: flex; }
 
   #hero { grid-template-columns: 1fr; padding: 80px 24px 56px; min-height: auto; gap: 32px; }

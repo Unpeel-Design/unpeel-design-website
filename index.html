@@ -607,7 +607,7 @@
 
     <div class="pkg-card fade-up d1">
       <div class="pkg-card-top">
-        <h3 class="pkg-title">Seed</h3>
+        <h3 class="pkg-title">Startup</h3>
         <p class="pkg-subtitle">For founders who need a strong logo to get started.</p>
       </div>
       <ul class="pkg-list">
@@ -619,7 +619,7 @@
       <p class="pkg-footer">2 revision rounds · 1–2 weeks</p>
       <div class="pkg-ctas">
         <a href="contact.html" class="btn-p pkg-btn">Request a quote →</a>
-        <a href="packages.html#seed" class="text-link pkg-detail">See full details →</a>
+        <a href="packages.html#startup" class="text-link pkg-detail">See full details →</a>
       </div>
     </div>
 
@@ -937,6 +937,14 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
 
   var cards = Array.from(grid.querySelectorAll('.pkg-card'));
   if (cards.length < 2) return;
+
+  /* Fix: min-width:100% resolves to the card's content size in flex, not the grid width.
+     Pin each card to the grid's actual pixel width to prevent right-side overflow. */
+  var slideW = grid.offsetWidth;
+  cards.forEach(function(card) {
+    card.style.width    = slideW + 'px';
+    card.style.minWidth = slideW + 'px';
+  });
 
   var current = 1; // Studio is index 1 — default
 

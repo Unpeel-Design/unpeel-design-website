@@ -218,6 +218,18 @@
       .trust-marquee {
         max-width: none !important;
       }
+      /* ── Packages carousel — mobile only ── */
+      .pkg-grid {
+        display: flex !important;
+        overflow: hidden !important;
+        position: relative !important;
+        width: 100% !important;
+      }
+      .pkg-grid > .pkg-card {
+        min-width: 100% !important;
+        flex-shrink: 0 !important;
+        transition: transform 400ms ease !important;
+      }
       .trust-track {
         font-size: 11px !important;
         letter-spacing: 0.15em !important;
@@ -588,7 +600,7 @@
 <section id="packages">
   <div class="pkg-head">
     <p class="section-label fade-up">Packages</p>
-    <h2 class="section-title fade-up d1">Find the right fit.</h2>
+    <h2 class="section-title fade-up d1">Find your package.</h2>
     <p class="pkg-sub fade-up d2">Every project is different. These packages are a starting point — not a ceiling.</p>
   </div>
   <div class="pkg-grid">
@@ -912,6 +924,74 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
     localStorage.setItem('unpeel_cookie_consent', 'declined');
     hideBanner();
   });
+})();
+</script>
+
+<script>
+/* ═══ PACKAGES CAROUSEL — mobile only ═══ */
+(function initPackagesCarousel() {
+  if (window.innerWidth > 768) return;
+
+  var grid = document.querySelector('.pkg-grid');
+  if (!grid) return;
+
+  var cards = Array.from(grid.querySelectorAll('.pkg-card'));
+  if (cards.length < 2) return;
+
+  var current = 1; // Studio is index 1 — default
+
+  /* ── Arrows + dots container ── */
+  var arrowsContainer = document.createElement('div');
+  arrowsContainer.style.cssText = 'display:flex;justify-content:center;align-items:center;gap:16px;margin-top:20px;';
+
+  var dotsContainer = document.createElement('div');
+  dotsContainer.style.cssText = 'display:flex;gap:8px;align-items:center;';
+
+  cards.forEach(function(_, i) {
+    var dot = document.createElement('span');
+    dot.style.cssText = 'width:6px;height:6px;border-radius:50%;background:' + (i === 1 ? '#111111' : '#E8E8E8') + ';display:block;transition:background 300ms ease;cursor:pointer;';
+    dotsContainer.appendChild(dot);
+  });
+
+  var dots = Array.from(dotsContainer.children);
+
+  var btnStyle = 'background:none;border:1px solid #E8E8E8;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#111111;font-family:inherit;';
+
+  var prevBtn = document.createElement('button');
+  prevBtn.innerHTML = '←';
+  prevBtn.setAttribute('aria-label', 'Previous package');
+  prevBtn.style.cssText = btnStyle;
+
+  var nextBtn = document.createElement('button');
+  nextBtn.innerHTML = '→';
+  nextBtn.setAttribute('aria-label', 'Next package');
+  nextBtn.style.cssText = btnStyle;
+
+  function goTo(index) {
+    current = ((index % cards.length) + cards.length) % cards.length;
+    var offset = current * 100;
+    cards.forEach(function(card) {
+      card.style.transform = 'translateX(-' + offset + '%)';
+    });
+    dots.forEach(function(dot, i) {
+      dot.style.background = i === current ? '#111111' : '#E8E8E8';
+    });
+  }
+
+  /* Start on Studio (index 1) */
+  goTo(1);
+
+  prevBtn.addEventListener('click', function() { goTo(current - 1); });
+  nextBtn.addEventListener('click', function() { goTo(current + 1); });
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function() { goTo(i); });
+  });
+
+  arrowsContainer.appendChild(prevBtn);
+  arrowsContainer.appendChild(dotsContainer);
+  arrowsContainer.appendChild(nextBtn);
+
+  grid.parentNode.insertBefore(arrowsContainer, grid.nextSibling);
 })();
 </script>
 

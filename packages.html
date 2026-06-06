@@ -255,61 +255,6 @@
       .pkgp-dark-cta { padding-top: 80px; padding-bottom: 80px; }
     }
 
-    /* ═══ CAROUSEL ═══ */
-    .pkgp-carousel-track {
-      display: flex;
-      transition: transform 400ms ease;
-      will-change: transform;
-    }
-    .pkgp-cards.carousel-active {
-      overflow: hidden;
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-      padding-top: 32px !important;
-      padding-bottom: 0 !important;
-      transition: height 400ms ease;
-    }
-    .pkgp-cards.carousel-active .pkgp-card {
-      min-width: 100%;
-      flex-shrink: 0;
-      transition: none;
-      border-radius: 0;
-    }
-    .pkgp-carousel-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px 0 40px;
-    }
-    .pkgp-carousel-btn {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: white;
-      font-size: 18px; line-height: 1;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s, opacity .2s;
-      flex-shrink: 0;
-      font-family: inherit;
-    }
-    .pkgp-carousel-btn:hover:not(:disabled) { background: var(--subtle); }
-    .pkgp-carousel-btn:disabled { opacity: 0.25; cursor: default; }
-    .pkgp-carousel-dots { display: flex; gap: 8px; align-items: center; }
-    .pkgp-carousel-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--border);
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: background .2s, transform .2s;
-    }
-    .pkgp-carousel-dot.active {
-      background: var(--ink);
-      transform: scale(1.35);
-    }
   </style>
   <link rel="canonical" href="https://unpeeldesign.com/packages">
 </head>
@@ -668,67 +613,23 @@
 </script>
 
 <script>
-/* ═══ PACKAGES — STACKING + CAROUSEL ═══ */
+/* ═══ PACKAGES — STACKING ANIMATION ═══ */
 (function () {
-  var section = document.querySelector('.pkgp-cards');
-  var cards   = Array.from(section.querySelectorAll('.pkgp-card'));
-  var N       = cards.length;
-  if (N < 2) return;
+  var cards = document.querySelectorAll('.pkgp-card');
+  if (cards.length < 2) return;
 
-  var isCarousel = false;
-  var currentIdx = 1; /* start on Studio */
+  Array.from(cards).forEach(function (card, i) {
+    card.style.position        = 'sticky';
+    card.style.top             = (80 + i * 20) + 'px';
+    card.style.zIndex          = i + 1;
+    card.style.transformOrigin = 'top center';
+    card.style.transition      = 'transform 0.1s ease, box-shadow 0.3s ease';
+    card.style.transitionDelay = (i * 0.15) + 's';
+    card.style.borderRadius    = '16px';
+  });
 
-  /* ── Build carousel elements ── */
-  var track    = document.createElement('div');
-  track.className = 'pkgp-carousel-track';
-
-  var controls = document.createElement('div');
-  controls.className = 'pkgp-carousel-controls';
-
-  var prevBtn = document.createElement('button');
-  prevBtn.className = 'pkgp-carousel-btn';
-  prevBtn.setAttribute('aria-label', 'Previous package');
-  prevBtn.textContent = '←';
-
-  var nextBtn = document.createElement('button');
-  nextBtn.className = 'pkgp-carousel-btn';
-  nextBtn.setAttribute('aria-label', 'Next package');
-  nextBtn.textContent = '→';
-
-  var dotsEl  = document.createElement('div');
-  dotsEl.className = 'pkgp-carousel-dots';
-  var dotBtns = [];
-  var names   = ['Startup', 'Studio', 'Full Brand'];
-  for (var di = 0; di < N; di++) {
-    var dot = document.createElement('button');
-    dot.className = 'pkgp-carousel-dot';
-    dot.setAttribute('aria-label', 'Go to ' + names[di]);
-    dot.addEventListener('click', (function (i) { return function () { goTo(i); }; })(di));
-    dotsEl.appendChild(dot);
-    dotBtns.push(dot);
-  }
-
-  controls.appendChild(prevBtn);
-  controls.appendChild(dotsEl);
-  controls.appendChild(nextBtn);
-
-  prevBtn.addEventListener('click', function () { goTo(currentIdx - 1); });
-  nextBtn.addEventListener('click', function () { goTo(currentIdx + 1); });
-
-  function goTo(idx) {
-    currentIdx = Math.max(0, Math.min(N - 1, idx));
-    track.style.transform = 'translateX(' + (-currentIdx * section.offsetWidth) + 'px)';
-    /* Pin section height to current card so no empty space below shorter slides */
-    var ctrlH = controls.offsetHeight || 80;
-    section.style.height = (cards[currentIdx].scrollHeight + ctrlH) + 'px';
-    dotBtns.forEach(function (d, i) { d.classList.toggle('active', i === currentIdx); });
-    prevBtn.disabled = currentIdx === 0;
-    nextBtn.disabled = currentIdx === N - 1;
-  }
-
-  /* ── Stacking animation ── */
   function onScroll() {
-    cards.forEach(function (card, i) {
+    Array.from(cards).forEach(function (card, i) {
       var next = cards[i + 1];
       if (!next) return;
       var r  = card.getBoundingClientRect();
@@ -739,91 +640,26 @@
     });
   }
 
-  function setupStacking() {
-    cards.forEach(function (card, i) {
-      card.style.position        = 'sticky';
-      card.style.top             = (80 + i * 20) + 'px';
-      card.style.zIndex          = i + 1;
-      card.style.transformOrigin = 'top center';
-      card.style.transition      = 'transform 0.1s ease, box-shadow 0.3s ease';
-      card.style.transitionDelay = (i * 0.15) + 's';
-      card.style.borderRadius    = '16px';
-      card.style.transform       = '';
-      card.style.boxShadow       = '';
-    });
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
 
-  function teardownStacking() {
-    window.removeEventListener('scroll', onScroll);
-    cards.forEach(function (card) {
-      card.style.position        = '';
-      card.style.top             = '';
-      card.style.zIndex          = '';
-      card.style.transformOrigin = '';
-      card.style.transition      = '';
-      card.style.transitionDelay = '';
-      card.style.borderRadius    = '';
-      card.style.transform       = '';
-      card.style.boxShadow       = '';
-    });
-  }
-
-  /* ── Slide width helper — must use section.offsetWidth, not CSS % ── */
-  function applySlideWidths() {
-    var w = section.offsetWidth;
-    cards.forEach(function (card) { card.style.width = w + 'px'; card.style.flexShrink = '0'; });
-  }
-
-  /* ── Activate / deactivate carousel ── */
-  function activate() {
-    if (isCarousel) return;
-    isCarousel = true;
-    teardownStacking();
-    cards.forEach(function (card) { card.classList.add('visible'); });
-    section.appendChild(track);
-    cards.forEach(function (card) { track.appendChild(card); });
-    section.appendChild(controls);
-    section.classList.add('carousel-active');
-    applySlideWidths();
-    goTo(currentIdx);
-  }
-
-  function deactivate() {
-    if (!isCarousel) return;
-    isCarousel = false;
-    cards.forEach(function (card) {
-      section.insertBefore(card, track);
-      card.style.width = '';
-      card.style.flexShrink = '';
-    });
-    track.remove();
-    controls.remove();
-    section.style.height = '';
-    section.classList.remove('carousel-active');
-    setupStacking();
-  }
-
-  /* ── ResizeObserver — switch modes on breakpoint ── */
-  var ro = new ResizeObserver(function () {
-    var w = window.innerWidth;
-    if (w <= 768 && !isCarousel)    { activate(); }
-    else if (w > 768 && isCarousel) { deactivate(); }
-    else if (isCarousel)            { applySlideWidths(); goTo(currentIdx); }
-  });
-  ro.observe(section);
-
-  /* ── Initial state ── */
-  if (window.innerWidth <= 768) { activate(); } else { setupStacking(); }
-
-  /* ── Fade-left observer ── */
+<script>
+/* ═══ PACKAGES — FADE-LEFT OBSERVER ═══ */
+(function () {
   var leftObs = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) { e.target.classList.add('visible'); leftObs.unobserve(e.target); }
     });
   }, { threshold: 0.06 });
+
   document.querySelectorAll('.fade-left').forEach(function (el) { leftObs.observe(el); });
+
+  var cards = document.querySelectorAll('.pkgp-card');
+  Array.from(cards).forEach(function (card, i) {
+    card.style.transitionDelay = (i * 0.15) + 's';
+  });
 })();
 </script>
 

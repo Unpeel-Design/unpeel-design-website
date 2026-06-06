@@ -157,6 +157,9 @@
         display: block !important;
       }
     }
+    /* Packages carousel nav — hidden on desktop, shown on mobile via @media below */
+    .pkg-nav { display: none; }
+
     /* ── Hero label + image strip — mobile layout ── */
     @media (max-width: 768px) {
       /* Let hero shrink to its content — no more full-viewport gap */
@@ -219,17 +222,14 @@
         max-width: none !important;
       }
       /* ── Packages carousel — mobile only ── */
-      .pkg-grid {
+      #pkgWindow { overflow: hidden; }
+      #pkgTrack {
         display: flex !important;
-        overflow: hidden !important;
-        position: relative !important;
-        width: 100% !important;
+        transition: transform 400ms ease;
+        will-change: transform;
       }
-      .pkg-grid > .pkg-card {
-        min-width: 100% !important;
-        flex-shrink: 0 !important;
-        transition: transform 400ms ease !important;
-      }
+      #pkgTrack > .pkg-card { flex-shrink: 0; }
+      .pkg-nav { display: flex; align-items: center; margin-top: 24px; }
       .trust-track {
         font-size: 11px !important;
         letter-spacing: 0.15em !important;
@@ -603,65 +603,74 @@
     <h2 class="section-title fade-up d1">Find your package.</h2>
     <p class="pkg-sub fade-up d2">Every project is different. These packages are a starting point — not a ceiling.</p>
   </div>
-  <div class="pkg-grid">
+  <div class="pkg-window" id="pkgWindow">
+    <div class="pkg-grid" id="pkgTrack">
 
-    <div class="pkg-card fade-up d1">
-      <div class="pkg-card-top">
-        <h3 class="pkg-title">Startup</h3>
-        <p class="pkg-subtitle">For founders who need a strong logo to get started.</p>
+      <div class="pkg-card fade-up d1">
+        <div class="pkg-card-top">
+          <h3 class="pkg-title">Startup</h3>
+          <p class="pkg-subtitle">For founders who need a strong logo to get started.</p>
+        </div>
+        <ul class="pkg-list">
+          <li>Logo design (2 variants)</li>
+          <li>Colour palette &amp; typography</li>
+          <li>All file formats</li>
+          <li>Mini brand card</li>
+        </ul>
+        <p class="pkg-footer">2 revision rounds · 1–2 weeks</p>
+        <div class="pkg-ctas">
+          <a href="contact.html" class="btn-p pkg-btn">Request a quote →</a>
+          <a href="packages.html#startup" class="text-link pkg-detail">See full details →</a>
+        </div>
       </div>
-      <ul class="pkg-list">
-        <li>Logo design (2 variants)</li>
-        <li>Colour palette &amp; typography</li>
-        <li>All file formats</li>
-        <li>Mini brand card</li>
-      </ul>
-      <p class="pkg-footer">2 revision rounds · 1–2 weeks</p>
-      <div class="pkg-ctas">
-        <a href="contact.html" class="btn-p pkg-btn">Request a quote →</a>
-        <a href="packages.html#startup" class="text-link pkg-detail">See full details →</a>
+
+      <div class="pkg-card pkg-featured fade-up d2">
+        <span class="pkg-badge">★ Most Popular</span>
+        <div class="pkg-card-top">
+          <h3 class="pkg-title">Studio</h3>
+          <p class="pkg-subtitle">For founders who want to build a fully considered brand.</p>
+        </div>
+        <ul class="pkg-list">
+          <li>Discovery session + brand strategy</li>
+          <li>Moodboard + visual direction</li>
+          <li>Full logo system</li>
+          <li>Brand guidelines (15–20p)</li>
+          <li>Social media kit (3 templates)</li>
+        </ul>
+        <p class="pkg-footer">3 revision rounds · 3–4 weeks</p>
+        <div class="pkg-ctas">
+          <a href="contact.html" class="btn-p pkg-btn">Request a quote →</a>
+          <a href="packages.html#studio" class="text-link pkg-detail">See full details →</a>
+        </div>
       </div>
+
+      <div class="pkg-card fade-up d3">
+        <div class="pkg-card-top">
+          <h3 class="pkg-title">Full Brand</h3>
+          <p class="pkg-subtitle">For brands that want everything in order — from A to Z.</p>
+        </div>
+        <ul class="pkg-list">
+          <li>Everything in Studio</li>
+          <li>Extended brand workshop</li>
+          <li>Professional presentation</li>
+          <li>Motion asset + web design</li>
+          <li>Packaging design</li>
+        </ul>
+        <p class="pkg-footer">4 revision rounds · 6–8 weeks</p>
+        <div class="pkg-ctas">
+          <a href="contact.html" class="btn-p pkg-btn">Request a quote →</a>
+          <a href="packages.html#fullbrand" class="text-link pkg-detail">See full details →</a>
+        </div>
+      </div>
+
     </div>
-
-    <div class="pkg-card pkg-featured fade-up d2">
-      <span class="pkg-badge">★ Most Popular</span>
-      <div class="pkg-card-top">
-        <h3 class="pkg-title">Studio</h3>
-        <p class="pkg-subtitle">For founders who want to build a fully considered brand.</p>
-      </div>
-      <ul class="pkg-list">
-        <li>Discovery session + brand strategy</li>
-        <li>Moodboard + visual direction</li>
-        <li>Full logo system</li>
-        <li>Brand guidelines (15–20p)</li>
-        <li>Social media kit (3 templates)</li>
-      </ul>
-      <p class="pkg-footer">3 revision rounds · 3–4 weeks</p>
-      <div class="pkg-ctas">
-        <a href="contact.html" class="btn-p pkg-btn">Request a quote →</a>
-        <a href="packages.html#studio" class="text-link pkg-detail">See full details →</a>
-      </div>
+  </div>
+  <div class="pkg-nav" id="pkgNav">
+    <div class="r-dots-wrap" id="pkgDots"></div>
+    <div class="r-arrows">
+      <button class="r-arrow" id="pkgPrev" aria-label="Previous package">←</button>
+      <button class="r-arrow" id="pkgNext" aria-label="Next package">→</button>
     </div>
-
-    <div class="pkg-card fade-up d3">
-      <div class="pkg-card-top">
-        <h3 class="pkg-title">Full Brand</h3>
-        <p class="pkg-subtitle">For brands that want everything in order — from A to Z.</p>
-      </div>
-      <ul class="pkg-list">
-        <li>Everything in Studio</li>
-        <li>Extended brand workshop</li>
-        <li>Professional presentation</li>
-        <li>Motion asset + web design</li>
-        <li>Packaging design</li>
-      </ul>
-      <p class="pkg-footer">4 revision rounds · 6–8 weeks</p>
-      <div class="pkg-ctas">
-        <a href="contact.html" class="btn-p pkg-btn">Request a quote →</a>
-        <a href="packages.html#fullbrand" class="text-link pkg-detail">See full details →</a>
-      </div>
-    </div>
-
   </div>
   <p class="pkg-note fade-up">Not sure which package fits? <a href="contact.html" class="pkg-note-link">Send me a message</a> — I'd love to help you figure it out.</p>
 </section>
@@ -928,78 +937,70 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
 </script>
 
 <script>
-/* ═══ PACKAGES CAROUSEL — mobile only ═══ */
-(function initPackagesCarousel() {
-  if (window.innerWidth > 768) return;
+/* ═══ PACKAGES CAROUSEL — mirrors reviews carousel ═══ */
+(function () {
+  var pkgWindow = document.getElementById('pkgWindow');
+  var pkgTrack  = document.getElementById('pkgTrack');
+  var pkgDots   = document.getElementById('pkgDots');
+  var pkgPrev   = document.getElementById('pkgPrev');
+  var pkgNext   = document.getElementById('pkgNext');
+  if (!pkgWindow || !pkgTrack || !pkgDots) return;
 
-  var grid = document.querySelector('.pkg-grid');
-  if (!grid) return;
+  var pkgCards = Array.from(pkgTrack.querySelectorAll('.pkg-card'));
+  if (pkgCards.length < 2) return;
 
-  var cards = Array.from(grid.querySelectorAll('.pkg-card'));
-  if (cards.length < 2) return;
+  var pkgPage = 1; /* Studio = index 1 */
 
-  /* Fix: min-width:100% resolves to the card's content size in flex, not the grid width.
-     Pin each card to the grid's actual pixel width to prevent right-side overflow. */
-  var slideW = grid.offsetWidth;
-  cards.forEach(function(card) {
-    card.style.width    = slideW + 'px';
-    card.style.minWidth = slideW + 'px';
-  });
+  function buildPkgDots() {
+    pkgDots.innerHTML = '';
+    for (var i = 0; i < pkgCards.length; i++) {
+      var d = document.createElement('button');
+      d.className = 'r-dot' + (i === pkgPage ? ' active' : '');
+      d.setAttribute('aria-label', 'Package ' + (i + 1));
+      d.addEventListener('click', (function (idx) {
+        return function () { goPkg(idx); };
+      })(i));
+      pkgDots.appendChild(d);
+    }
+  }
 
-  var current = 1; // Studio is index 1 — default
-
-  /* ── Arrows + dots container ── */
-  var arrowsContainer = document.createElement('div');
-  arrowsContainer.style.cssText = 'display:flex;justify-content:center;align-items:center;gap:16px;margin-top:20px;';
-
-  var dotsContainer = document.createElement('div');
-  dotsContainer.style.cssText = 'display:flex;gap:8px;align-items:center;';
-
-  cards.forEach(function(_, i) {
-    var dot = document.createElement('span');
-    dot.style.cssText = 'width:6px;height:6px;border-radius:50%;background:' + (i === 1 ? '#111111' : '#E8E8E8') + ';display:block;transition:background 300ms ease;cursor:pointer;';
-    dotsContainer.appendChild(dot);
-  });
-
-  var dots = Array.from(dotsContainer.children);
-
-  var btnStyle = 'background:none;border:1px solid #E8E8E8;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#111111;font-family:inherit;';
-
-  var prevBtn = document.createElement('button');
-  prevBtn.innerHTML = '←';
-  prevBtn.setAttribute('aria-label', 'Previous package');
-  prevBtn.style.cssText = btnStyle;
-
-  var nextBtn = document.createElement('button');
-  nextBtn.innerHTML = '→';
-  nextBtn.setAttribute('aria-label', 'Next package');
-  nextBtn.style.cssText = btnStyle;
-
-  function goTo(index) {
-    current = ((index % cards.length) + cards.length) % cards.length;
-    var offset = current * 100;
-    cards.forEach(function(card) {
-      card.style.transform = 'translateX(-' + offset + '%)';
-    });
-    dots.forEach(function(dot, i) {
-      dot.style.background = i === current ? '#111111' : '#E8E8E8';
+  function goPkg(page) {
+    pkgPage = ((page % pkgCards.length) + pkgCards.length) % pkgCards.length;
+    /* Use first card's offsetWidth — set explicitly below via initPkgCarousel */
+    var cardW  = pkgCards[0] ? pkgCards[0].offsetWidth : 0;
+    var offset = pkgPage * cardW;
+    pkgTrack.style.transform = 'translateX(-' + offset + 'px)';
+    pkgDots.querySelectorAll('.r-dot').forEach(function (d, i) {
+      d.classList.toggle('active', i === pkgPage);
     });
   }
 
-  /* Start on Studio (index 1) */
-  goTo(1);
+  function initPkgCarousel() {
+    if (window.innerWidth > 768) {
+      /* Desktop — clear any carousel state so grid layout is unaffected */
+      pkgTrack.style.transform = '';
+      pkgCards.forEach(function (c) { c.style.width = ''; c.style.minWidth = ''; });
+      return;
+    }
+    /* Mobile — 1 card per page, card width = full window width (mirrors initReviews) */
+    var w = pkgWindow.offsetWidth;
+    if (!w) return;
+    var cardW = Math.floor(w);
+    pkgCards.forEach(function (c) { c.style.width = cardW + 'px'; c.style.minWidth = cardW + 'px'; });
+    buildPkgDots();
+    goPkg(pkgPage);
+  }
 
-  prevBtn.addEventListener('click', function() { goTo(current - 1); });
-  nextBtn.addEventListener('click', function() { goTo(current + 1); });
-  dots.forEach(function(dot, i) {
-    dot.addEventListener('click', function() { goTo(i); });
+  if (pkgPrev) pkgPrev.addEventListener('click', function () { goPkg(pkgPage - 1); });
+  if (pkgNext) pkgNext.addEventListener('click', function () { goPkg(pkgPage + 1); });
+  window.addEventListener('resize', initPkgCarousel);
+
+  /* Init on DOMContentLoaded paint — same double-rAF guard as reviews */
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      initPkgCarousel();
+    });
   });
-
-  arrowsContainer.appendChild(prevBtn);
-  arrowsContainer.appendChild(dotsContainer);
-  arrowsContainer.appendChild(nextBtn);
-
-  grid.parentNode.insertBefore(arrowsContainer, grid.nextSibling);
 })();
 </script>
 

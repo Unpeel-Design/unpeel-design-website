@@ -22,7 +22,7 @@ body {
   font-weight: 400;
   background: var(--bg);
   color: var(--ink);
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   cursor: none;
 }
 @media (hover: none) { body { cursor: auto; } }
@@ -1012,8 +1012,11 @@ body[data-tweak-btn="b"] .c-submit { border-radius: 100px; }
 }
 
 /* ── FIX 4: Horizontal overflow — global prevention ── */
+/* overflow-x: clip (not hidden) so position:sticky on nav is never blocked.
+   hidden creates a scroll container that breaks sticky; clip clips visually
+   without establishing a new scroll container. */
 html {
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   max-width: 100vw !important;
 }
 body {

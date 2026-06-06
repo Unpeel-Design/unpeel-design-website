@@ -1,0 +1,30 @@
+# robots.txt — Unpeel Design (unpeeldesign.com)
+User-agent: *
+Allow: /
+
+# Disallow legacy / non-production pages
+Disallow: /index-v1.html
+
+# AI / GEO crawlers — explicitly welcome (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://unpeeldesign.com/sitemap.xml

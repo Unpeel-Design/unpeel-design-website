@@ -113,7 +113,14 @@
       padding: 48px;
       position: relative;
     }
-    .pkgp-card + .pkgp-card { margin-top: -1px; }
+    /* ── Stacking animation setup ── */
+    .pkgp-card {
+      margin-bottom: 0 !important;
+      background: white !important;
+    }
+    .pkgp-cards {
+      padding-bottom: 120px !important;
+    }
 
     .pkgp-card-badge {
       position: absolute; top: 48px; right: 48px;
@@ -300,95 +307,6 @@
   <p class="pkgp-sub">Three clear packages with transparent scope and no hidden costs. Starting points — not ceilings.</p>
 </section>
 
-<!-- ═══ PACKAGES OVERVIEW (COMPARISON TABLE) ═══ -->
-<section id="comparison" class="pkgp-compare">
-  <div class="pkgp-compare-head">
-    <p class="section-label fade-up">Packages Overview</p>
-    <h2 class="section-title fade-up d1">Everything, side by side.</h2>
-  </div>
-
-  <button id="pkgRevealBtn" style="display:none;margin:0 auto 32px;padding:12px 28px;background:#fff;border:1px solid #111;color:#111;font-size:12px;letter-spacing:.06em;cursor:pointer;font-family:inherit;display:none">Compare all packages ↓</button>
-  <div class="table-scroll">
-    <table class="compare-table" role="table">
-      <thead>
-        <tr>
-          <th scope="col">Deliverable</th>
-          <th scope="col">Seed</th>
-          <th scope="col">Studio <span class="col-badge">★ Most Popular</span></th>
-          <th scope="col">Full Brand</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="fade-left" style="transition-delay:.04s">
-          <td>Logo design</td>
-          <td class="c-yes">✓</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.07s">
-          <td>Colour palette &amp; typography</td>
-          <td class="c-yes">✓</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.10s">
-          <td>All file formats</td>
-          <td class="c-yes">✓</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.13s">
-          <td>Mini brand card</td>
-          <td class="c-yes">✓</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.16s">
-          <td>Discovery session</td>
-          <td class="c-no">—</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.19s">
-          <td>Brand strategy document</td>
-          <td class="c-no">—</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.22s">
-          <td>Moodboard</td>
-          <td class="c-no">—</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.25s">
-          <td>Brand guidelines (15–20p)</td>
-          <td class="c-no">—</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.28s">
-          <td>Social media kit</td>
-          <td class="c-no">—</td><td class="c-yes">✓</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.31s">
-          <td>Extended brand workshop</td>
-          <td class="c-no">—</td><td class="c-no">—</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.34s">
-          <td>Professional presentation</td>
-          <td class="c-no">—</td><td class="c-no">—</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.37s">
-          <td>Motion asset</td>
-          <td class="c-no">—</td><td class="c-no">—</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.40s">
-          <td>Web design (homepage)</td>
-          <td class="c-no">—</td><td class="c-no">—</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.43s">
-          <td>Packaging design</td>
-          <td class="c-no">—</td><td class="c-no">—</td><td class="c-yes">✓</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.46s">
-          <td>Revision rounds</td>
-          <td class="c-val">2</td><td class="c-val">3</td><td class="c-val">4</td>
-        </tr>
-        <tr class="fade-left" style="transition-delay:.49s">
-          <td>Delivery time</td>
-          <td class="c-val">1–2 weeks</td><td class="c-val">3–4 weeks</td><td class="c-val">6–8 weeks</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="pkgp-table-note fade-up">Need something between packages? I work on custom scope too — <a href="contact.html">just get in touch</a>.</p>
-</section>
-
 <!-- ═══ SECTION 3 — PACKAGE CARDS ═══ -->
 <section class="pkgp-cards">
 
@@ -423,7 +341,7 @@
         </div>
         <div class="pkgp-cta-group">
           <a href="contact.html" class="btn-p">Request a quote →</a>
-          <a href="#comparison" class="pkgp-compare-link">Compare all packages ↑</a>
+
         </div>
       </div>
     </div>
@@ -464,7 +382,7 @@
         </div>
         <div class="pkgp-cta-group">
           <a href="contact.html" class="btn-p">Request a quote →</a>
-          <a href="#comparison" class="pkgp-compare-link">Compare all packages ↑</a>
+
         </div>
       </div>
     </div>
@@ -505,7 +423,7 @@
         </div>
         <div class="pkgp-cta-group">
           <a href="contact.html" class="btn-p">Request a quote →</a>
-          <a href="#comparison" class="pkgp-compare-link">Compare all packages ↑</a>
+
         </div>
       </div>
     </div>
@@ -712,6 +630,46 @@
     localStorage.setItem('unpeel_cookie_consent', 'declined');
     hideBanner();
   });
+})();
+</script>
+
+<script>
+/* ═══ STACKING CARDS ANIMATION ═══ */
+(function initStackingCards() {
+  var cards = document.querySelectorAll('.pkgp-card');
+  if (cards.length < 2) return;
+
+  /* Set up sticky positioning on each card */
+  cards.forEach(function(card, i) {
+    card.style.position   = 'sticky';
+    card.style.top        = (80 + i * 20) + 'px';
+    card.style.zIndex     = i + 1;
+    card.style.transformOrigin = 'top center';
+    card.style.transition = 'transform 0.1s ease, box-shadow 0.3s ease';
+    card.style.borderRadius = '16px';
+  });
+
+  function onScroll() {
+    cards.forEach(function(card, i) {
+      var nextCard = cards[i + 1];
+      if (!nextCard) return;
+
+      var rect     = card.getBoundingClientRect();
+      var nextRect = nextCard.getBoundingClientRect();
+      var overlap  = nextRect.top - rect.top;
+      var cardHeight = rect.height;
+      var progress = Math.max(0, Math.min(1, 1 - overlap / cardHeight));
+
+      var scale         = 1 - progress * 0.03;
+      var shadowOpacity = progress * 0.15;
+
+      card.style.transform  = 'scale(' + scale + ')';
+      card.style.boxShadow  = '0 ' + (progress * 20) + 'px ' + (progress * 40) + 'px rgba(0,0,0,' + shadowOpacity + ')';
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 })();
 </script>
 

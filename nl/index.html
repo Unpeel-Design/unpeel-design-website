@@ -99,7 +99,7 @@
     /* ═══ HERO — scroll-expanding video ═══ */
     #hero {
       display: block !important;
-      height: 200vh !important;
+      height: 300vh !important;
       min-height: 0 !important;
       position: relative;
       background: #fff;
@@ -122,11 +122,11 @@
       text-align: center;
     }
     .hero-h1 {
-      font-size: clamp(48px, 8vw, 120px) !important;
+      font-size: clamp(36px, 5vw, 64px) !important;
       font-weight: 500 !important;
-      letter-spacing: -0.03em !important;
+      letter-spacing: -0.02em !important;
       text-align: center !important;
-      line-height: 1.0 !important;
+      line-height: 1.1 !important;
       color: #111 !important;
       margin-bottom: 16px;
     }
@@ -137,20 +137,21 @@
       text-align: center !important;
       max-width: 600px !important;
       line-height: 1.6 !important;
+      margin-top: 48px !important;
       margin-left: auto !important;
       margin-right: auto !important;
     }
     .hero-video-wrap {
       position: absolute;
       z-index: 2;
-      top: 280px;
-      left: 80px;
-      width: calc(100% - 160px);
-      height: 52vh;
+      aspect-ratio: 16 / 9;
+      width: 23%;
+      left: 38.5%;
+      top: 420px;
       overflow: hidden;
-      border-radius: 16px;
-      background: #000;
-      will-change: width, height, top, left, border-radius;
+      border-radius: 0;
+      background: transparent;
+      will-change: width, top, left;
       backface-visibility: hidden;
     }
     .hero-video {
@@ -158,6 +159,20 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      border-radius: 0;
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 600px;
+      z-index: 3;
+      text-align: center;
+      font-size: 11px;
+      color: #888888;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      pointer-events: none;
     }
 
     .hero-label {
@@ -170,9 +185,6 @@
       z-index: 10;
     }
     @media (max-width: 768px) {
-      .hero-h1 {
-        font-size: clamp(36px, 10vw, 72px) !important;
-      }
       .hero-top {
         padding-left: 20px !important;
         padding-right: 20px !important;
@@ -396,14 +408,15 @@
 <section id="hero">
   <div class="hero-sticky">
     <div class="hero-top">
-      <h1 class="hero-h1 hero-anim ha0">Merken die eerlijk aanvoelen en blijven.</h1>
-      <p class="hero-sub hero-anim ha1">Freelance brand designer in Gent. Voor startups, restaurants en founders.</p>
+      <h1 class="hero-h1 hero-anim ha0">Merken die eerlijk<br>aanvoelen en blijven.</h1>
+      <p class="hero-sub hero-anim ha1">Freelance brand designer in Gent, werkt wereldwijd.</p>
     </div>
     <div class="hero-video-wrap hero-anim ha4" id="heroVideoWrap">
       <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto">
         <source src="../uploads/BRAND-VIDEO-UNPEEL.mp4" type="video/mp4">
       </video>
     </div>
+    <p class="hero-scroll-hint" id="heroScrollHint">Scroll om de reel te bekijken</p>
     <p class="hero-label hero-anim ha3">Arnaud Boone · Unpeel Design · Gent, BE</p>
   </div>
 </section>
@@ -899,6 +912,7 @@
   var wrap  = document.getElementById('heroVideoWrap');
   var top   = hero ? hero.querySelector('.hero-top') : null;
   var video = document.getElementById('heroVideo');
+  var hint  = document.getElementById('heroScrollHint');
   if (!hero || !wrap) return;
 
   if (video) {
@@ -907,35 +921,45 @@
     if (attempt && attempt.catch) { attempt.catch(function () {}); }
   }
 
-  function lerp(a, b, t) { return a + (b - a) * t; }
-
   var ticking = false;
   function update() {
     ticking = false;
     var vw = document.documentElement.clientWidth;
     var vh = window.innerHeight;
     var mobile = vw <= 768;
-    var pad = mobile ? 16 : 80;
-    var bottomGap = mobile ? 44 : 56;
-    var topGap = mobile ? 16 : 24;
 
-    var topH = top ? top.offsetHeight : (mobile ? 220 : 320);
-    var startTop = topH + topGap;
-    var desiredH = (mobile ? 0.40 : 0.52) * vh;
-    var maxH = vh - startTop - bottomGap;
-    var startH = Math.max(160, Math.min(desiredH, maxH));
-    var startW = vw - 2 * pad;
+    /* small, centred 16:9 start box (height follows via aspect-ratio) */
+    var startW = (mobile ? 0.47 : 0.23) * vw;
+    var startH = startW * 9 / 16;
+    var topH = top ? top.offsetHeight : (mobile ? 240 : 340);
+    var gap = mobile ? 28 : 56;
+    var startTop = topH + gap;
+    var maxStartTop = vh - startH - (mobile ? 40 : 56);
+    if (startTop > maxStartTop) startTop = Math.max(mobile ? 80 : 96, maxStartTop);
 
+    /* full 16:9 box sized to COVER the viewport edge-to-edge */
+    var fullW = Math.max(vw, vh * 16 / 9);
+    var fullH = fullW * 9 / 16;
+    var fullTop = (vh - fullH) / 2;
+
+    /* slow, scroll-linked progress through the tall sticky hero (~190vh) */
     var scrolled = -hero.getBoundingClientRect().top;
-    var dist = vh * 0.85;
+    var dist = vh * 1.9;
     var p = scrolled / dist;
     p = p < 0 ? 0 : (p > 1 ? 1 : p);
 
-    wrap.style.top          = lerp(startTop, 0, p) + 'px';
-    wrap.style.left         = lerp(pad, 0, p) + 'px';
-    wrap.style.width        = lerp(startW, vw, p) + 'px';
-    wrap.style.height       = lerp(startH, vh, p) + 'px';
-    wrap.style.borderRadius = lerp(16, 0, p) + 'px';
+    var w    = startW + (fullW - startW) * p;
+    var topY = startTop + (fullTop - startTop) * p;   /* rises UP over the title */
+    var left = (vw - w) / 2;                           /* always centred */
+
+    wrap.style.width = w + 'px';
+    wrap.style.left  = left + 'px';
+    wrap.style.top   = topY + 'px';
+
+    if (hint) {
+      hint.style.top = (startTop + startH + (mobile ? 12 : 16)) + 'px';
+      hint.style.opacity = Math.max(0, Math.min(1, 1 - p * 5));
+    }
   }
 
   function onScroll() {

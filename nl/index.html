@@ -96,34 +96,37 @@
   </script>
   <link rel="stylesheet" href="../styles v2.css">
   <style>
-    /* ═══ HERO — image strip layout ═══ */
+    /* ═══ HERO — scroll-expanding video ═══ */
     #hero {
+      display: block !important;
+      height: 300vh !important;
+      min-height: 0 !important;
+      position: relative;
+      background: #fff;
+      padding: 0 !important;
+      gap: 0 !important;
+      overflow: visible;
+    }
+    .hero-sticky {
+      position: sticky;
+      top: 0;
       height: 100vh;
       min-height: 600px;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: stretch;
-      gap: 0 !important;
-      padding: 0 !important;
-      background: #fff;
-      position: relative;
       overflow: hidden;
+      background: #fff;
     }
     .hero-top {
-      height: 45vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      z-index: 1;
+      padding: 96px 32px 0;
       text-align: center;
-      padding: 0 32px;
     }
     .hero-h1 {
-      font-size: clamp(48px, 8vw, 120px) !important;
+      font-size: clamp(36px, 5vw, 64px) !important;
       font-weight: 500 !important;
-      letter-spacing: -0.03em !important;
+      letter-spacing: -0.02em !important;
       text-align: center !important;
-      line-height: 1.0 !important;
+      line-height: 1.1 !important;
       color: #111 !important;
       margin-bottom: 16px;
     }
@@ -134,26 +137,42 @@
       text-align: center !important;
       max-width: 600px !important;
       line-height: 1.6 !important;
+      margin-top: 48px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
     }
-    .image-strip-wrapper {
-      flex: 1;
+    .hero-video-wrap {
+      position: absolute;
+      z-index: 2;
+      aspect-ratio: 16 / 9;
+      width: 23%;
+      left: 38.5%;
+      top: 420px;
       overflow: hidden;
+      border-radius: 0;
+      background: transparent;
+      will-change: width, top, left;
+      backface-visibility: hidden;
+    }
+    .hero-video {
       width: 100%;
-    }
-    .image-strip {
-      display: flex;
-      gap: 12px;
-      width: max-content;
-      will-change: transform;
-    }
-    .image-strip img {
-      height: 55vh;
-      width: auto;
-      aspect-ratio: 2/3;
+      height: 100%;
       object-fit: cover;
-      border-radius: 20px;
-      flex-shrink: 0;
       display: block;
+      border-radius: 0;
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 600px;
+      z-index: 3;
+      text-align: center;
+      font-size: 11px;
+      color: #888888;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      pointer-events: none;
     }
 
     .hero-label {
@@ -166,11 +185,10 @@
       z-index: 10;
     }
     @media (max-width: 768px) {
-      .hero-h1 {
-        font-size: clamp(36px, 10vw, 72px) !important;
-      }
-      .image-strip img {
-        height: 35vh !important;
+      .hero-top {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        padding-top: 84px !important;
       }
       .hero-label {
         left: 20px !important;
@@ -195,31 +213,7 @@
     /* Packages carousel nav — hidden on desktop, shown on mobile via @media below */
     .pkg-nav { display: none; }
 
-    /* ── Hero label + image strip — mobile layout ── */
-    @media (max-width: 768px) {
-      /* Let hero shrink to its content — no more full-viewport gap */
-      #hero {
-        height: auto !important;
-        min-height: unset !important;
-      }
-      /* Give the strip a fixed height so it doesn't collapse */
-      .image-strip-wrapper {
-        height: 36vh !important;
-        flex: none !important;
-      }
-      /* Label: pulled out of absolute flow, centered, tight below images */
-      .hero-label {
-        position: relative !important;
-        bottom: auto !important;
-        left: auto !important;
-        text-align: center !important;
-        width: 100% !important;
-        display: block !important;
-        padding: 0 24px !important;
-        margin-top: 12px !important;
-        margin-bottom: 8px !important;
-      }
-    }
+    /* ── Hero video keeps the full-screen scroll-expand behaviour on mobile ── */
     /* ── Trust bar — mobile layout ── */
     @media (max-width: 768px) {
       #trust {
@@ -412,46 +406,19 @@
 
 <!-- ═══ HERO ═══ -->
 <section id="hero">
-  <div class="hero-top">
-    <h1 class="hero-h1 hero-anim ha0">Merken die eerlijk aanvoelen en blijven.</h1>
-    <p class="hero-sub hero-anim ha1">Freelance brand designer in Gent. Voor startups, restaurants en founders.</p>
-  </div>
-  <div class="image-strip-wrapper hero-anim ha4">
-    <div class="image-strip">
-      <img src="https://framerusercontent.com/images/ZSHTbXMqr4PaBGUaZW6xuggvw.jpg" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/FTuHrt8cIocY31RFKDNbOsiFdjw.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/qWr0EuA6QxGaaYY4IRKM0szW7AI.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/DxReF3hEYILE1bxnM8JqR7p0Xk8.jpg" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/oPASpV8uJxwLmwEArshN7hzxxIY.jpg" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/9rPhXGrGC3s2ZlTxA8LRwKUJk.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/OUJbxBSonmCcsMA0UOzdcDBXl0.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/0Qbdnok8brKGhCGieAqNjkTdtmI.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/g1ApK8geCgZGUgfuqX1S739V03Q.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/HRPDjBAtDzMjIr6q3XvwFD7g5c.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/ygIrzPLoAQOpGMP64LudUuG08A.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/h8pacO8WJilabLHJ64rAFYK29U.png" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/uBLJ2gtOn7uOOOhDrfzG6OTV7Wg.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/swoE1kyb0Myl2bVEfv77xGBalI.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <img src="https://framerusercontent.com/images/xDupEWpKd6tFrfT5LIOzF9qM.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" loading="lazy">
-      <!-- Duplicate set for seamless loop -->
-      <img src="https://framerusercontent.com/images/ZSHTbXMqr4PaBGUaZW6xuggvw.jpg" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/FTuHrt8cIocY31RFKDNbOsiFdjw.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/qWr0EuA6QxGaaYY4IRKM0szW7AI.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/DxReF3hEYILE1bxnM8JqR7p0Xk8.jpg" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/oPASpV8uJxwLmwEArshN7hzxxIY.jpg" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/9rPhXGrGC3s2ZlTxA8LRwKUJk.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/OUJbxBSonmCcsMA0UOzdcDBXl0.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/0Qbdnok8brKGhCGieAqNjkTdtmI.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/g1ApK8geCgZGUgfuqX1S739V03Q.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/HRPDjBAtDzMjIr6q3XvwFD7g5c.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/ygIrzPLoAQOpGMP64LudUuG08A.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/h8pacO8WJilabLHJ64rAFYK29U.png" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/uBLJ2gtOn7uOOOhDrfzG6OTV7Wg.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/swoE1kyb0Myl2bVEfv77xGBalI.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
-      <img src="https://framerusercontent.com/images/xDupEWpKd6tFrfT5LIOzF9qM.webp" alt="Unpeel Design portfolio, huisstijl en merkidentiteit door Arnaud Boone" aria-hidden="true" loading="lazy">
+  <div class="hero-sticky">
+    <div class="hero-top">
+      <h1 class="hero-h1 hero-anim ha0">Merken die eerlijk<br>aanvoelen en blijven.</h1>
+      <p class="hero-sub hero-anim ha1">Freelance brand designer in Gent, werkt wereldwijd.</p>
     </div>
+    <div class="hero-video-wrap hero-anim ha4" id="heroVideoWrap">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto">
+        <source src="../uploads/BRAND-VIDEO-UNPEEL.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="hero-scroll-hint" id="heroScrollHint">Scroll om de reel te bekijken</p>
+    <p class="hero-label hero-anim ha3">Arnaud Boone · Unpeel Design · Gent, BE</p>
   </div>
-  <p class="hero-label hero-anim ha3">Arnaud Boone · Unpeel Design · Gent, BE</p>
 </section>
 
 <!-- ═══ TRUST BAR ═══ -->
@@ -939,41 +906,70 @@
 
 <script src="../script v2.js"></script>
 <script>
-/* ═══ IMAGE STRIP — JS SCROLL ═══ */
+/* ═══ HERO — scroll-expanding video ═══ */
 (function () {
-  var strip   = document.querySelector('.image-strip');
-  var wrapper = document.querySelector('.image-strip-wrapper');
-  if (!strip || !wrapper) return;
+  var hero  = document.getElementById('hero');
+  var wrap  = document.getElementById('heroVideoWrap');
+  var top   = hero ? hero.querySelector('.hero-top') : null;
+  var video = document.getElementById('heroVideo');
+  var hint  = document.getElementById('heroScrollHint');
+  if (!hero || !wrap) return;
 
-  strip.style.animation = 'none';
-
-  var position    = 0;
-  var speed       = 0.5;
-  var targetSpeed = 0.5;
-  var normalSpeed = 0.5;
-  var slowSpeed   = 0.15;
-  var totalWidth  = 0;
-
-  function measureStrip() {
-    totalWidth = strip.scrollWidth / 2;
+  if (video) {
+    video.muted = true;
+    var attempt = video.play();
+    if (attempt && attempt.catch) { attempt.catch(function () {}); }
   }
-  measureStrip();
-  window.addEventListener('load', measureStrip);
 
-  wrapper.addEventListener('mouseenter', function () { targetSpeed = slowSpeed; });
-  wrapper.addEventListener('mouseleave', function () { targetSpeed = normalSpeed; });
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var vw = document.documentElement.clientWidth;
+    var vh = window.innerHeight;
+    var mobile = vw <= 768;
 
-  function animate() {
-    speed += (targetSpeed - speed) * 0.03;
-    position += speed;
-    if (totalWidth > 0 && position >= totalWidth) {
-      position -= totalWidth;
+    /* small, centred 16:9 start box (height follows via aspect-ratio) */
+    var startW = (mobile ? 0.47 : 0.23) * vw;
+    var startH = startW * 9 / 16;
+    var topH = top ? top.offsetHeight : (mobile ? 240 : 340);
+    var gap = mobile ? 28 : 56;
+    var startTop = topH + gap;
+    var maxStartTop = vh - startH - (mobile ? 40 : 56);
+    if (startTop > maxStartTop) startTop = Math.max(mobile ? 80 : 96, maxStartTop);
+
+    /* full 16:9 box = content width minus the site's page padding (never edge-to-edge, always landscape) */
+    var pad = vw <= 768 ? 24 : (vw <= 1100 ? 40 : 64);
+    var fullW = vw - 2 * pad;
+    var fullH = fullW * 9 / 16;
+    var fullTop = (vh - fullH) / 2;
+
+    /* slow, scroll-linked progress through the tall sticky hero (~190vh) */
+    var scrolled = -hero.getBoundingClientRect().top;
+    var dist = vh * 1.9;
+    var p = scrolled / dist;
+    p = p < 0 ? 0 : (p > 1 ? 1 : p);
+
+    var w    = startW + (fullW - startW) * p;
+    var topY = startTop + (fullTop - startTop) * p;   /* rises UP over the title */
+    var left = (vw - w) / 2;                           /* always centred */
+
+    wrap.style.width = w + 'px';
+    wrap.style.left  = left + 'px';
+    wrap.style.top   = topY + 'px';
+
+    if (hint) {
+      hint.style.top = (startTop + startH + (mobile ? 12 : 16)) + 'px';
+      hint.style.opacity = Math.max(0, Math.min(1, 1 - p * 5));
     }
-    strip.style.transform = 'translateX(-' + position + 'px)';
-    requestAnimationFrame(animate);
   }
 
-  requestAnimationFrame(animate);
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+  requestAnimationFrame(function () { requestAnimationFrame(update); });
 })();
 </script>
 

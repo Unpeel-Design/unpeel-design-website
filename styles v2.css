@@ -1056,3 +1056,10 @@ body {
   .ct-social:last-child { border-bottom: none !important; }
   .ct-social-label { display: block !important; }
 }
+
+/* ═══ SQUARE CORNERS — all media + their tile wrappers (no rounded corner artifacts) ═══ */
+img,
+video { border-radius: 0 !important; }
+.work-card,
+.wfg-card,
+.svc-card { border-radius: 0 !important; }

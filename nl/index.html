@@ -937,8 +937,9 @@
     var maxStartTop = vh - startH - (mobile ? 40 : 56);
     if (startTop > maxStartTop) startTop = Math.max(mobile ? 80 : 96, maxStartTop);
 
-    /* full 16:9 box sized to COVER the viewport edge-to-edge */
-    var fullW = Math.max(vw, vh * 16 / 9);
+    /* full 16:9 box = content width minus the site's page padding (never edge-to-edge, always landscape) */
+    var pad = vw <= 768 ? 24 : (vw <= 1100 ? 40 : 64);
+    var fullW = vw - 2 * pad;
     var fullH = fullW * 9 / 16;
     var fullTop = (vh - fullH) / 2;
 

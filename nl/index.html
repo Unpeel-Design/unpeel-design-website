@@ -308,9 +308,14 @@
       align-items: center;
       gap: 48px;
       padding: 0 48px;
+      position: relative;
       will-change: transform;
     }
-    .wtile { flex-shrink: 0; display: block; text-decoration: none; }
+    .wtile {
+      flex-shrink: 0; display: block; text-decoration: none;
+      transform: translateY(var(--ty, 0));
+      transition: transform .3s ease, opacity .3s ease;
+    }
     .wtile-media {
       width: 100%;
       height: var(--mh, 50vh);
@@ -352,6 +357,12 @@
     .works-progress-fill {
       position: absolute; left: 0; top: 0; height: 100%;
       width: 0%; background: #111111;
+    }
+    /* ── Works gallery — hover (desktop, pointer devices) ── */
+    @media (hover: hover) and (min-width: 769px) {
+      .works-row:hover .wtile { opacity: .55; }
+      .works-row .wtile:hover { opacity: 1; transform: translateY(var(--ty, 0)) scale(1.03); }
+      .works-row .wtile:hover .wtile-label { color: #111111; }
     }
     /* ── Works gallery — mobile: simple vertical stack ── */
     @media (max-width: 768px) {
@@ -559,32 +570,32 @@
     <div class="works-viewport">
       <div class="works-row" id="worksRow">
 
-        <a class="wtile" href="works/tuinen-arnaud.html" data-word="geworteld" style="width:400px; --mh:48vh; transform:translateY(-28px);">
+        <a class="wtile" href="works/tuinen-arnaud.html" data-word="geworteld" style="width:400px; --mh:48vh; --ty:-28px;">
           <div class="wtile-media"><video src="https://framerusercontent.com/assets/YXTMW11ZQrDM06YdtTzwwHI8xfA.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tuinen Arnaud huisstijl door Unpeel Design"></video></div>
           <p class="wtile-label"><span class="wtile-name">Tuinen Arnaud</span> · <span class="wtile-cat">Webdesign</span></p>
         </a>
 
-        <a class="wtile" href="works/melabody.html" data-word="verzorgd" style="width:500px; --mh:56vh; transform:translateY(24px);">
+        <a class="wtile" href="works/melabody.html" data-word="verzorgd" style="width:500px; --mh:56vh; --ty:24px;">
           <div class="wtile-media"><video src="https://framerusercontent.com/assets/wV5rrjFoD0UmrLmC4ldwBKDcgk.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Melabody huisstijl door Unpeel Design"></video></div>
           <p class="wtile-label"><span class="wtile-name">Melabody</span> · <span class="wtile-cat">Packaging</span></p>
         </a>
 
-        <a class="wtile" href="works/smashed.html" data-word="hongerig" style="width:320px; --mh:40vh; transform:translateY(44px);">
+        <a class="wtile" href="works/smashed.html" data-word="hongerig" style="width:320px; --mh:40vh; --ty:44px;">
           <div class="wtile-media"><video src="https://framerusercontent.com/assets/GMhUNoPReTRI8UXw45EpLL2g.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Smashed huisstijl door Unpeel Design"></video></div>
           <p class="wtile-label"><span class="wtile-name">Smashed</span> · <span class="wtile-cat">Branding</span></p>
         </a>
 
-        <a class="wtile" href="works/shared-ground.html" data-word="verbonden" style="width:360px; --mh:52vh; transform:translateY(-32px);">
+        <a class="wtile" href="works/shared-ground.html" data-word="verbonden" style="width:360px; --mh:52vh; --ty:-32px;">
           <div class="wtile-media"><video src="https://framerusercontent.com/assets/Mbin4nL2GlXWiaW6jQGfWaVZ4I.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Shared Ground huisstijl door Unpeel Design"></video></div>
           <p class="wtile-label"><span class="wtile-name">Shared Ground</span> · <span class="wtile-cat">Motion</span></p>
         </a>
 
-        <a class="wtile" href="works/tuillerien.html" data-word="thuis" style="width:520px; --mh:44vh; transform:translateY(30px);">
+        <a class="wtile" href="works/tuillerien.html" data-word="thuis" style="width:520px; --mh:44vh; --ty:30px;">
           <div class="wtile-media"><video src="https://framerusercontent.com/assets/ExAYxAsVkAaiyHVXURuYujmDbh4.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tuillerien huisstijl door Unpeel Design"></video></div>
           <p class="wtile-label"><span class="wtile-name">Tuillerien</span> · <span class="wtile-cat">Branding</span></p>
         </a>
 
-        <a class="wtile" href="works/aaronblommaert.html" data-word="levend" style="width:430px; --mh:50vh; transform:translateY(-12px);">
+        <a class="wtile" href="works/aaronblommaert.html" data-word="levend" style="width:430px; --mh:50vh; --ty:-12px;">
           <div class="wtile-media"><video src="https://framerusercontent.com/assets/Vg51fPRpcSsYYgGT7TL8Sva1eIE.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Aaron Blommaert huisstijl door Unpeel Design"></video></div>
           <p class="wtile-label"><span class="wtile-name">Aaron Blommaert</span> · <span class="wtile-cat">Motion</span></p>
         </a>
@@ -1054,7 +1065,7 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
 </script>
 
 <script>
-/* ═══ WORKS — horizontal scroll gallery (vertical scroll drives horizontal pan) ═══ */
+/* ═══ WORKS — horizontal scroll gallery (smoothed translate3d pan) ═══ */
 (function () {
   var section = document.getElementById('works');
   var row     = document.getElementById('worksRow');
@@ -1063,12 +1074,13 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
   if (!section || !row) return;
 
   var tiles = Array.prototype.slice.call(row.querySelectorAll('.wtile'));
-  /* autoplay the tile videos */
   Array.prototype.slice.call(row.querySelectorAll('video')).forEach(function (v) {
     v.muted = true; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
   });
 
-  var enabled = false, maxX = 0, curActive = -1, curWord = '', wordTimer = null;
+  var enabled = false, maxX = 0, vpW = 0, centers = [];
+  var targetX = 0, currentX = 0, running = false;
+  var curActive = -1, curWord = '', wordTimer = null;
 
   function setWord(w) {
     if (!wordEl || w === curWord) return;
@@ -1079,31 +1091,46 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
   }
 
   function layout() {
-    var vw = document.documentElement.clientWidth;
-    if (vw <= 768) {                 /* mobile = plain vertical stack, no pin */
+    vpW = document.documentElement.clientWidth;
+    if (vpW <= 768) {                        /* mobile = plain vertical stack, no pin */
       enabled = false;
       section.style.height = '';
       row.style.transform = '';
+      row.style.paddingLeft = '';
+      row.style.paddingRight = '';
+      currentX = targetX = 0;
       return;
     }
     enabled = true;
-    maxX = Math.max(0, row.scrollWidth - vw);
-    section.style.height = (window.innerHeight + maxX) + 'px';   /* ~1:1 scroll-to-pan */
-    update();
+    var w0 = tiles[0].offsetWidth;
+    var wL = tiles[tiles.length - 1].offsetWidth;
+    row.style.paddingLeft  = Math.max(24, vpW / 2 - w0 / 2) + 'px';   /* first tile centered at start */
+    row.style.paddingRight = Math.max(24, vpW / 2 - wL / 2) + 'px';   /* last tile centered at end   */
+    centers = tiles.map(function (t) { return t.offsetLeft + t.offsetWidth / 2; });
+    maxX = Math.max(0, centers[centers.length - 1] - vpW / 2);
+    section.style.height = (window.innerHeight + maxX) + 'px';        /* ~1:1 scroll-to-pan */
+    computeTarget();
+    currentX = targetX;                      /* snap on (re)layout, no long glide */
+    render();
+    updateActive();
   }
 
-  function update() {
-    if (!enabled) return;
+  function computeTarget() {
     var scrolled = -section.getBoundingClientRect().top;
     var p = maxX > 0 ? scrolled / maxX : 0;
     p = p < 0 ? 0 : (p > 1 ? 1 : p);
-    row.style.transform = 'translate3d(' + (-p * maxX) + 'px,0,0)';
-    if (fill) fill.style.width = (p * 100) + '%';
+    targetX = p * maxX;
+  }
 
-    var cx = document.documentElement.clientWidth / 2, best = -1, bestD = Infinity;
-    for (var i = 0; i < tiles.length; i++) {
-      var r = tiles[i].getBoundingClientRect();
-      var d = Math.abs((r.left + r.width / 2) - cx);
+  function render() {                        /* GPU transform only, no layout writes elsewhere */
+    row.style.transform = 'translate3d(' + (-currentX) + 'px,0,0)';
+    if (fill) fill.style.width = (maxX > 0 ? (currentX / maxX * 100) : 0) + '%';
+  }
+
+  function updateActive() {                  /* nearest tile to viewport centre (no layout reads) */
+    var cx = vpW / 2, best = -1, bestD = Infinity;
+    for (var i = 0; i < centers.length; i++) {
+      var d = Math.abs(centers[i] - currentX - cx);
       if (d < bestD) { bestD = d; best = i; }
     }
     if (best !== curActive) {
@@ -1113,8 +1140,22 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
     }
   }
 
-  var ticking = false;
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; update(); }); } }
+  function frame() {                         /* one efficient rAF loop, easing toward target */
+    var diff = targetX - currentX;
+    if (Math.abs(diff) < 0.4) {              /* settled */
+      currentX = targetX;
+      render(); updateActive();
+      running = false;
+      return;
+    }
+    currentX += diff * 0.085;                /* interpolation factor: buttery but responsive */
+    render(); updateActive();
+    requestAnimationFrame(frame);
+  }
+
+  function startLoop() { if (!running) { running = true; requestAnimationFrame(frame); } }
+  function onScroll()  { if (!enabled) return; computeTarget(); startLoop(); }
+
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', layout);
   window.addEventListener('load', layout);

@@ -1090,7 +1090,7 @@ video { border-radius: 0 !important; }
 @media (max-width: 768px)  { #statement { padding-left: 24px; padding-right: 24px; } }
 
 /* ═══ ALL-CAPS section titles (site-wide) — existing letter-spacing kept ═══ */
-.hero-h1, .section-title, .works-headline { text-transform: uppercase; letter-spacing: -0.02em; }
+.hero-h1, .section-title { text-transform: uppercase; letter-spacing: -0.02em; }
 
 /* ═══ STATEMENT eyebrow (small intro line above the big statement) ═══ */
 .statement-eyebrow {
@@ -1104,3 +1104,9 @@ video { border-radius: 0 !important; }
 #about { display: block; text-align: center; }
 #about .about-body { max-width: 640px; margin: 0 auto; font-size: clamp(18px, 2vw, 24px); line-height: 1.5; color: var(--ink); font-weight: 400; }
 @media (max-width: 768px) { .statement-eyebrow { margin-bottom: 40px; } }
+
+
+/* ═══ SERVICES accordion — always-visible explainer line ═══ */
+.acc-main { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.acc-main .acc-name { flex: 0 0 auto; }
+.acc-desc { font-size: 14px; color: #888888; line-height: 1.4; }

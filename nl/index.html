@@ -331,9 +331,6 @@
       overflow: hidden;
       background: #f2f2f2;
       border-radius: 0;
-      transition: width .42s cubic-bezier(.2,.7,.2,1), height .42s cubic-bezier(.2,.7,.2,1),
-                  left .42s cubic-bezier(.2,.7,.2,1), top .42s cubic-bezier(.2,.7,.2,1),
-                  transform .42s cubic-bezier(.2,.7,.2,1), box-shadow .42s ease;
     }
     .wtile-media img,
     .wtile-media video {
@@ -370,19 +367,11 @@
       position: absolute; left: 0; top: 0; height: 100%;
       width: 0%; background: #111111;
     }
-    /* ── Works gallery — hover (desktop, pointer): lift + dim others + reveal full landscape ── */
+    /* ── Works gallery — hover (desktop, pointer): lift + slight scale + dim others ── */
     @media (hover: hover) and (min-width: 769px) {
-      .works-row:hover .wtile { opacity: .42; }
-      .works-row .wtile:hover { opacity: 1; transform: translateY(-10px); z-index: 30; }
+      .works-row:hover .wtile { opacity: .5; }
+      .works-row .wtile:hover { opacity: 1; transform: translateY(-8px) scale(1.04); z-index: 20; }
       .works-row .wtile:hover .wtile-label { color: #111111; }
-      .works-row .wtile:hover .wtile-media {
-        width: var(--hw, 150%);
-        height: var(--hh, 100%);
-        left: 50%; top: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: 0 30px 70px rgba(0,0,0,.22);
-        z-index: 30;
-      }
     }
     /* ── Works gallery — mobile: simple vertical stack ── */
     @media (max-width: 768px) {
@@ -1119,30 +1108,9 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
   var n = tiles.length;
   if (!n) return;
 
-  tiles.forEach(function (t) {              /* autoplay + capture each asset's native aspect for the hover reveal */
-    t._ar = 1.7778;
-    var v = t.querySelector('video');
-    if (v) {
-      v.muted = true; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
-      var setAR = function () { if (v.videoWidth && v.videoHeight) { t._ar = v.videoWidth / v.videoHeight; sizeHover(t); } };
-      v.addEventListener('loadedmetadata', setAR); setAR();
-    }
-    var img = t.querySelector('img');
-    if (img) {
-      var setARi = function () { if (img.naturalWidth && img.naturalHeight) { t._ar = img.naturalWidth / img.naturalHeight; sizeHover(t); } };
-      if (img.complete) setARi(); img.addEventListener('load', setARi);
-    }
+  Array.prototype.slice.call(row.querySelectorAll('video')).forEach(function (v) {
+    v.muted = true; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
   });
-
-  function sizeHover(t) {                   /* fit the native aspect inside a sensible box (px → smooth morph) */
-    if (!baseW) return;
-    var ar = t._ar || 1.7778;
-    var maxW = baseW * 1.6, maxH = window.innerHeight * 0.6;
-    var hw = maxW, hh = hw / ar;
-    if (hh > maxH) { hh = maxH; hw = hh * ar; }
-    t.style.setProperty('--hw', hw.toFixed(1) + 'px');
-    t.style.setProperty('--hh', hh.toFixed(1) + 'px');
-  }
 
   var enabled = false, vpW = 0, baseW = 0, travelPx = 0;
   var targetP = 0, curP = 0, running = false;
@@ -1162,7 +1130,7 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
       enabled = false;
       section.style.height = '';
       row.style.transform = '';
-      tiles.forEach(function (t) { t.style.width = ''; t.style.removeProperty('--fw'); t.style.removeProperty('--hw'); t.style.removeProperty('--hh'); });
+      tiles.forEach(function (t) { t.style.width = ''; t.style.removeProperty('--fw'); });
       curP = targetP = 0;
       return;
     }
@@ -1174,7 +1142,6 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
     if (baseH > maxH) { baseH = maxH; baseW = baseH * 0.75; }
     travelPx = (n - 1) * baseW * 0.85;                  /* scroll length ≈ one focal width per card */
     section.style.height = (vh + travelPx) + 'px';
-    tiles.forEach(function (t) { sizeHover(t); });      /* hover-reveal box per current focal size */
     computeTarget();
     curP = targetP;                         /* snap on (re)layout */
     apply();

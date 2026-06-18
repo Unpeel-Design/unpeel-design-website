@@ -32,65 +32,56 @@
 .filter-pill:hover,
 .filter-pill.active { background: var(--ink); color: var(--bg); border-color: var(--ink); border-radius: 100px; }
 
-/* ═══ WORKS FULL GRID ═══ */
+/* ═══ WORKS FULL GRID — alternating big/small pairs with hover-swap ═══ */
 .wfg-section { padding: 48px 64px 80px; }
-.wfg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.wfg-grid { display: flex; flex-direction: column; gap: 56px; transition: opacity .2s ease; }
+
+.wfg-row { display: flex; align-items: flex-start; gap: 16px; }
 
 .wfg-card {
   display: block; text-decoration: none;
-  aspect-ratio: 16/10;
-  position: relative; overflow: hidden;
-  background: #111;
-  transition: transform .4s ease, opacity .2s;
+  flex: 0 0 auto;
+  flex-basis: calc(50% - 8px);
+  min-width: 0;
+  position: relative;
+  transition: flex-basis .45s cubic-bezier(.4, 0, .2, 1);
+  will-change: flex-basis;
 }
-.wfg-card:hover { transform: scale(1.015); z-index: 2; }
+.wfg-card.wfg-big   { flex-basis: calc(66% - 8px); }
+.wfg-card.wfg-small { flex-basis: calc(34% - 8px); }
+.wfg-card.wfg-full  { flex-basis: 100%; }
 
-.wfg-card video,
-.wfg-card > img {
+.wfg-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #f2f2f2;
+}
+.wfg-media video,
+.wfg-media img {
   position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover; object-position: center;
-  opacity: .85; transition: opacity .3s;
-}
-.wfg-card:hover video,
-.wfg-card:hover > img { opacity: 1; }
-
-.wfg-placeholder {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: #111;
-}
-.wfg-placeholder-name {
-  font-family: 'Inter', sans-serif; font-style: normal;
-  font-size: clamp(24px, 2.2vw, 34px);
-  color: rgba(255,255,255,.13); text-align: center; padding: 24px; line-height: 1.1;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center; display: block;
 }
 
-.wfg-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,0) 55%);
-  opacity: 0; transition: opacity .3s;
-}
-.wfg-card:hover .wfg-overlay { opacity: 1; }
-
-.wfg-info {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 24px 28px;
-  transform: translateY(10px); opacity: 0;
-  transition: transform .35s ease, opacity .3s ease;
-}
-.wfg-card:hover .wfg-info { transform: translateY(0); opacity: 1; }
-
+.wfg-info { padding: 14px 2px 0; text-align: left; }
 .wfg-name {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(18px, 1.8vw, 26px);
-  color: #fff; margin-bottom: 10px; line-height: 1.1;
+  font-family: 'Inter', sans-serif; font-weight: 500;
+  font-size: clamp(16px, 1.4vw, 22px);
+  color: #111; margin: 0 0 4px; line-height: 1.2;
 }
-.wfg-tags { display: flex; gap: 0; }
-.wfg-tag {
-  font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
-  color: rgba(255,255,255,.6);
+.wfg-tags { display: flex; flex-wrap: wrap; gap: 0; }
+.wfg-tag { font-size: 13px; color: #888; line-height: 1.5; }
+.wfg-tag + .wfg-tag::before { content: ' · '; color: #bbb; }
+
+/* hover-swap — hovered tile grows, its row-partner shrinks (desktop, real pointer only) */
+@media (hover: hover) and (min-width: 769px) {
+  .wfg-row:hover .wfg-card { flex-basis: calc(34% - 8px); }
+  .wfg-row .wfg-card:hover { flex-basis: calc(66% - 8px); }
+  .wfg-row:hover .wfg-card.wfg-full,
+  .wfg-row .wfg-card.wfg-full:hover { flex-basis: 100%; }
 }
-.wfg-tag + .wfg-tag::before { content: ' · '; color: rgba(255,255,255,.3); }
 
 /* ═══ FOOTER CTA ═══ */
 .footer-cta {
@@ -212,7 +203,13 @@
   .page-header { padding: 80px 24px 48px; }
   .filter-bar { padding: 18px 24px; }
   .wfg-section { padding: 32px 24px 56px; }
-  .wfg-grid { grid-template-columns: 1fr; }
+  .wfg-grid { gap: 36px; }
+  .wfg-row { flex-direction: column; gap: 36px; }
+  .wfg-card,
+  .wfg-card.wfg-big,
+  .wfg-card.wfg-small,
+  .wfg-card.wfg-full { flex-basis: auto !important; width: 100%; }
+  .wfg-media { aspect-ratio: 16 / 10; }
   .footer-cta { padding: 56px 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
 
   .cs-header { padding: 72px 24px 40px; }

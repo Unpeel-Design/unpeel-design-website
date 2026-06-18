@@ -287,7 +287,7 @@
     .works-headline {
       flex-shrink: 0;
       text-align: center;
-      padding: 92px 24px 0;
+      padding: 88px 24px 0;
       font-family: 'Inter', sans-serif;
       font-weight: 500;
       letter-spacing: -0.02em;
@@ -306,26 +306,34 @@
     .works-row {
       display: flex;
       align-items: center;
-      gap: 40px;
-      padding: 0 48px;
-      position: relative;
-      --cardW: clamp(240px, 26vw, 380px);
+      gap: 30px;
+      padding: 0;
       will-change: transform;
     }
     .wtile {
-      flex-shrink: 0; display: block; text-decoration: none;
-      width: var(--cardW);
-      transform: scale(var(--s, 1));
-      transform-origin: center center;
-      transition: transform .1s ease-out, opacity .3s ease;
-      will-change: transform;
+      flex-shrink: 0;
+      display: block;
+      text-decoration: none;
+      width: 22vw;                       /* JS overrides per frame with the scaled width */
+      position: relative;
+      transition: transform .3s cubic-bezier(.2,.7,.2,1), opacity .3s ease;
+    }
+    .wtile-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;               /* portrait footprint (keeps layout stable on hover) */
+      overflow: visible;
     }
     .wtile-media {
-      width: 100%;
-      height: clamp(340px, 56vh, 520px);
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
       overflow: hidden;
       background: #f2f2f2;
       border-radius: 0;
+      transition: width .42s cubic-bezier(.2,.7,.2,1), height .42s cubic-bezier(.2,.7,.2,1),
+                  left .42s cubic-bezier(.2,.7,.2,1), top .42s cubic-bezier(.2,.7,.2,1),
+                  transform .42s cubic-bezier(.2,.7,.2,1), box-shadow .42s ease;
     }
     .wtile-media img,
     .wtile-media video {
@@ -333,7 +341,7 @@
       object-fit: cover; display: block; border-radius: 0;
     }
     .wtile-label {
-      margin-top: 14px;
+      margin-top: 12px;
       font-size: 11px;
       letter-spacing: .12em;
       text-transform: uppercase;
@@ -355,18 +363,26 @@
     .works-progress {
       flex-shrink: 0;
       width: 200px; height: 2px;
-      margin: 0 auto 32px;
+      margin: 0 auto 30px;
       background: #E8E8E8; position: relative;
     }
     .works-progress-fill {
       position: absolute; left: 0; top: 0; height: 100%;
       width: 0%; background: #111111;
     }
-    /* ── Works gallery — hover (desktop, pointer devices) ── */
+    /* ── Works gallery — hover (desktop, pointer): lift + dim others + reveal full landscape ── */
     @media (hover: hover) and (min-width: 769px) {
-      .works-row:hover .wtile { opacity: .5; }
-      .works-row .wtile:hover { opacity: 1; transform: translateY(-8px) scale(calc(var(--s, 1) + 0.04)); }
+      .works-row:hover .wtile { opacity: .42; }
+      .works-row .wtile:hover { opacity: 1; transform: translateY(-10px); z-index: 30; }
       .works-row .wtile:hover .wtile-label { color: #111111; }
+      .works-row .wtile:hover .wtile-media {
+        width: var(--hw, 150%);
+        height: var(--hh, 100%);
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 30px 70px rgba(0,0,0,.22);
+        z-index: 30;
+      }
     }
     /* ── Works gallery — mobile: simple vertical stack ── */
     @media (max-width: 768px) {
@@ -381,7 +397,26 @@
       .works-viewport { overflow: visible; display: block; }
       .works-row { flex-direction: column; gap: 40px; padding: 0 24px; transform: none !important; }
       .wtile { width: 100% !important; transform: none !important; }
-      .wtile-media { height: auto !important; aspect-ratio: 4 / 3; }
+      .wtile-frame { aspect-ratio: 4 / 3; }
+      .wtile-media { transform: none !important; left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; box-shadow: none !important; }
+      .wtile-label { white-space: normal; }
+      .works-progress { display: none; }
+      .works-cta-end { padding-left: 0; justify-content: center; margin-top: 4px; }
+    }
+    /* ── Works gallery — mobile: simple vertical stack ── */
+    @media (max-width: 768px) {
+      #works { padding: 64px 0 40px !important; height: auto !important; }
+      .works-sticky { position: static; height: auto; overflow: visible; display: block; }
+      .works-headline { display: none; }
+      .works-mobile-title {
+        display: block; text-align: center;
+        font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+        color: #888888; padding: 0 24px 28px;
+      }
+      .works-viewport { overflow: visible; display: block; }
+      .works-row { flex-direction: column; gap: 40px; padding: 0 24px; transform: none !important; }
+      .wtile { width: 100% !important; transform: none !important; }
+      .wtile-media { height: auto !important; aspect-ratio: 4 / 3; transform: none !important; }
       .wtile-label { white-space: normal; }
       .works-progress { display: none; }
       .works-cta-end { padding-left: 0; justify-content: center; margin-top: 4px; }
@@ -575,32 +610,32 @@
       <div class="works-row" id="worksRow">
 
         <a class="wtile" href="works/tuinen-arnaud.html" data-word="geworteld">
-          <div class="wtile-media"><video src="https://framerusercontent.com/assets/YXTMW11ZQrDM06YdtTzwwHI8xfA.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tuinen Arnaud huisstijl door Unpeel Design"></video></div>
+          <div class="wtile-frame"><div class="wtile-media"><video src="https://framerusercontent.com/assets/YXTMW11ZQrDM06YdtTzwwHI8xfA.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tuinen Arnaud huisstijl door Unpeel Design"></video></div></div>
           <p class="wtile-label"><span class="wtile-name">Tuinen Arnaud</span> · <span class="wtile-cat">Webdesign</span></p>
         </a>
 
         <a class="wtile" href="works/melabody.html" data-word="verzorgd">
-          <div class="wtile-media"><video src="https://framerusercontent.com/assets/wV5rrjFoD0UmrLmC4ldwBKDcgk.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Melabody huisstijl door Unpeel Design"></video></div>
+          <div class="wtile-frame"><div class="wtile-media"><video src="https://framerusercontent.com/assets/wV5rrjFoD0UmrLmC4ldwBKDcgk.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Melabody huisstijl door Unpeel Design"></video></div></div>
           <p class="wtile-label"><span class="wtile-name">Melabody</span> · <span class="wtile-cat">Packaging</span></p>
         </a>
 
         <a class="wtile" href="works/smashed.html" data-word="hongerig">
-          <div class="wtile-media"><video src="https://framerusercontent.com/assets/GMhUNoPReTRI8UXw45EpLL2g.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Smashed huisstijl door Unpeel Design"></video></div>
+          <div class="wtile-frame"><div class="wtile-media"><video src="https://framerusercontent.com/assets/GMhUNoPReTRI8UXw45EpLL2g.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Smashed huisstijl door Unpeel Design"></video></div></div>
           <p class="wtile-label"><span class="wtile-name">Smashed</span> · <span class="wtile-cat">Branding</span></p>
         </a>
 
         <a class="wtile" href="works/shared-ground.html" data-word="verbonden">
-          <div class="wtile-media"><video src="https://framerusercontent.com/assets/Mbin4nL2GlXWiaW6jQGfWaVZ4I.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Shared Ground huisstijl door Unpeel Design"></video></div>
+          <div class="wtile-frame"><div class="wtile-media"><video src="https://framerusercontent.com/assets/Mbin4nL2GlXWiaW6jQGfWaVZ4I.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Shared Ground huisstijl door Unpeel Design"></video></div></div>
           <p class="wtile-label"><span class="wtile-name">Shared Ground</span> · <span class="wtile-cat">Motion</span></p>
         </a>
 
         <a class="wtile" href="works/tuillerien.html" data-word="thuis">
-          <div class="wtile-media"><video src="https://framerusercontent.com/assets/ExAYxAsVkAaiyHVXURuYujmDbh4.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tuillerien huisstijl door Unpeel Design"></video></div>
+          <div class="wtile-frame"><div class="wtile-media"><video src="https://framerusercontent.com/assets/ExAYxAsVkAaiyHVXURuYujmDbh4.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tuillerien huisstijl door Unpeel Design"></video></div></div>
           <p class="wtile-label"><span class="wtile-name">Tuillerien</span> · <span class="wtile-cat">Branding</span></p>
         </a>
 
         <a class="wtile" href="works/aaronblommaert.html" data-word="levend">
-          <div class="wtile-media"><video src="https://framerusercontent.com/assets/Vg51fPRpcSsYYgGT7TL8Sva1eIE.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Aaron Blommaert huisstijl door Unpeel Design"></video></div>
+          <div class="wtile-frame"><div class="wtile-media"><video src="https://framerusercontent.com/assets/Vg51fPRpcSsYYgGT7TL8Sva1eIE.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Aaron Blommaert huisstijl door Unpeel Design"></video></div></div>
           <p class="wtile-label"><span class="wtile-name">Aaron Blommaert</span> · <span class="wtile-cat">Motion</span></p>
         </a>
 
@@ -1069,7 +1104,7 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
 </script>
 
 <script>
-/* ═══ WORKS — horizontal scroll gallery (smoothed pan + centre-focus scaling) ═══ */
+/* ═══ WORKS — horizontal scroll gallery (exponential centre-focus, tight packing) ═══ */
 (function () {
   var section = document.getElementById('works');
   var row     = document.getElementById('worksRow');
@@ -1077,15 +1112,40 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
   var fill    = document.getElementById('worksProgress');
   if (!section || !row) return;
 
-  var MAX_S = 1.0, MIN_S = 0.5;             /* centre tile full size, far tiles half-size */
+  var FALL = 0.70;                          /* each step from centre is 70% the size — strong falloff */
+  var GAP  = 30;                            /* must match .works-row gap */
 
   var tiles = Array.prototype.slice.call(row.querySelectorAll('.wtile'));
-  Array.prototype.slice.call(row.querySelectorAll('video')).forEach(function (v) {
-    v.muted = true; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+  var n = tiles.length;
+  if (!n) return;
+
+  tiles.forEach(function (t) {              /* autoplay + capture each asset's native aspect for the hover reveal */
+    t._ar = 1.7778;
+    var v = t.querySelector('video');
+    if (v) {
+      v.muted = true; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+      var setAR = function () { if (v.videoWidth && v.videoHeight) { t._ar = v.videoWidth / v.videoHeight; sizeHover(t); } };
+      v.addEventListener('loadedmetadata', setAR); setAR();
+    }
+    var img = t.querySelector('img');
+    if (img) {
+      var setARi = function () { if (img.naturalWidth && img.naturalHeight) { t._ar = img.naturalWidth / img.naturalHeight; sizeHover(t); } };
+      if (img.complete) setARi(); img.addEventListener('load', setARi);
+    }
   });
 
-  var enabled = false, maxX = 0, vpW = 0, span = 1, centers = [];
-  var targetX = 0, currentX = 0, running = false;
+  function sizeHover(t) {                   /* fit the native aspect inside a sensible box (px → smooth morph) */
+    if (!baseW) return;
+    var ar = t._ar || 1.7778;
+    var maxW = baseW * 1.6, maxH = window.innerHeight * 0.6;
+    var hw = maxW, hh = hw / ar;
+    if (hh > maxH) { hh = maxH; hw = hh * ar; }
+    t.style.setProperty('--hw', hw.toFixed(1) + 'px');
+    t.style.setProperty('--hh', hh.toFixed(1) + 'px');
+  }
+
+  var enabled = false, vpW = 0, baseW = 0, travelPx = 0;
+  var targetP = 0, curP = 0, running = false;
   var curActive = -1, curWord = '', wordTimer = null;
 
   function setWord(w) {
@@ -1098,73 +1158,66 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
 
   function layout() {
     vpW = document.documentElement.clientWidth;
-    if (vpW <= 768) {                        /* mobile = plain vertical stack, no pin/scale */
+    if (vpW <= 768) {                       /* mobile = plain vertical stack, no pin/scale */
       enabled = false;
       section.style.height = '';
       row.style.transform = '';
-      row.style.paddingLeft = '';
-      row.style.paddingRight = '';
-      tiles.forEach(function (t) { t.style.removeProperty('--s'); });
-      currentX = targetX = 0;
+      tiles.forEach(function (t) { t.style.width = ''; t.style.removeProperty('--fw'); t.style.removeProperty('--hw'); t.style.removeProperty('--hh'); });
+      curP = targetP = 0;
       return;
     }
     enabled = true;
-    var w0 = tiles[0].offsetWidth;
-    row.style.paddingLeft  = Math.max(24, vpW / 2 - w0 / 2) + 'px';                          /* first tile centred at start */
-    row.style.paddingRight = Math.max(24, vpW / 2 - tiles[tiles.length - 1].offsetWidth / 2) + 'px';  /* last centred at end */
-    centers = tiles.map(function (t) { return t.offsetLeft + t.offsetWidth / 2; });
-    maxX = Math.max(0, centers[centers.length - 1] - vpW / 2);
-    span = vpW * 0.6;                        /* distance over which a tile shrinks to MIN_S */
-    section.style.height = (window.innerHeight + maxX) + 'px';
+    var vh = window.innerHeight;
+    baseW = Math.min(Math.max(320, vpW * 0.34), 480);   /* focal (largest) card width */
+    var baseH = baseW * 4 / 3;
+    var maxH = vh * 0.62;
+    if (baseH > maxH) { baseH = maxH; baseW = baseH * 0.75; }
+    travelPx = (n - 1) * baseW * 0.85;                  /* scroll length ≈ one focal width per card */
+    section.style.height = (vh + travelPx) + 'px';
+    tiles.forEach(function (t) { sizeHover(t); });      /* hover-reveal box per current focal size */
     computeTarget();
-    currentX = targetX;                      /* snap on (re)layout */
-    render(); updateActive(); updateScales();
+    curP = targetP;                         /* snap on (re)layout */
+    apply();
   }
 
   function computeTarget() {
     var scrolled = -section.getBoundingClientRect().top;
-    var p = maxX > 0 ? scrolled / maxX : 0;
-    p = p < 0 ? 0 : (p > 1 ? 1 : p);
-    targetX = p * maxX;
+    var p = travelPx > 0 ? scrolled / travelPx : 0;
+    targetP = p < 0 ? 0 : (p > 1 ? 1 : p);
   }
 
-  function render() {
-    row.style.transform = 'translate3d(' + (-currentX) + 'px,0,0)';
-    if (fill) fill.style.width = (maxX > 0 ? (currentX / maxX * 100) : 0) + '%';
-  }
+  function apply() {
+    var f = curP * (n - 1);                  /* fractional "focal" index */
+    var widths = new Array(n), centers = new Array(n), cum = 0, i;
+    for (i = 0; i < n; i++) widths[i] = baseW * Math.pow(FALL, Math.abs(i - f));
+    for (i = 0; i < n; i++) { centers[i] = cum + widths[i] / 2; cum += widths[i] + GAP; }
 
-  function updateScales() {                  /* centre-focus: tile nearest viewport centre is largest */
-    var cx = vpW / 2;
-    for (var i = 0; i < centers.length; i++) {
-      var d = Math.abs(centers[i] - currentX - cx);
-      var t = d / span; if (t > 1) t = 1;
-      tiles[i].style.setProperty('--s', (MAX_S - t * (MAX_S - MIN_S)).toFixed(4));
+    var lo = Math.floor(f), hi = Math.min(lo + 1, n - 1), fr = f - lo;
+    var focalC = centers[lo] + (centers[hi] - centers[lo]) * fr;
+    var tx = vpW / 2 - focalC;               /* slide so the focal point sits at viewport centre */
+    row.style.transform = 'translate3d(' + tx + 'px,0,0)';
+
+    for (i = 0; i < n; i++) {
+      var wpx = widths[i].toFixed(2) + 'px';
+      tiles[i].style.width = wpx;
+      tiles[i].style.setProperty('--fw', wpx);
     }
-  }
+    if (fill) fill.style.width = (curP * 100) + '%';
 
-  function updateActive() {
-    var cx = vpW / 2, best = -1, bestD = Infinity;
-    for (var i = 0; i < centers.length; i++) {
-      var d = Math.abs(centers[i] - currentX - cx);
-      if (d < bestD) { bestD = d; best = i; }
-    }
+    var best = Math.round(f); if (best < 0) best = 0; if (best > n - 1) best = n - 1;
     if (best !== curActive) {
       if (curActive >= 0 && tiles[curActive]) tiles[curActive].classList.remove('is-active');
       curActive = best;
-      if (tiles[best]) { tiles[best].classList.add('is-active'); setWord(tiles[best].getAttribute('data-word') || ''); }
+      tiles[best].classList.add('is-active');
+      setWord(tiles[best].getAttribute('data-word') || '');
     }
   }
 
-  function frame() {                         /* one rAF loop: ease position, then derive scale */
-    var diff = targetX - currentX;
-    if (Math.abs(diff) < 0.4) {
-      currentX = targetX;
-      render(); updateActive(); updateScales();
-      running = false;
-      return;
-    }
-    currentX += diff * 0.085;
-    render(); updateActive(); updateScales();
+  function frame() {
+    var diff = targetP - curP;
+    if (Math.abs(diff) < 0.0006) { curP = targetP; apply(); running = false; return; }
+    curP += diff * 0.09;                     /* eased glide */
+    apply();
     requestAnimationFrame(frame);
   }
 

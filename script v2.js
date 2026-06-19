@@ -188,7 +188,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
 /* ═══ NEWSLETTER ═══ */
 document.getElementById('newsForm').addEventListener('submit', e => {
   e.preventDefault();
-  e.currentTarget.innerHTML = '<p style="color:rgba(255,255,255,.5);font-size:14px;padding:8px 0;">Thanks — you\'re on the list.</p>';
+  e.currentTarget.innerHTML = '<p style="color:rgba(255,255,255,.5);font-size:14px;padding:8px 0;">Thanks, you\'re on the list.</p>';
 });
 
 /* ═══ LAYOUT PANEL ═══ */
@@ -223,3 +223,46 @@ requestAnimationFrame(() => {
     }
   });
 });
+
+
+/* ═══ TITLE MASK-REVEAL (per-line, replays each time in view) ═══ */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var SEL = '.hero-h1, .section-title, .statement-text, .page-h1, .cs-h1, .svcp-h1, .pkgp-h1, .pp-h1, .ct-h1, .app-h1, .ab-h1, .app-diff-heading, .ab-diff-heading, .svcp-cta-h, .pkgp-dark-cta-h, .app-dark-cta-h, .ab-cta-h';
+  var titles = Array.prototype.slice.call(document.querySelectorAll(SEL));
+  if (!titles.length) return;
+  titles.forEach(function (el) {
+    if (el.dataset.trReveal) return;
+    el.dataset.trReveal = '1';
+    /* drop the one-time hero entrance so only the mask reveal plays */
+    el.className = el.className.replace(/\bhero-anim\b/g, '').replace(/\bha\d\b/g, '').replace(/\s+/g, ' ').trim();
+    var lines = el.innerHTML.split(/<br\s*\/?>/i);
+    el.innerHTML = lines.map(function (ln) {
+      return '<span class="tr-mask"><span class="tr-line">' + ln + '</span></span>';
+    }).join('');
+    el.classList.add('tr-reveal');
+  });
+  /* scroll-based visibility, started only after webfonts are ready: the async bold-700 swap
+     must not interrupt the reveal transition (an IntersectionObserver was getting toggled by
+     the font reflow and leaving transitions stuck) */
+  function inView(el) {
+    var r = el.getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
+    return r.top < vh * 0.9 && r.bottom > vh * 0.1;
+  }
+  function update() {
+    for (var i = 0; i < titles.length; i++) titles[i].classList.toggle('is-in', inView(titles[i]));
+  }
+  var ticking = false;
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; update(); }); }
+  }
+  var started = false;
+  function start() {
+    if (started) return; started = true;
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+  setTimeout(start, 1200);   /* fallback so titles never stay hidden if fonts are slow/blocked */
+})();

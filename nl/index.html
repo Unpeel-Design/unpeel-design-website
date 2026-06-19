@@ -10,25 +10,25 @@
   <meta property="og:description" content="Freelance brand designer in Gent. Ik maak sterke huisstijlen en merkidentiteiten voor startups, restaurants en hotels. Vraag vrijblijvend je offerte aan.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://unpeeldesign.com/nl/">
-  <meta property="og:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <meta property="og:image" content="../uploads/works/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Brand Designer in Gent | Arnaud Boone · Unpeel Design">
   <meta name="twitter:description" content="Freelance brand designer in Gent. Ik maak sterke huisstijlen en merkidentiteiten voor startups, restaurants en hotels. Vraag vrijblijvend je offerte aan.">
-  <meta name="twitter:image" content="https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
+  <meta name="twitter:image" content="../uploads/works/GAA3SWx40lK4K0KJKUyyydZEGRM.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,700&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": "https://unpeeldesign.com/#business",
     "name": "Unpeel Design",
-    "alternateName": "Unpeel Design — Arnaud Boone",
+    "alternateName": "Unpeel Design · Arnaud Boone",
     "description": "Unpeel Design is de studio van Arnaud Boone, een freelance brand designer in Gent, België. Hij bouwt huisstijlen, logo's, merkstrategie, motion design en webdesign voor startups, restaurants, hotels en creatieve founders in heel België en Europa.",
     "slogan": "Merken die eerlijk aanvoelen en blijven.",
     "url": "https://unpeeldesign.com",
-    "image": "https://framerusercontent.com/images/GAA3SWx40lK4K0KJKUyyydZEGRM.png",
+    "image": "../uploads/works/GAA3SWx40lK4K0KJKUyyydZEGRM.png",
     "logo": "https://unpeeldesign.com/uploads/LOGO%20ICON-02%202.jpg",
     "priceRange": "€€",
     "founder": {
@@ -122,8 +122,8 @@
       text-align: center;
     }
     .hero-h1 {
-      font-size: clamp(36px, 5vw, 64px) !important;
-      font-weight: 500 !important;
+      font-size: clamp(32px, 4.5vw, 58px) !important;
+      font-weight: 700 !important;
       letter-spacing: -0.02em !important;
       text-align: center !important;
       line-height: 1.1 !important;
@@ -267,83 +267,154 @@
         text-transform: uppercase !important;
       }
     }
+      /* ═══ WORKS — horizontal scroll gallery ═══ */
+    #works {
+      position: relative;
+      background: #fff;
+      padding: 0 !important;
+      display: block !important;
+    }
+    .works-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+    }
+    .works-mobile-title { display: none; }
+    .works-headline {
+      flex-shrink: 0;
+      text-align: center;
+      padding: 88px 24px 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-size: clamp(28px, 4vw, 52px);
+      line-height: 1.05;
+      color: #888;
+    }
+    .works-word { display: inline-block; transition: opacity .18s ease; color: #111; }
+    .works-viewport {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .works-row {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding: 0;
+      will-change: transform;
+    }
+    .wtile {
+      flex-shrink: 0;
+      display: block;
+      text-decoration: none;
+      width: 22vw;                       /* JS overrides per frame with the scaled width */
+      position: relative;
+      transition: transform .3s cubic-bezier(.2,.7,.2,1), opacity .3s ease;
+    }
+    .wtile-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;               /* portrait footprint (keeps layout stable on hover) */
+      overflow: visible;
+    }
+    .wtile-media {
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      background: #f2f2f2;
+      border-radius: 0;
+    }
+    .wtile-media img,
+    .wtile-media video {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block; border-radius: 0;
+    }
+    .wtile-label {
+      margin-top: 12px;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #888888;
+      transition: color .3s ease;
+      white-space: nowrap;
+    }
+    .wtile.is-active .wtile-label { color: #111111; }
+    .works-cta-end {
+      flex-shrink: 0;
+      display: flex; align-items: center;
+      padding-left: 8px; white-space: nowrap;
+    }
+    .works-cta-end a {
+      font-size: 14px; color: #111;
+      display: inline-flex; align-items: center; gap: 6px;
+      border-bottom: 1px solid var(--border); padding-bottom: 3px;
+    }
+    .works-progress {
+      flex-shrink: 0;
+      width: 200px; height: 2px;
+      margin: 0 auto 30px;
+      background: #E8E8E8; position: relative;
+    }
+    .works-progress-fill {
+      position: absolute; left: 0; top: 0; height: 100%;
+      width: 0%; background: #111111;
+    }
+    /* ── Works gallery — hover (desktop, pointer): lift + slight scale + dim others ── */
+    @media (hover: hover) and (min-width: 769px) {
+      .works-row:hover .wtile { opacity: .5; }
+      .works-row .wtile:hover { opacity: 1; transform: translateY(-8px) scale(1.04); z-index: 20; }
+      .works-row .wtile:hover .wtile-label { color: #111111; }
+    }
+    /* ── Works gallery — mobile: simple vertical stack ── */
+    @media (max-width: 768px) {
+      #works { padding: 64px 0 40px !important; height: auto !important; }
+      .works-sticky { position: static; height: auto; overflow: visible; display: block; }
+      .works-headline { display: none; }
+      .works-mobile-title {
+        display: block; text-align: center;
+        font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+        color: #888888; padding: 0 24px 28px;
+      }
+      .works-viewport { overflow: visible; display: block; }
+      .works-row { flex-direction: column; gap: 40px; padding: 0 24px; transform: none !important; }
+      .wtile { width: 100% !important; transform: none !important; }
+      .wtile-frame { aspect-ratio: 4 / 3; }
+      .wtile-media { transform: none !important; left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; box-shadow: none !important; }
+      .wtile-label { white-space: normal; }
+      .works-progress { display: none; }
+      .works-cta-end { padding-left: 0; justify-content: center; margin-top: 4px; }
+    }
+    /* ── Works gallery — mobile: simple vertical stack ── */
+    @media (max-width: 768px) {
+      #works { padding: 64px 0 40px !important; height: auto !important; }
+      .works-sticky { position: static; height: auto; overflow: visible; display: block; }
+      .works-headline { display: none; }
+      .works-mobile-title {
+        display: block; text-align: center;
+        font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+        color: #888888; padding: 0 24px 28px;
+      }
+      .works-viewport { overflow: visible; display: block; }
+      .works-row { flex-direction: column; gap: 40px; padding: 0 24px; transform: none !important; }
+      .wtile { width: 100% !important; transform: none !important; }
+      .wtile-media { height: auto !important; aspect-ratio: 4 / 3; transform: none !important; }
+      .wtile-label { white-space: normal; }
+      .works-progress { display: none; }
+      .works-cta-end { padding-left: 0; justify-content: center; margin-top: 4px; }
+    }
   </style>
   <link rel="canonical" href="https://unpeeldesign.com/nl/">
   <link rel="alternate" hreflang="en" href="https://unpeeldesign.com/">
   <link rel="alternate" hreflang="nl-BE" href="https://unpeeldesign.com/nl/">
   <link rel="alternate" hreflang="x-default" href="https://unpeeldesign.com/">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Hoelang duurt een brandingproject?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "De meeste merkidentiteitsprojecten duren tussen 2 en 4 weken, van de start tot de oplevering. Een gericht pakket met logo en richtlijnen is klaar in 2 weken. Een volledig merksysteem met motion design en webdesign duurt 4 tot 6 weken. Elk project start met een duidelijke timing, zodat je altijd weet waar we staan."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wat kost een huisstijl of merkidentiteit in België?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Dat hangt af van de omvang en de aanpak. Bij Unpeel starten projecten vanaf ongeveer €1.000 voor een gericht logo en een sterke basis. Een volledige huisstijl, met strategie, richtlijnen, motion en web, zit meestal tussen €1.000 en €3.000+. Voor elk project krijg je vooraf een duidelijke offerte met alles erin. Geen verborgen kosten, geen verrassingen."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wat is het verschil tussen een logo en een huisstijl?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Een logo is één teken: het symbool of woordmerk. Een huisstijl, ook wel merkidentiteit genoemd, is het volledige visuele en verbale systeem eromheen: typografie, kleur, tone of voice, beeldstijl en richtlijnen voor gebruik. Het logo is dus maar één stukje van het geheel. De huisstijl is wat je merk overal herkenbaar en consistent maakt, van je website tot je verpakking."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wanneer heeft een startup professionele branding nodig?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Vroeger dan de meeste founders denken. Een sterke identiteit van bij de start zet de toon voor alles: je website, je pitchdeck, je packaging, je socials. Het meteen goed doen betekent dat je bouwt op een stevige basis, in plaats van later geloofwaardigheid te moeten bijwerken. Al kan een gericht logopakket een slimme eerste stap zijn als het budget krap is."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wat krijg ik op het einde van een merkidentiteitsproject?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Alle merkbestanden in elk formaat dat je nodig hebt (AI, PDF, PNG, SVG), een document met merkrichtlijnen, en hulp om de identiteit toe te passen op print, web, social en packaging."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Met welke soort klanten werk je?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Unpeel werkt met startups, restaurants en horeca, merken met een eigen product, hotels, artiesten en creatieve founders. Zowel nieuwe merken als rebrandings. De rode draad: founders en bedrijven die design willen dat eerlijk en strategisch is, en gemaakt om te blijven. Bouw je iets van nul, of voelt je huidige identiteit niet meer als waar je naartoe gaat? Dan passen we waarschijnlijk goed samen."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Werk je ook met klanten buiten Gent of België?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja, zeker. Ik ben gevestigd in Gent, maar ik werk remote met klanten in heel België en daarbuiten, in heel Europa. Of je nu in Antwerpen, Brussel, Kortrijk of een dorp in West-Vlaanderen zit: alles loopt vlot via videocall en gedeelde tools. Locatie is nooit een drempel voor een sterke samenwerking."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Wat maakt een sterke merkidentiteit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Helderheid, consistentie en karakter. Een sterke identiteit weet waar ze voor staat, ziet er overal hetzelfde uit, en heeft een eigen persoonlijkheid die mensen herkennen en onthouden. Het start met strategie, je doel, je publiek en je positionering begrijpen, en eindigt met een visueel systeem dat dat allemaal uitstraalt zonder uitleg."
-      }
-    }
-  ]
-}
-</script>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="lHdxi6uilQ7AK1otl88LCA" async></script>
 </head>
 <body>
@@ -421,109 +492,59 @@
   </div>
 </section>
 
-<!-- ═══ TRUST BAR ═══ -->
-<section id="trust">
-  <p class="trust-label">Vertrouwd door startups, hotels, artiesten en creatieve founders in heel België</p>
-  <div class="trust-marquee-wrap">
-    <div class="trust-marquee">
-      <span class="trust-track">Tuinen Arnaud · Melabody · Tuillerien · Shared Ground · Shakeys · HELLA FAST · Aaron Blommaert · Stellar Secrets · </span>
-      <span class="trust-track">Tuinen Arnaud · Melabody · Tuillerien · Shared Ground · Shakeys · HELLA FAST · Aaron Blommaert · Stellar Secrets · </span>
-    </div>
-  </div>
+<!-- ═══ STATEMENT ═══ -->
+<section id="statement">
+  <p class="statement-eyebrow fade-up">Brand identity, motion, packaging en web.</p>
+  <h2 class="statement-text fade-up d1">Elke laag vertelt<br>een verhaal.</h2>
 </section>
 
 <!-- ═══ ABOUT ═══ -->
-<section id="about" data-layout="a">
-  <div>
-    <p class="section-label fade-up">De Designer</p>
-    <h2 class="section-title fade-up d1">Merken ontwerpen met zorg, van binnenuit.</h2>
-    <p class="about-body fade-up d2">Vanuit Gent werkte ik al met meer dan 10 merken, van startups tot hotels. Ik help ze hun verhaal te ontdekken en het om te zetten in eerlijk, strategisch design. Voor ik iets ontwerp, ga ik eerst terug naar de kern van je merk, laag per laag.</p>
-    <div class="stats-row fade-up d3">
-      <div><p class="stat-n">10+</p><p class="stat-l">Merken gebouwd</p></div>
-      <div><p class="stat-n">4</p><p class="stat-l">Disciplines</p></div>
-      <div><p class="stat-n">Gent</p><p class="stat-l">Gevestigd</p></div>
-    </div>
-  </div>
-  <img src="https://framerusercontent.com/images/Ewd3Lvi96rp4d2DuWdqZr1v6gg.webp" alt="Arnaud Boone, brand designer bij Unpeel Design" class="about-img fade-up d2" loading="lazy">
+<section id="about">
+  <p class="about-body fade-up">Hey, ik ben Arnaud, freelance brand designer uit Gent. Ik maak doordachte brand identities en websites voor ambitieuze merken die willen opvallen en iets willen laten voelen.</p>
 </section>
 
-<!-- ═══ WORKS ═══ -->
-<section id="works" data-layout="a" data-video="a">
-  <div class="works-head">
-    <p class="section-label fade-up">Geselecteerd werk</p>
-    <h2 class="section-title fade-up d1">Een paar dingen waar ik trots op ben.</h2>
-  </div>
-  <div class="works-grid">
+<!-- ═══ WORKS — horizontal scroll gallery ═══ -->
+<section id="works">
+  <div class="works-sticky">
+    <p class="works-mobile-title">Geselecteerd werk</p>
+    <h2 class="works-headline">Laat ze voelen <span class="works-word" id="worksWord">geworteld</span></h2>
+    <div class="works-viewport">
+      <div class="works-row" id="worksRow">
 
-    <a class="work-card" href="works/tuinen-arnaud.html">
-      <video preload="auto" src="https://framerusercontent.com/assets/YXTMW11ZQrDM06YdtTzwwHI8xfA.mp4" autoplay muted loop playsinline></video>
-      <div class="work-overlay"></div>
-      <div class="work-ghost"><p class="work-ghost-name">Tuinen Arnaud</p></div>
-      <div class="work-info">
-        <p class="work-name">Tuinen Arnaud</p>
-        <p class="work-tagline">Vakmanschap in elke tuin</p>
-        <div class="work-tags"><span class="work-tag">Merkidentiteit</span><span class="work-tag">Web</span></div>
+        <a class="wtile" href="works/tuinen-arnaud.html" data-word="geworteld">
+          <div class="wtile-frame"><div class="wtile-media"><video src="../uploads/video/YXTMW11ZQrDM06YdtTzwwHI8xfA.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tuinen Arnaud huisstijl door Unpeel Design"></video></div></div>
+          <p class="wtile-label"><span class="wtile-name">Tuinen Arnaud</span> · <span class="wtile-cat">Webdesign</span></p>
+        </a>
+
+        <a class="wtile" href="works/melabody.html" data-word="verzorgd">
+          <div class="wtile-frame"><div class="wtile-media"><video src="../uploads/video/wV5rrjFoD0UmrLmC4ldwBKDcgk.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Melabody huisstijl door Unpeel Design"></video></div></div>
+          <p class="wtile-label"><span class="wtile-name">Melabody</span> · <span class="wtile-cat">Packaging</span></p>
+        </a>
+
+        <a class="wtile" href="works/smashed.html" data-word="hongerig">
+          <div class="wtile-frame"><div class="wtile-media"><video src="../uploads/video/GMhUNoPReTRI8UXw45EpLL2g.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Smashed huisstijl door Unpeel Design"></video></div></div>
+          <p class="wtile-label"><span class="wtile-name">Smashed</span> · <span class="wtile-cat">Branding</span></p>
+        </a>
+
+        <a class="wtile" href="works/shared-ground.html" data-word="verbonden">
+          <div class="wtile-frame"><div class="wtile-media"><video src="../uploads/video/Mbin4nL2GlXWiaW6jQGfWaVZ4I.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Shared Ground huisstijl door Unpeel Design"></video></div></div>
+          <p class="wtile-label"><span class="wtile-name">Shared Ground</span> · <span class="wtile-cat">Motion</span></p>
+        </a>
+
+        <a class="wtile" href="works/tuillerien.html" data-word="thuis">
+          <div class="wtile-frame"><div class="wtile-media"><video src="../uploads/video/ExAYxAsVkAaiyHVXURuYujmDbh4.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Tuillerien huisstijl door Unpeel Design"></video></div></div>
+          <p class="wtile-label"><span class="wtile-name">Tuillerien</span> · <span class="wtile-cat">Branding</span></p>
+        </a>
+
+        <a class="wtile" href="works/aaronblommaert.html" data-word="levend">
+          <div class="wtile-frame"><div class="wtile-media"><video src="../uploads/video/Vg51fPRpcSsYYgGT7TL8Sva1eIE.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Aaron Blommaert huisstijl door Unpeel Design"></video></div></div>
+          <p class="wtile-label"><span class="wtile-name">Aaron Blommaert</span> · <span class="wtile-cat">Motion</span></p>
+        </a>
+
+        <div class="works-cta-end"><a href="works.html">Bekijk al het werk →</a></div>
       </div>
-    </a>
-
-    <a class="work-card" href="works/melabody.html">
-      <video preload="auto" src="https://framerusercontent.com/assets/wV5rrjFoD0UmrLmC4ldwBKDcgk.mp4" autoplay muted loop playsinline></video>
-      <div class="work-overlay"></div>
-      <div class="work-ghost"><p class="work-ghost-name">Melabody</p></div>
-      <div class="work-info">
-        <p class="work-name">Melabody</p>
-        <p class="work-tagline">Doordachte verzorging voor melaninerijke huid</p>
-        <div class="work-tags"><span class="work-tag">Merkidentiteit</span><span class="work-tag">Packaging</span></div>
-      </div>
-    </a>
-
-    <a class="work-card" href="works/smashed.html">
-      <video preload="auto" src="https://framerusercontent.com/assets/GMhUNoPReTRI8UXw45EpLL2g.mp4" autoplay muted loop playsinline></video>
-      <div class="work-overlay"></div>
-      <div class="work-ghost"><p class="work-ghost-name">Smashed</p></div>
-      <div class="work-info">
-        <p class="work-name">Smashed</p>
-        <p class="work-tagline">Een speelse kijk op moderne streetfood</p>
-        <div class="work-tags"><span class="work-tag">Merkidentiteit</span></div>
-      </div>
-    </a>
-
-    <a class="work-card" href="works/shared-ground.html">
-      <video preload="auto" src="https://framerusercontent.com/assets/Mbin4nL2GlXWiaW6jQGfWaVZ4I.mp4" autoplay muted loop playsinline></video>
-      <div class="work-overlay"></div>
-      <div class="work-ghost"><p class="work-ghost-name">Shared Ground</p></div>
-      <div class="work-info">
-        <p class="work-name">Shared Ground</p>
-        <p class="work-tagline">Wandel en verbind</p>
-        <div class="work-tags"><span class="work-tag">Merkidentiteit</span><span class="work-tag">Motion</span><span class="work-tag">Web</span></div>
-      </div>
-    </a>
-
-    <a class="work-card" href="works/tuillerien.html">
-      <video preload="auto" src="https://framerusercontent.com/assets/ExAYxAsVkAaiyHVXURuYujmDbh4.mp4" autoplay muted loop playsinline></video>
-      <div class="work-overlay"></div>
-      <div class="work-ghost"><p class="work-ghost-name">Tuillerien</p></div>
-      <div class="work-info">
-        <p class="work-name">Tuillerien</p>
-        <p class="work-tagline">Tijdloze boetiekluxe</p>
-        <div class="work-tags"><span class="work-tag">Merkidentiteit</span><span class="work-tag">Motion</span></div>
-      </div>
-    </a>
-
-    <a class="work-card" href="works/aaronblommaert.html">
-      <video preload="auto" src="https://framerusercontent.com/assets/Vg51fPRpcSsYYgGT7TL8Sva1eIE.mp4" autoplay muted loop playsinline></video>
-      <div class="work-overlay"></div>
-      <div class="work-ghost"><p class="work-ghost-name">Aaron Blommaert</p></div>
-      <div class="work-info">
-        <p class="work-name">Aaron Blommaert</p>
-        <p class="work-tagline">Ongefilterd van nature</p>
-        <div class="work-tags"><span class="work-tag">Merkidentiteit</span><span class="work-tag">Motion</span><span class="work-tag">Web</span></div>
-      </div>
-    </a>
-
-  </div>
-  <div class="works-cta fade-up">
-    <a href="works.html" class="text-link">Bekijk al het werk →</a>
+    </div>
+    <div class="works-progress"><div class="works-progress-fill" id="worksProgress"></div></div>
   </div>
 </section>
 
@@ -531,22 +552,25 @@
 <section id="services">
   <div class="services-head">
     <p class="section-label fade-up">Wat ik doe</p>
-    <h2 class="section-title fade-up d1">Vier disciplines.<br>Eén heldere visie.</h2>
+    <h2 class="section-title fade-up d1">Mijn diensten</h2>
   </div>
   <div class="accordion-list">
 
     <div class="acc-item">
       <div class="acc-header">
         <span class="acc-num">(01)</span>
-        <span class="acc-name">Branding</span>
+        <div class="acc-main">
+          <span class="acc-name">Brand Strategy</span>
+          <span class="acc-desc">Bepalen waar je merk voor staat.</span>
+        </div>
         <span class="acc-icon">+</span>
       </div>
       <div class="acc-body">
         <ul class="acc-subs">
-          <li>Logo-ontwerp</li>
-          <li>Merkstrategie</li>
-          <li>Merkrichtlijnen</li>
-          <li>Rebranding</li>
+          <li>Positioning</li>
+          <li>Naming</li>
+          <li>Brand Voice</li>
+          <li>Brand Guidelines</li>
         </ul>
       </div>
     </div>
@@ -554,14 +578,18 @@
     <div class="acc-item">
       <div class="acc-header">
         <span class="acc-num">(02)</span>
-        <span class="acc-name">Webdesign</span>
+        <div class="acc-main">
+          <span class="acc-name">Brand Identity</span>
+          <span class="acc-desc">De look en feel van je merk.</span>
+        </div>
         <span class="acc-icon">+</span>
       </div>
       <div class="acc-body">
         <ul class="acc-subs">
-          <li>Webdesign</li>
-          <li>App-design</li>
-          <li>Responsive design</li>
+          <li>Logo</li>
+          <li>Colours &amp; Typography</li>
+          <li>Visual System</li>
+          <li>Rebranding</li>
         </ul>
       </div>
     </div>
@@ -569,13 +597,17 @@
     <div class="acc-item">
       <div class="acc-header">
         <span class="acc-num">(03)</span>
-        <span class="acc-name">Motion Design</span>
+        <div class="acc-main">
+          <span class="acc-name">Web Design</span>
+          <span class="acc-desc">Je merk online.</span>
+        </div>
         <span class="acc-icon">+</span>
       </div>
       <div class="acc-body">
         <ul class="acc-subs">
-          <li>Motion graphics</li>
-          <li>Animatie</li>
+          <li>Websites</li>
+          <li>Landing Pages</li>
+          <li>Webshops</li>
         </ul>
       </div>
     </div>
@@ -583,14 +615,36 @@
     <div class="acc-item">
       <div class="acc-header">
         <span class="acc-num">(04)</span>
-        <span class="acc-name">Artificial Design</span>
+        <div class="acc-main">
+          <span class="acc-name">Packaging</span>
+          <span class="acc-desc">Ontwerp dat opvalt in het schap.</span>
+        </div>
         <span class="acc-icon">+</span>
       </div>
       <div class="acc-body">
         <ul class="acc-subs">
-          <li>UGC-content</li>
-          <li>Tv-campagnes</li>
-          <li>Social-mediacampagnes</li>
+          <li>Labels</li>
+          <li>Boxes</li>
+          <li>Product Packaging</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acc-item">
+      <div class="acc-header">
+        <span class="acc-num">(05)</span>
+        <div class="acc-main">
+          <span class="acc-name">AI Video</span>
+          <span class="acc-desc">Product-, campagne- en reclamevideo's, volledig gemaakt met AI.</span>
+        </div>
+        <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body">
+        <ul class="acc-subs">
+          <li>Product Videos</li>
+          <li>Campaign Videos</li>
+          <li>Ad Videos</li>
+          <li>Social Video</li>
         </ul>
       </div>
     </div>
@@ -604,15 +658,14 @@
 <!-- ═══ REVIEWS ═══ -->
 <section id="reviews">
   <div class="reviews-head">
-    <p class="section-label fade-up">Wat klanten zeggen</p>
-    <h2 class="section-title fade-up d1">Eerlijke woorden uit echte projecten.</h2>
+    <h2 class="section-title fade-up">Een paar lieve woorden</h2>
   </div>
 
   <div class="reviews-window" id="reviewsWindow">
     <div class="reviews-track" id="reviewsTrack">
 
       <div class="review-card">
-        <blockquote class="review-quote">"We wouden iets moderns en betrouwbaar — Arnaud heeft dat precies geleverd. De nieuwe identiteit voelt volledig als wij. Clean, professioneel en consistent op elk vlak."</blockquote>
+        <blockquote class="review-quote">"We wouden iets moderns en betrouwbaar. Arnaud heeft dat precies geleverd. De nieuwe identiteit voelt volledig als wij. Clean, professioneel en consistent op elk vlak."</blockquote>
         <div class="review-author">
           <div>
             <p class="review-author-name">Tuinen Arnaud</p>
@@ -622,7 +675,7 @@
       </div>
 
       <div class="review-card">
-        <blockquote class="review-quote">"Arnaud understood the vision from day one. The brand system he built — the palette, the packaging, the whole feeling — communicates exactly what Melabody stands for. Thoughtful work."</blockquote>
+        <blockquote class="review-quote">"Arnaud understood the vision from day one. The brand system he built, the palette, the packaging, the whole feeling, communicates exactly what Melabody stands for. Thoughtful work."</blockquote>
         <div class="review-author">
           <div>
             <p class="review-author-name">Melabody</p>
@@ -632,7 +685,7 @@
       </div>
 
       <div class="review-card">
-        <blockquote class="review-quote">"We needed something bold and playful without losing credibility. Arnaud nailed it. The identity is fun, strong, and works across everything — print, digital, in-store."</blockquote>
+        <blockquote class="review-quote">"We needed something bold and playful without losing credibility. Arnaud nailed it. The identity is fun, strong, and works across everything, print, digital, in-store."</blockquote>
         <div class="review-author">
           <div>
             <p class="review-author-name">Smashed</p>
@@ -642,7 +695,7 @@
       </div>
 
       <div class="review-card">
-        <blockquote class="review-quote">"From the first strategy call to the final delivery, the process was clear and collaborative. The result is an identity that actually tells our story — not just a logo."</blockquote>
+        <blockquote class="review-quote">"From the first strategy call to the final delivery, the process was clear and collaborative. The result is an identity that actually tells our story, not just a logo."</blockquote>
         <div class="review-author">
           <div>
             <p class="review-author-name">Shared Ground</p>
@@ -683,129 +736,7 @@
   </div>
 </section>
 
-<!-- ═══ PACKAGES ═══ -->
-<section id="packages">
-  <div class="pkg-head">
-    <p class="section-label fade-up">Pakketten</p>
-    <h2 class="section-title fade-up d1">Vind jouw pakket.</h2>
-    <p class="pkg-sub fade-up d2">Elk project is anders. Deze pakketten zijn een vertrekpunt, geen plafond.</p>
-  </div>
-  <div class="pkg-window" id="pkgWindow">
-    <div class="pkg-grid" id="pkgTrack">
 
-      <div class="pkg-card fade-up d1">
-        <div class="pkg-card-top">
-          <h3 class="pkg-title">Startup</h3>
-          <p class="pkg-subtitle">Voor founders die een sterk logo nodig hebben om te starten.</p>
-        </div>
-        <ul class="pkg-list">
-          <li>Logo-ontwerp (2 varianten)</li>
-          <li>Kleurenpalet &amp; typografie</li>
-          <li>Alle bestandsformaten</li>
-          <li>Mini merkkaart</li>
-        </ul>
-        <p class="pkg-footer">2 revisierondes · 1–2 weken</p>
-        <div class="pkg-ctas">
-          <a href="contact.html" class="btn-p pkg-btn">Vraag een offerte →</a>
-          <a href="packages.html#startup" class="text-link pkg-detail">Bekijk alle details →</a>
-        </div>
-      </div>
-
-      <div class="pkg-card pkg-featured fade-up d2">
-        <span class="pkg-badge">★ Meest gekozen</span>
-        <div class="pkg-card-top">
-          <h3 class="pkg-title">Studio</h3>
-          <p class="pkg-subtitle">Voor founders die een volledig doordacht merk willen bouwen.</p>
-        </div>
-        <ul class="pkg-list">
-          <li>Discovery-sessie + merkstrategie</li>
-          <li>Moodboard + visuele richting</li>
-          <li>Volledig logosysteem</li>
-          <li>Merkrichtlijnen (15–20p)</li>
-          <li>Social-mediakit (3 templates)</li>
-        </ul>
-        <p class="pkg-footer">3 revisierondes · 3–4 weken</p>
-        <div class="pkg-ctas">
-          <a href="contact.html" class="btn-p pkg-btn">Vraag een offerte →</a>
-          <a href="packages.html#studio" class="text-link pkg-detail">Bekijk alle details →</a>
-        </div>
-      </div>
-
-      <div class="pkg-card fade-up d3">
-        <div class="pkg-card-top">
-          <h3 class="pkg-title">Full Brand</h3>
-          <p class="pkg-subtitle">Voor merken die alles op punt willen, van A tot Z.</p>
-        </div>
-        <ul class="pkg-list">
-          <li>Alles uit Studio</li>
-          <li>Uitgebreide merkworkshop</li>
-          <li>Professionele presentatie</li>
-          <li>Motion-asset + webdesign</li>
-          <li>Packaging design</li>
-        </ul>
-        <p class="pkg-footer">4 revisierondes · 6–8 weken</p>
-        <div class="pkg-ctas">
-          <a href="contact.html" class="btn-p pkg-btn">Vraag een offerte →</a>
-          <a href="packages.html#fullbrand" class="text-link pkg-detail">Bekijk alle details →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <div class="pkg-nav" id="pkgNav">
-    <div class="r-dots-wrap" id="pkgDots"></div>
-    <div class="r-arrows">
-      <button class="r-arrow" id="pkgPrev" aria-label="Vorig pakket">←</button>
-      <button class="r-arrow" id="pkgNext" aria-label="Volgend pakket">→</button>
-    </div>
-  </div>
-  <p class="pkg-note fade-up">Niet zeker welk pakket past? <a href="contact.html" class="pkg-note-link">Stuur me een bericht</a>, ik help je graag kiezen.</p>
-</section>
-
-<!-- ═══ FAQ ═══ -->
-<section id="faq">
-  <div class="faq-head">
-    <p class="section-label fade-up">FAQ</p>
-    <h2 class="section-title fade-up d1">Jouw vragen, beantwoord.</h2>
-    <p class="faq-sub fade-up d2">Alles wat je moet weten voor we beginnen.</p>
-  </div>
-  <div class="faq-list">
-
-    <div class="faq-item open">
-      <div class="faq-q"><h3>Hoelang duurt een brandingproject?</h3><span class="faq-icon">+</span></div>
-      <div class="faq-ans"><p>De meeste merkidentiteitsprojecten duren tussen 2 en 4 weken, van de start tot de oplevering. Een gericht pakket met logo en richtlijnen is klaar in 2 weken. Een volledig merksysteem met motion design en webdesign duurt 4 tot 6 weken. Elk project start met een duidelijke timing, zodat je altijd weet waar we staan.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><h3>Wat kost een huisstijl of merkidentiteit in België?</h3><span class="faq-icon">+</span></div>
-      <div class="faq-ans"><p>Dat hangt af van de omvang en de aanpak. Bij Unpeel starten projecten vanaf ongeveer €1.000 voor een gericht logo en een sterke basis. Een volledige huisstijl, met strategie, richtlijnen, motion en web, zit meestal tussen €1.000 en €3.000+. Voor elk project krijg je vooraf een duidelijke offerte met alles erin. Geen verborgen kosten, geen verrassingen.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><h3>Wat is het verschil tussen een logo en een huisstijl?</h3><span class="faq-icon">+</span></div>
-      <div class="faq-ans"><p>Een logo is één teken: het symbool of woordmerk. Een huisstijl, ook wel merkidentiteit genoemd, is het volledige visuele en verbale systeem eromheen: typografie, kleur, tone of voice, beeldstijl en richtlijnen voor gebruik. Het logo is dus maar één stukje van het geheel. De huisstijl is wat je merk overal herkenbaar en consistent maakt, van je website tot je verpakking.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><h3>Wanneer heeft een startup professionele branding nodig?</h3><span class="faq-icon">+</span></div>
-      <div class="faq-ans"><p>Vroeger dan de meeste founders denken. Een sterke identiteit van bij de start zet de toon voor alles: je website, je pitchdeck, je packaging, je socials. Het meteen goed doen betekent dat je bouwt op een stevige basis, in plaats van later geloofwaardigheid te moeten bijwerken. Al kan een gericht logopakket een slimme eerste stap zijn als het budget krap is.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><h3>Wat krijg ik op het einde van een merkidentiteitsproject?</h3><span class="faq-icon">+</span></div>
-      <div class="faq-ans"><p>Alle merkbestanden in elk formaat dat je nodig hebt (AI, PDF, PNG, SVG), een document met merkrichtlijnen, en hulp om de identiteit toe te passen op print, web, social en packaging.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><h3>Met welke soort klanten werk je?</h3><span class="faq-icon">+</span></div>
-      <div class="faq-ans"><p>Unpeel werkt met startups, restaurants en horeca, merken met een eigen product, hotels, artiesten en creatieve founders. Zowel nieuwe merken als rebrandings. De rode draad: founders en bedrijven die design willen dat eerlijk en strategisch is, en gemaakt om te blijven. Bouw je iets van nul, of voelt je huidige identiteit niet meer als waar je naartoe gaat? Dan passen we waarschijnlijk goed samen.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><h3>Werk je ook met klanten buiten Gent of België?</h3><span class="faq-icon">+</span></div>
-      <div class="faq-ans"><p>Ja, zeker. Ik ben gevestigd in Gent, maar ik werk remote met klanten in heel België en daarbuiten, in heel Europa. Of je nu in Antwerpen, Brussel, Kortrijk of een dorp in West-Vlaanderen zit: alles loopt vlot via videocall en gedeelde tools. Locatie is nooit een drempel voor een sterke samenwerking.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><h3>Wat maakt een sterke merkidentiteit?</h3><span class="faq-icon">+</span></div>
-      <div class="faq-ans"><p>Helderheid, consistentie en karakter. Een sterke identiteit weet waar ze voor staat, ziet er overal hetzelfde uit, en heeft een eigen persoonlijkheid die mensen herkennen en onthouden. Het start met strategie, je doel, je publiek en je positionering begrijpen, en eindigt met een visueel systeem dat dat allemaal uitstraalt zonder uitleg.</p></div>
-    </div>
-
-  </div>
-</section>
 
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
@@ -813,8 +744,8 @@
     <p class="section-label fade-up">Neem contact op</p>
     <a href="mailto:design.arnaudboone@gmail.com" class="c-email fade-up d1">design.arnaudboone@gmail.com</a>
     <p class="c-sub fade-up d2">Heb je een project in gedachten? Vul het formulier hieronder in, ik antwoord binnen 24 uur.</p>
-    <form class="c-form" id="contactForm" action="https://formspree.io/f/xgobvrgy" method="POST">
-      <input type="hidden" name="_subject" value="New project inquiry — Unpeel Design">
+    <form class="c-form" id="contactForm" action="https://formspree.io/f/xgobvrgy" method="POST" autocomplete="off">
+      <input type="hidden" name="_subject" value="New project inquiry, Unpeel Design">
       <div class="c-field">
         <label for="c-name">Naam</label>
         <input type="text" id="c-name" name="name" placeholder="Je naam" required>
@@ -827,10 +758,11 @@
         <label for="c-type">Soort project</label>
         <select id="c-type" name="type">
           <option value="" disabled selected>Kies...</option>
-          <option value="branding">Branding</option>
-          <option value="webdesign">Webdesign</option>
-          <option value="motion-design">Motion Design</option>
-          <option value="artificial-design">Artificial Design</option>
+          <option value="brand-strategy">Brand Strategy</option>
+          <option value="brand-identity">Brand Identity</option>
+          <option value="web-design">Web Design</option>
+          <option value="packaging">Packaging</option>
+          <option value="ai-video">AI Video</option>
           <option value="not-sure">Nog niet zeker</option>
         </select>
       </div>
@@ -839,14 +771,8 @@
         <textarea id="c-desc" name="desc" placeholder="Wat ben je aan het bouwen?" rows="4"></textarea>
       </div>
       <div class="c-field">
-        <label for="c-budget">Budget</label>
-        <select id="c-budget" name="budget">
-          <option value="" disabled selected>Kies...</option>
-          <option value="under-1000">Minder dan €1.000</option>
-          <option value="1000-3000">€1.000 – €3.000</option>
-          <option value="3000+">€3.000+</option>
-          <option value="discuss">Laten we het bespreken</option>
-        </select>
+        <label for="c-deadline">Deadline</label>
+        <input type="text" id="c-deadline" name="deadline" placeholder="bv. voor september, ASAP, flexibel">
       </div>
       <button type="submit" class="c-submit">Verstuur bericht →</button>
       <p class="c-note">Ik antwoord binnen 24 uur.</p>
@@ -856,7 +782,7 @@
     </div>
   </div>
   <div class="c-img-side">
-    <img src="https://framerusercontent.com/images/Ewd3Lvi96rp4d2DuWdqZr1v6gg.webp" alt="Arnaud Boone, brand designer in Gent" loading="lazy">
+    <img src="../uploads/works/Ewd3Lvi96rp4d2DuWdqZr1v6gg.webp" alt="Arnaud Boone, brand designer in Gent" loading="lazy">
   </div>
 </section>
 
@@ -982,6 +908,112 @@ document.querySelectorAll('.works-grid video, [class*="work"] video, [class*="pr
   video.playsInline = true;
   video.play().catch(function () {});
 });
+</script>
+
+<script>
+/* ═══ WORKS — horizontal scroll gallery (exponential centre-focus, tight packing) ═══ */
+(function () {
+  var section = document.getElementById('works');
+  var row     = document.getElementById('worksRow');
+  var wordEl  = document.getElementById('worksWord');
+  var fill    = document.getElementById('worksProgress');
+  if (!section || !row) return;
+
+  var FALL = 0.70;                          /* each step from centre is 70% the size — strong falloff */
+  var GAP  = 30;                            /* must match .works-row gap */
+
+  var tiles = Array.prototype.slice.call(row.querySelectorAll('.wtile'));
+  var n = tiles.length;
+  if (!n) return;
+
+  Array.prototype.slice.call(row.querySelectorAll('video')).forEach(function (v) {
+    v.muted = true; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+  });
+
+  var enabled = false, vpW = 0, baseW = 0, travelPx = 0;
+  var targetP = 0, curP = 0, running = false;
+  var curActive = -1, curWord = '', wordTimer = null;
+
+  function setWord(w) {
+    if (!wordEl || w === curWord) return;
+    curWord = w;
+    wordEl.style.opacity = '0';
+    clearTimeout(wordTimer);
+    wordTimer = setTimeout(function () { wordEl.textContent = w; wordEl.style.opacity = '1'; }, 160);
+  }
+
+  function layout() {
+    vpW = document.documentElement.clientWidth;
+    if (vpW <= 768) {                       /* mobile = plain vertical stack, no pin/scale */
+      enabled = false;
+      section.style.height = '';
+      row.style.transform = '';
+      tiles.forEach(function (t) { t.style.width = ''; t.style.removeProperty('--fw'); });
+      curP = targetP = 0;
+      return;
+    }
+    enabled = true;
+    var vh = window.innerHeight;
+    baseW = Math.min(Math.max(320, vpW * 0.34), 480);   /* focal (largest) card width */
+    var baseH = baseW * 4 / 3;
+    var maxH = vh * 0.62;
+    if (baseH > maxH) { baseH = maxH; baseW = baseH * 0.75; }
+    travelPx = (n - 1) * baseW * 0.85;                  /* scroll length ≈ one focal width per card */
+    section.style.height = (vh + travelPx) + 'px';
+    computeTarget();
+    curP = targetP;                         /* snap on (re)layout */
+    apply();
+  }
+
+  function computeTarget() {
+    var scrolled = -section.getBoundingClientRect().top;
+    var p = travelPx > 0 ? scrolled / travelPx : 0;
+    targetP = p < 0 ? 0 : (p > 1 ? 1 : p);
+  }
+
+  function apply() {
+    var f = curP * (n - 1);                  /* fractional "focal" index */
+    var widths = new Array(n), centers = new Array(n), cum = 0, i;
+    for (i = 0; i < n; i++) widths[i] = baseW * Math.pow(FALL, Math.abs(i - f));
+    for (i = 0; i < n; i++) { centers[i] = cum + widths[i] / 2; cum += widths[i] + GAP; }
+
+    var lo = Math.floor(f), hi = Math.min(lo + 1, n - 1), fr = f - lo;
+    var focalC = centers[lo] + (centers[hi] - centers[lo]) * fr;
+    var tx = vpW / 2 - focalC;               /* slide so the focal point sits at viewport centre */
+    row.style.transform = 'translate3d(' + tx + 'px,0,0)';
+
+    for (i = 0; i < n; i++) {
+      var wpx = widths[i].toFixed(2) + 'px';
+      tiles[i].style.width = wpx;
+      tiles[i].style.setProperty('--fw', wpx);
+    }
+    if (fill) fill.style.width = (curP * 100) + '%';
+
+    var best = Math.round(f); if (best < 0) best = 0; if (best > n - 1) best = n - 1;
+    if (best !== curActive) {
+      if (curActive >= 0 && tiles[curActive]) tiles[curActive].classList.remove('is-active');
+      curActive = best;
+      tiles[best].classList.add('is-active');
+      setWord(tiles[best].getAttribute('data-word') || '');
+    }
+  }
+
+  function frame() {
+    var diff = targetP - curP;
+    if (Math.abs(diff) < 0.0006) { curP = targetP; apply(); running = false; return; }
+    curP += diff * 0.09;                     /* eased glide */
+    apply();
+    requestAnimationFrame(frame);
+  }
+
+  function startLoop() { if (!running) { running = true; requestAnimationFrame(frame); } }
+  function onScroll()  { if (!enabled) return; computeTarget(); startLoop(); }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', layout);
+  window.addEventListener('load', layout);
+  requestAnimationFrame(function () { requestAnimationFrame(layout); });
+})();
 </script>
 
 <!-- ═══ COOKIE BANNER ═══ -->

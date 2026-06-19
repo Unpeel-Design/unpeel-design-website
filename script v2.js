@@ -242,8 +242,27 @@ requestAnimationFrame(() => {
     }).join('');
     el.classList.add('tr-reveal');
   });
-  var obs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { e.target.classList.toggle('is-in', e.isIntersecting); });
-  }, { threshold: 0.2 });
-  titles.forEach(function (el) { obs.observe(el); });
+  /* scroll-based visibility, started only after webfonts are ready: the async bold-700 swap
+     must not interrupt the reveal transition (an IntersectionObserver was getting toggled by
+     the font reflow and leaving transitions stuck) */
+  function inView(el) {
+    var r = el.getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
+    return r.top < vh * 0.9 && r.bottom > vh * 0.1;
+  }
+  function update() {
+    for (var i = 0; i < titles.length; i++) titles[i].classList.toggle('is-in', inView(titles[i]));
+  }
+  var ticking = false;
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; update(); }); }
+  }
+  var started = false;
+  function start() {
+    if (started) return; started = true;
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+  setTimeout(start, 1200);   /* fallback so titles never stay hidden if fonts are slow/blocked */
 })();

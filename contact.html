@@ -346,7 +346,7 @@
   <div class="ct-left">
     <a href="mailto:design.arnaudboone@gmail.com" class="ct-email-link fade-up">design.arnaudboone@gmail.com</a>
 
-    <form class="c-form" id="contactForm" action="https://formspree.io/f/xgobvrgy" method="POST">
+    <form class="c-form" id="contactForm" action="https://formspree.io/f/xgobvrgy" method="POST" autocomplete="off">
       <input type="hidden" name="_subject" value="New project inquiry — Unpeel Design">
       <div class="c-field fade-up" style="transition-delay:.10s">
         <label for="ct-name">Name</label>
@@ -360,11 +360,12 @@
         <label for="ct-type">Type of project</label>
         <select id="ct-type" name="type">
           <option value="" disabled selected>Select...</option>
-          <option value="branding">Branding</option>
+          <option value="brand-strategy">Brand Strategy</option>
+          <option value="brand-identity">Brand Identity</option>
           <option value="web-design">Web Design</option>
-          <option value="motion">Motion Design</option>
-          <option value="artificial">Artificial Design</option>
-          <option value="notsure">Not sure yet</option>
+          <option value="packaging">Packaging</option>
+          <option value="ai-video">AI Video</option>
+          <option value="not-sure">Not sure yet</option>
         </select>
       </div>
       <div class="c-field fade-up" style="transition-delay:.25s">
@@ -372,14 +373,8 @@
         <textarea id="ct-desc" name="desc" placeholder="What are you building?" rows="5"></textarea>
       </div>
       <div class="c-field fade-up" style="transition-delay:.30s">
-        <label for="ct-timeline">Timeline</label>
-        <select id="ct-timeline" name="timeline">
-          <option value="" disabled selected>Select...</option>
-          <option value="asap">As soon as possible</option>
-          <option value="1-3-months">Within 1-3 months</option>
-          <option value="3-plus-months">In 3+ months</option>
-          <option value="exploring">Just exploring</option>
-        </select>
+        <label for="ct-deadline">Deadline</label>
+        <input type="text" id="ct-deadline" name="deadline" placeholder="e.g. before September, ASAP, flexible">
       </div>
       <div class="fade-up" style="transition-delay:.35s">
         <button type="submit" class="c-submit">Send message →</button>

@@ -223,3 +223,27 @@ requestAnimationFrame(() => {
     }
   });
 });
+
+
+/* ═══ TITLE MASK-REVEAL (per-line, replays each time in view) ═══ */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var SEL = '.hero-h1, .section-title, .statement-text, .page-h1, .cs-h1, .svcp-h1, .pkgp-h1, .pp-h1, .ct-h1, .app-h1, .ab-h1, .app-diff-heading, .ab-diff-heading, .svcp-cta-h, .pkgp-dark-cta-h, .app-dark-cta-h, .ab-cta-h';
+  var titles = Array.prototype.slice.call(document.querySelectorAll(SEL));
+  if (!titles.length) return;
+  titles.forEach(function (el) {
+    if (el.dataset.trReveal) return;
+    el.dataset.trReveal = '1';
+    /* drop the one-time hero entrance so only the mask reveal plays */
+    el.className = el.className.replace(/\bhero-anim\b/g, '').replace(/\bha\d\b/g, '').replace(/\s+/g, ' ').trim();
+    var lines = el.innerHTML.split(/<br\s*\/?>/i);
+    el.innerHTML = lines.map(function (ln) {
+      return '<span class="tr-mask"><span class="tr-line">' + ln + '</span></span>';
+    }).join('');
+    el.classList.add('tr-reveal');
+  });
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { e.target.classList.toggle('is-in', e.isIntersecting); });
+  }, { threshold: 0.2 });
+  titles.forEach(function (el) { obs.observe(el); });
+})();

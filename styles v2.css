@@ -1090,7 +1090,12 @@ video { border-radius: 0 !important; }
 @media (max-width: 768px)  { #statement { padding-left: 24px; padding-right: 24px; } }
 
 /* ═══ ALL-CAPS section titles (site-wide) — existing letter-spacing kept ═══ */
-.hero-h1, .section-title { text-transform: uppercase; letter-spacing: -0.02em; }
+.hero-h1, .section-title, .statement-text,
+.page-h1, .cs-h1, .svcp-h1, .pkgp-h1, .pp-h1, .ct-h1, .app-h1, .ab-h1,
+.app-diff-heading, .ab-diff-heading,
+.svcp-cta-h, .pkgp-dark-cta-h, .app-dark-cta-h, .ab-cta-h {
+  text-transform: uppercase; letter-spacing: -0.02em;
+}
 
 /* ═══ STATEMENT eyebrow (small intro line above the big statement) ═══ */
 .statement-eyebrow {
@@ -1110,3 +1115,22 @@ video { border-radius: 0 !important; }
 .acc-main { flex: 1; display: flex; flex-direction: column; gap: 4px; }
 .acc-main .acc-name { flex: 0 0 auto; }
 .acc-desc { font-size: 14px; color: #888888; line-height: 1.4; }
+
+
+/* ═══ TITLE MASK-REVEAL (per line, replays on scroll) ═══ */
+.tr-reveal { opacity: 1 !important; transform: none !important; }
+.tr-mask { display: block; overflow: hidden; }
+.tr-line {
+  display: block;
+  transform: translateY(110%);
+  transition: transform .8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.tr-reveal.is-in .tr-line { transform: translateY(0); }
+.tr-mask:nth-child(2) .tr-line { transition-delay: .08s; }
+.tr-mask:nth-child(3) .tr-line { transition-delay: .16s; }
+.tr-mask:nth-child(4) .tr-line { transition-delay: .24s; }
+@media (prefers-reduced-motion: reduce) {
+  .tr-mask { overflow: visible; }
+  .tr-line { transform: none !important; transition: none !important; }
+}

@@ -188,7 +188,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
 /* ═══ NEWSLETTER ═══ */
 document.getElementById('newsForm').addEventListener('submit', e => {
   e.preventDefault();
-  e.currentTarget.innerHTML = '<p style="color:rgba(255,255,255,.5);font-size:14px;padding:8px 0;">Thanks — you\'re on the list.</p>';
+  e.currentTarget.innerHTML = '<p style="color:rgba(255,255,255,.5);font-size:14px;padding:8px 0;">Thanks, you\'re on the list.</p>';
 });
 
 /* ═══ LAYOUT PANEL ═══ */

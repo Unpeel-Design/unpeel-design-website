@@ -213,7 +213,27 @@
     /* Packages carousel nav — hidden on desktop, shown on mobile via @media below */
     .pkg-nav { display: none; }
 
-    /* ── Hero video keeps the full-screen scroll-expand behaviour on mobile ── */
+    /* ── Hero reel on mobile: no scroll-expand, starts (and stays) at largest 16:9 size ── */
+    @media (max-width: 768px) {
+      #hero { height: auto !important; }
+      .hero-sticky { position: static !important; height: auto !important; min-height: 0 !important; overflow: visible !important; padding-bottom: 36px; }
+      .hero-video-wrap {
+        position: static !important;
+        width: calc(100% - 48px) !important;
+        max-width: none !important;
+        margin: 28px auto 0 !important;
+        left: auto !important; right: auto !important; top: auto !important;
+        aspect-ratio: 16 / 9 !important;
+        border-radius: 0 !important;
+      }
+      .hero-scroll-hint { display: none !important; }
+      .hero-label {
+        position: static !important;
+        text-align: center !important;
+        margin: 20px 0 0 !important;
+        left: auto !important; bottom: auto !important;
+      }
+    }
     /* ── Trust bar — mobile layout ── */
     @media (max-width: 768px) {
       #trust {
@@ -758,7 +778,6 @@
         <label for="c-type">Type of project</label>
         <select id="c-type" name="type">
           <option value="" disabled selected>Select...</option>
-          <option value="brand-strategy">Brand Strategy</option>
           <option value="brand-identity">Brand Identity</option>
           <option value="web-design">Web Design</option>
           <option value="packaging">Packaging</option>
@@ -851,6 +870,12 @@
   function update() {
     ticking = false;
     var vw = document.documentElement.clientWidth;
+    if (vw <= 768) {
+      /* mobile: no scroll-expand, clear inline geometry so the CSS largest state applies */
+      wrap.style.width = ''; wrap.style.left = ''; wrap.style.top = '';
+      if (hint) { hint.style.opacity = ''; hint.style.top = ''; }
+      return;
+    }
     var vh = window.innerHeight;
     var mobile = vw <= 768;
 

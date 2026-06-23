@@ -1158,3 +1158,15 @@ video { border-radius: 0 !important; }
 .app-diff-heading { font-size: clamp(25px, 2.88vw, 41px) !important; }
 .ab-diff-heading  { font-size: clamp(22px, 2.52vw, 36px) !important; }
 .svcp-cta-h, .pkgp-dark-cta-h, .app-dark-cta-h, .ab-cta-h { font-size: clamp(31px, 4.05vw, 58px) !important; }
+
+
+/* ═══ LOGO — never distort: sized by height, width auto, never stretched or squeezed ═══ */
+img[src*="LOGO ICON-02"] {
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+/* the flex items that hold the logo must not compress it when nav space gets tight */
+.nav-logo,
+.mob-logo-link { flex-shrink: 0 !important; }

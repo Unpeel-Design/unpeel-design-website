@@ -268,24 +268,93 @@ requestAnimationFrame(() => {
 })();
 
 
-/* ═══ FILM GRAIN: subtle static neutral-noise overlay across the whole site ═══ */
+/* ═══ FILM GRAIN: static analog dust, hair and scratch overlay across the whole site ═══ */
 (function () {
   if (document.getElementById('film-grain')) return;
-  /* self-contained SVG noise, desaturated to neutral grain (no colour) */
-  var svg = "<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'>"
-          + "<filter id='filmGrainN'>"
-          + "<feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/>"
-          + "<feColorMatrix type='saturate' values='0'/>"
-          + "<feComponentTransfer><feFuncA type='discrete' tableValues='1'/></feComponentTransfer>"
-          + "</filter>"
-          + "<rect width='180' height='180' filter='url(#filmGrainN)'/></svg>";
+
+  /* deterministic PRNG (mulberry32) so the texture is stable, not flickering */
+  function rng(seed) {
+    return function () {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  /* the overlay element: top-most layer, never blocks clicks, static */
   var o = document.createElement('div');
   o.id = 'film-grain';
   o.setAttribute('aria-hidden', 'true');
   o.style.cssText =
     'position:fixed;inset:0;pointer-events:none;z-index:2147483647;' +
-    'opacity:0.15;' +
-    'background-image:url("data:image/svg+xml,' + encodeURIComponent(svg) + '");' +
-    'background-size:180px 180px;background-repeat:repeat;';
+    'opacity:0.55;background-repeat:no-repeat;background-size:cover;';
   (document.body || document.documentElement).appendChild(o);
+
+  /* build a full-viewport SVG of dust specks, stray hairs and faint scratches.
+     particles are a mix of dark and light so they read on white AND on dark
+     areas (images, footer) with a plain normal blend. */
+  function build() {
+    var W = Math.max(window.innerWidth || 0, document.documentElement.clientWidth || 0,
+                     (window.visualViewport && window.visualViewport.width) || 0);
+    var H = Math.max(window.innerHeight || 0, document.documentElement.clientHeight || 0,
+                     (window.visualViewport && window.visualViewport.height) || 0);
+    /* guard against a browser reporting a degenerate viewport size */
+    if (W < 360) W = (window.screen && window.screen.width) || 1440;
+    if (H < 360) H = (window.screen && window.screen.height) || 900;
+    var r = rng(20240607);                 /* fixed seed: same look every load */
+    var area = W * H;
+    var p = [];
+
+    /* faint base grain so flat areas keep a film tooth */
+    p.push("<filter id='fgN'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/>"
+         + "<feColorMatrix type='saturate' values='0'/></filter>");
+    p.push("<rect width='" + W + "' height='" + H + "' filter='url(#fgN)' opacity='0.35'/>");
+
+    /* dust specks: density scaled to viewport area, mostly dark on a light site */
+    var dust = Math.round(area / 1700);
+    for (var i = 0; i < dust; i++) {
+      var x = (r() * W).toFixed(1), y = (r() * H).toFixed(1);
+      var rad = (0.25 + r() * r() * 1.7).toFixed(2);   /* mostly tiny, a few bigger */
+      var dark = r() < 0.72;
+      var op = (0.12 + r() * 0.55).toFixed(2);
+      p.push("<circle cx='" + x + "' cy='" + y + "' r='" + rad + "' fill='" + (dark ? '#000' : '#fff') + "' opacity='" + op + "'/>");
+    }
+
+    /* stray hairs / fibres: short thin curved strokes */
+    var hairs = Math.max(8, Math.round(area / 48000));
+    for (i = 0; i < hairs; i++) {
+      var hx = r() * W, hy = r() * H;
+      var c1x = hx + (r() - 0.5) * 55, c1y = hy + (r() - 0.5) * 55;
+      var c2x = hx + (r() - 0.5) * 75, c2y = hy + (r() - 0.5) * 75;
+      var ex = hx + (r() - 0.5) * 80, ey = hy + (r() - 0.5) * 80;
+      var hd = r() < 0.62;
+      p.push("<path d='M" + hx.toFixed(1) + "," + hy.toFixed(1)
+           + " C" + c1x.toFixed(1) + "," + c1y.toFixed(1)
+           + " " + c2x.toFixed(1) + "," + c2y.toFixed(1)
+           + " " + ex.toFixed(1) + "," + ey.toFixed(1) + "'"
+           + " fill='none' stroke='" + (hd ? '#000' : '#fff') + "'"
+           + " stroke-width='" + (0.5 + r() * 0.8).toFixed(2) + "'"
+           + " stroke-linecap='round' opacity='" + (0.18 + r() * 0.4).toFixed(2) + "'/>");
+    }
+
+    /* faint vertical scratches */
+    var scr = Math.max(2, Math.round(W / 520));
+    for (i = 0; i < scr; i++) {
+      var sx = r() * W;
+      var sd = r() < 0.5;
+      p.push("<line x1='" + sx.toFixed(1) + "' y1='0' x2='" + (sx + (r() - 0.5) * 8).toFixed(1) + "' y2='" + H + "'"
+           + " stroke='" + (sd ? '#000' : '#fff') + "'"
+           + " stroke-width='" + (0.4 + r() * 0.5).toFixed(2) + "'"
+           + " opacity='" + (0.1 + r() * 0.22).toFixed(2) + "'/>");
+    }
+
+    var svg = "<svg xmlns='http://www.w3.org/2000/svg' width='" + W + "' height='" + H + "'>" + p.join('') + "</svg>";
+    o.style.backgroundImage = 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")';
+  }
+
+  build();
+  /* regenerate on resize (debounced) so the texture always fills the viewport */
+  var t;
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(build, 200); }, { passive: true });
 })();

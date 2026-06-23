@@ -276,6 +276,7 @@ requestAnimationFrame(() => {
           + "<filter id='filmGrainN'>"
           + "<feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/>"
           + "<feColorMatrix type='saturate' values='0'/>"
+          + "<feComponentTransfer><feFuncA type='discrete' tableValues='1'/></feComponentTransfer>"
           + "</filter>"
           + "<rect width='180' height='180' filter='url(#filmGrainN)'/></svg>";
   var o = document.createElement('div');
@@ -283,7 +284,7 @@ requestAnimationFrame(() => {
   o.setAttribute('aria-hidden', 'true');
   o.style.cssText =
     'position:fixed;inset:0;pointer-events:none;z-index:2147483647;' +
-    'opacity:0.12;mix-blend-mode:overlay;' +
+    'opacity:0.15;' +
     'background-image:url("data:image/svg+xml,' + encodeURIComponent(svg) + '");' +
     'background-size:180px 180px;background-repeat:repeat;';
   (document.body || document.documentElement).appendChild(o);

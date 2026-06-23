@@ -266,3 +266,25 @@ requestAnimationFrame(() => {
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
   setTimeout(start, 1200);   /* fallback so titles never stay hidden if fonts are slow/blocked */
 })();
+
+
+/* ═══ FILM GRAIN: subtle static neutral-noise overlay across the whole site ═══ */
+(function () {
+  if (document.getElementById('film-grain')) return;
+  /* self-contained SVG noise, desaturated to neutral grain (no colour) */
+  var svg = "<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'>"
+          + "<filter id='filmGrainN'>"
+          + "<feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/>"
+          + "<feColorMatrix type='saturate' values='0'/>"
+          + "</filter>"
+          + "<rect width='180' height='180' filter='url(#filmGrainN)'/></svg>";
+  var o = document.createElement('div');
+  o.id = 'film-grain';
+  o.setAttribute('aria-hidden', 'true');
+  o.style.cssText =
+    'position:fixed;inset:0;pointer-events:none;z-index:2147483646;' +
+    'opacity:0.05;mix-blend-mode:overlay;' +
+    'background-image:url("data:image/svg+xml,' + encodeURIComponent(svg) + '");' +
+    'background-size:180px 180px;background-repeat:repeat;';
+  (document.body || document.documentElement).appendChild(o);
+})();

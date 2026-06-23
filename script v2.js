@@ -268,7 +268,7 @@ requestAnimationFrame(() => {
 })();
 
 
-/* ═══ FILM GRAIN: static analog dust, hair and scratch overlay across the whole site ═══ */
+/* ═══ FILM GRAIN: static dense film grain overlay (plus sparse dust and hairs) across the whole site ═══ */
 (function () {
   if (document.getElementById('film-grain')) return;
 
@@ -288,12 +288,14 @@ requestAnimationFrame(() => {
   o.setAttribute('aria-hidden', 'true');
   o.style.cssText =
     'position:fixed;inset:0;pointer-events:none;z-index:2147483647;' +
-    'opacity:0.55;background-repeat:no-repeat;background-size:cover;';
+    'opacity:0.26;background-repeat:no-repeat;background-size:cover;';
   (document.body || document.documentElement).appendChild(o);
 
-  /* build a full-viewport SVG of dust specks, stray hairs and faint scratches.
-     particles are a mix of dark and light so they read on white AND on dark
-     areas (images, footer) with a plain normal blend. */
+  /* build a full-viewport SVG: dense neutral film grain as the main texture
+     (multi-octave fractal noise gives the fine grain plus soft tonal
+     unevenness), then a few sparse light dust specks and short hairs on top.
+     plain normal blend at low master opacity, so the grain reads on white
+     AND on dark areas (images, footer). */
   function build() {
     var W = Math.max(window.innerWidth || 0, document.documentElement.clientWidth || 0,
                      (window.visualViewport && window.visualViewport.width) || 0);
@@ -306,47 +308,39 @@ requestAnimationFrame(() => {
     var area = W * H;
     var p = [];
 
-    /* faint base grain so flat areas keep a film tooth */
-    p.push("<filter id='fgN'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/>"
-         + "<feColorMatrix type='saturate' values='0'/></filter>");
-    p.push("<rect width='" + W + "' height='" + H + "' filter='url(#fgN)' opacity='0.35'/>");
+    /* dense neutral film grain: the main texture. multi-octave fractal noise
+       carries both fine grain and soft larger-scale tonal unevenness. forced
+       opaque + desaturated so the master opacity alone controls strength. */
+    p.push("<filter id='fgN'>"
+         + "<feTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='3' stitchTiles='stitch'/>"
+         + "<feColorMatrix type='saturate' values='0'/>"
+         + "<feComponentTransfer><feFuncA type='discrete' tableValues='1'/></feComponentTransfer>"
+         + "</filter>");
+    p.push("<rect width='" + W + "' height='" + H + "' filter='url(#fgN)'/>");
 
-    /* dust specks: density scaled to viewport area, mostly dark on a light site */
-    var dust = Math.round(area / 1700);
+    /* sparse light dust specks (read over images / dark areas, like the reference) */
+    var dust = Math.round(area / 42000);
     for (var i = 0; i < dust; i++) {
       var x = (r() * W).toFixed(1), y = (r() * H).toFixed(1);
-      var rad = (0.25 + r() * r() * 1.7).toFixed(2);   /* mostly tiny, a few bigger */
-      var dark = r() < 0.72;
-      var op = (0.12 + r() * 0.55).toFixed(2);
-      p.push("<circle cx='" + x + "' cy='" + y + "' r='" + rad + "' fill='" + (dark ? '#000' : '#fff') + "' opacity='" + op + "'/>");
+      var rad = (0.4 + r() * r() * 2.0).toFixed(2);    /* mostly small, a few brighter dots */
+      var op = (0.4 + r() * 0.6).toFixed(2);
+      p.push("<circle cx='" + x + "' cy='" + y + "' r='" + rad + "' fill='#fff' opacity='" + op + "'/>");
     }
 
-    /* stray hairs / fibres: short thin curved strokes */
-    var hairs = Math.max(8, Math.round(area / 48000));
+    /* a few short light hairs / fibres */
+    var hairs = Math.max(4, Math.round(area / 175000));
     for (i = 0; i < hairs; i++) {
       var hx = r() * W, hy = r() * H;
-      var c1x = hx + (r() - 0.5) * 55, c1y = hy + (r() - 0.5) * 55;
-      var c2x = hx + (r() - 0.5) * 75, c2y = hy + (r() - 0.5) * 75;
-      var ex = hx + (r() - 0.5) * 80, ey = hy + (r() - 0.5) * 80;
-      var hd = r() < 0.62;
+      var c1x = hx + (r() - 0.5) * 40, c1y = hy + (r() - 0.5) * 40;
+      var c2x = hx + (r() - 0.5) * 55, c2y = hy + (r() - 0.5) * 55;
+      var ex = hx + (r() - 0.5) * 60, ey = hy + (r() - 0.5) * 60;
       p.push("<path d='M" + hx.toFixed(1) + "," + hy.toFixed(1)
            + " C" + c1x.toFixed(1) + "," + c1y.toFixed(1)
            + " " + c2x.toFixed(1) + "," + c2y.toFixed(1)
            + " " + ex.toFixed(1) + "," + ey.toFixed(1) + "'"
-           + " fill='none' stroke='" + (hd ? '#000' : '#fff') + "'"
-           + " stroke-width='" + (0.5 + r() * 0.8).toFixed(2) + "'"
-           + " stroke-linecap='round' opacity='" + (0.18 + r() * 0.4).toFixed(2) + "'/>");
-    }
-
-    /* faint vertical scratches */
-    var scr = Math.max(2, Math.round(W / 520));
-    for (i = 0; i < scr; i++) {
-      var sx = r() * W;
-      var sd = r() < 0.5;
-      p.push("<line x1='" + sx.toFixed(1) + "' y1='0' x2='" + (sx + (r() - 0.5) * 8).toFixed(1) + "' y2='" + H + "'"
-           + " stroke='" + (sd ? '#000' : '#fff') + "'"
-           + " stroke-width='" + (0.4 + r() * 0.5).toFixed(2) + "'"
-           + " opacity='" + (0.1 + r() * 0.22).toFixed(2) + "'/>");
+           + " fill='none' stroke='#fff'"
+           + " stroke-width='" + (0.5 + r() * 0.7).toFixed(2) + "'"
+           + " stroke-linecap='round' opacity='" + (0.45 + r() * 0.45).toFixed(2) + "'/>");
     }
 
     var svg = "<svg xmlns='http://www.w3.org/2000/svg' width='" + W + "' height='" + H + "'>" + p.join('') + "</svg>";

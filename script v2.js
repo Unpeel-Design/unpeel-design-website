@@ -282,8 +282,8 @@ requestAnimationFrame(() => {
   o.id = 'film-grain';
   o.setAttribute('aria-hidden', 'true');
   o.style.cssText =
-    'position:fixed;inset:0;pointer-events:none;z-index:2147483646;' +
-    'opacity:0.05;mix-blend-mode:overlay;' +
+    'position:fixed;inset:0;pointer-events:none;z-index:2147483647;' +
+    'opacity:0.12;mix-blend-mode:overlay;' +
     'background-image:url("data:image/svg+xml,' + encodeURIComponent(svg) + '");' +
     'background-size:180px 180px;background-repeat:repeat;';
   (document.body || document.documentElement).appendChild(o);

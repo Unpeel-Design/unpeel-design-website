@@ -213,12 +213,26 @@
     /* Packages carousel nav — hidden on desktop, shown on mobile via @media below */
     .pkg-nav { display: none; }
 
+    /* ═══ HERO CLOUD: subtle interactive background ═══ */
+    .hero-cloud {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background: radial-gradient(60% 60% at 50% 45%, #efe9e2 0%, #ece7e2 60%, #e7e0d6 100%);
+    }
+    .hero-cloud-c { position: absolute; top: 0; left: 0; border-radius: 50%; will-change: transform; }
+    .hero-cloud .c1 { width: 300px; height: 300px; background: #ffffff; filter: blur(52px); opacity: .6; }
+    .hero-cloud .c2 { width: 210px; height: 210px; background: #f6f2ec; filter: blur(46px); opacity: .42; }
+    .hero-cloud .c3 { width: 180px; height: 180px; background: #ffffff; filter: blur(44px); opacity: .38; }
     /* ── Hero reel on mobile: no scroll-expand, starts (and stays) at largest 16:9 size ── */
     @media (max-width: 768px) {
       #hero { height: auto !important; }
       .hero-sticky { position: static !important; height: auto !important; min-height: 0 !important; overflow: visible !important; padding-bottom: 36px; }
       .hero-video-wrap {
-        position: static !important;
+        position: relative !important;
+        z-index: 1 !important;
         width: calc(100% - 48px) !important;
         max-width: none !important;
         margin: 28px auto 0 !important;
@@ -228,7 +242,8 @@
       }
       .hero-scroll-hint { display: none !important; }
       .hero-label {
-        position: static !important;
+        position: relative !important;
+        z-index: 1 !important;
         text-align: center !important;
         margin: 20px 0 0 !important;
         left: auto !important; bottom: auto !important;
@@ -498,6 +513,11 @@
 <!-- ═══ HERO ═══ -->
 <section id="hero">
   <div class="hero-sticky">
+    <div class="hero-cloud" aria-hidden="true">
+      <div class="hero-cloud-c c1"></div>
+      <div class="hero-cloud-c c2"></div>
+      <div class="hero-cloud-c c3"></div>
+    </div>
     <div class="hero-top">
       <h1 class="hero-h1 hero-anim ha0">Creating brands that<br>feel honest and last.</h1>
       <p class="hero-sub hero-anim ha1">Freelance brand designer in Ghent, working globally.</p>
@@ -921,6 +941,79 @@
   window.addEventListener('resize', update);
   window.addEventListener('load', update);
   requestAnimationFrame(function () { requestAnimationFrame(update); });
+})();
+</script>
+
+<script>
+/* ═══ HERO CLOUD: subtle interactive background (homepage only) ═══ */
+(function () {
+  var hero = document.getElementById('hero');
+  var cloud = hero ? hero.querySelector('.hero-cloud') : null;
+  if (!hero || !cloud) return;
+  var circ = [
+    { el: cloud.querySelector('.c1'), ox: 0,    oy: 0,   hw: 150, hh: 150, ia: 6, ip: 0.0, is: 0.0011 },
+    { el: cloud.querySelector('.c2'), ox: -110, oy: 50,  hw: 105, hh: 105, ia: 6, ip: 2.1, is: 0.0009 },
+    { el: cloud.querySelector('.c3'), ox: 95,   oy: -30, hw: 90,  hh: 90,  ia: 6, ip: 4.2, is: 0.0013 }
+  ];
+  if (!circ[0].el) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var W = 1, H = 1, rl = 0, rt = 0, isMobile = false;
+  function refresh() {
+    var r = cloud.getBoundingClientRect();         /* read only on resize/scroll, never per frame */
+    rl = r.left; rt = r.top;
+    W = cloud.clientWidth || 1; H = cloud.clientHeight || 1;
+    isMobile = document.documentElement.clientWidth <= 768;
+  }
+
+  var sx, sy;
+  function place(t) {
+    for (var i = 0; i < circ.length; i++) {
+      var c = circ[i];
+      var ix = Math.sin(t * c.is + c.ip) * c.ia;
+      var iy = Math.cos(t * c.is + c.ip) * c.ia;
+      c.el.style.transform = 'translate(' + (sx + c.ox + ix - c.hw) + 'px,' + (sy + c.oy + iy - c.hh) + 'px)';
+    }
+  }
+
+  refresh();
+  sx = W * 0.5; sy = H * 0.45;
+  place(0);
+
+  /* reduced motion: static cloud, no loop */
+  if (reduce) {
+    window.addEventListener('resize', function () { refresh(); sx = W * 0.5; sy = H * 0.45; place(0); });
+    return;
+  }
+
+  var cx = 0, cy = 0, hasMouse = false;
+  window.addEventListener('mousemove', function (e) { cx = e.clientX; cy = e.clientY; hasMouse = true; }, { passive: true });
+  window.addEventListener('resize', refresh);
+  window.addEventListener('scroll', refresh, { passive: true });
+
+  var running = false, raf = 0;
+  function frame(now) {
+    if (!running) return;
+    var t = now || 0, tx, ty;
+    var lx = cx - rl, ly = cy - rt;
+    if (hasMouse && !isMobile && lx >= 0 && lx <= W && ly >= 0 && ly <= H) {
+      tx = lx; ty = ly;                              /* follow the mouse over the hero (desktop) */
+    } else {
+      tx = W * 0.5 + Math.sin(t * 0.00022) * W * 0.18;   /* slow ambient drift */
+      ty = H * 0.5 + Math.cos(t * 0.00018) * H * 0.18;
+    }
+    sx += (tx - sx) * 0.022;                          /* heavy smoothing: dreamy + subtle */
+    sy += (ty - sy) * 0.022;
+    place(t);
+    raf = requestAnimationFrame(frame);
+  }
+  function start() { if (!running) { running = true; raf = requestAnimationFrame(frame); } }
+  function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
+
+  /* pause the loop when the hero is off-screen */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { if (es[0].isIntersecting) start(); else stop(); }, { threshold: 0 }).observe(hero);
+  } else { start(); }
 })();
 </script>
 

@@ -266,3 +266,85 @@ requestAnimationFrame(() => {
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
   setTimeout(start, 1200);   /* fallback so titles never stay hidden if fonts are slow/blocked */
 })();
+
+
+/* ═══ FILM GRAIN: static fine grain overlay with dust specks and soft defocused blobs across the whole site ═══ */
+(function () {
+  if (document.getElementById('film-grain')) return;
+
+  /* deterministic PRNG (mulberry32) so the texture is stable, not flickering */
+  function rng(seed) {
+    return function () {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  /* the overlay element: top-most layer, never blocks clicks, static */
+  var o = document.createElement('div');
+  o.id = 'film-grain';
+  o.setAttribute('aria-hidden', 'true');
+  o.style.cssText =
+    'position:fixed;inset:0;pointer-events:none;z-index:2147483647;' +
+    'opacity:0.3;background-repeat:no-repeat;background-size:cover;';
+  (document.body || document.documentElement).appendChild(o);
+
+  /* build a full-viewport SVG: a fine neutral film grain (kept light), then
+     scattered dust specks and a few soft defocused blobs on top. specks and
+     blobs mix light and dark so they read on white AND on dark areas
+     (images, footer). plain normal blend at low master opacity. */
+  function build() {
+    var W = Math.max(window.innerWidth || 0, document.documentElement.clientWidth || 0,
+                     (window.visualViewport && window.visualViewport.width) || 0);
+    var H = Math.max(window.innerHeight || 0, document.documentElement.clientHeight || 0,
+                     (window.visualViewport && window.visualViewport.height) || 0);
+    /* guard against a browser reporting a degenerate viewport size */
+    if (W < 360) W = (window.screen && window.screen.width) || 1440;
+    if (H < 360) H = (window.screen && window.screen.height) || 900;
+    var r = rng(20240607);                 /* fixed seed: same look every load */
+    var area = W * H;
+    var p = [];
+
+    /* fine neutral film grain, kept light (rect opacity below master). forced
+       opaque + desaturated so its strength is predictable. */
+    p.push("<filter id='fgN'>"
+         + "<feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/>"
+         + "<feColorMatrix type='saturate' values='0'/>"
+         + "<feComponentTransfer><feFuncA type='discrete' tableValues='1'/></feComponentTransfer>"
+         + "</filter>");
+    /* soft blur for the defocused dust blobs */
+    p.push("<filter id='fgB' x='-60%' y='-60%' width='220%' height='220%'><feGaussianBlur stdDeviation='3.6'/></filter>");
+    p.push("<rect width='" + W + "' height='" + H + "' filter='url(#fgN)' opacity='0.5'/>");
+
+    /* scattered dust specks, mix of light and dark so they read everywhere */
+    var dust = Math.round(area / 28000);
+    for (var i = 0; i < dust; i++) {
+      var x = (r() * W).toFixed(1), y = (r() * H).toFixed(1);
+      var rad = (0.4 + r() * r() * 1.9).toFixed(2);    /* mostly small, a few brighter dots */
+      var light = r() < 0.58;
+      var op = (0.35 + r() * 0.55).toFixed(2);
+      p.push("<circle cx='" + x + "' cy='" + y + "' r='" + rad + "' fill='" + (light ? '#fff' : '#111') + "' opacity='" + op + "'/>");
+    }
+
+    /* a few soft defocused blobs (out-of-focus dust): mostly light, and any
+       dark ones kept very faint so they never read as smudges on white */
+    var blobs = Math.max(4, Math.round(area / 230000));
+    for (i = 0; i < blobs; i++) {
+      var bx = (r() * W).toFixed(1), by = (r() * H).toFixed(1);
+      var brad = (6 + r() * 18).toFixed(1);
+      var bl = r() < 0.75;
+      var bop = (bl ? (0.12 + r() * 0.18) : (0.05 + r() * 0.06)).toFixed(2);
+      p.push("<circle cx='" + bx + "' cy='" + by + "' r='" + brad + "' fill='" + (bl ? '#fff' : '#111') + "' opacity='" + bop + "' filter='url(#fgB)'/>");
+    }
+
+    var svg = "<svg xmlns='http://www.w3.org/2000/svg' width='" + W + "' height='" + H + "'>" + p.join('') + "</svg>";
+    o.style.backgroundImage = 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")';
+  }
+
+  build();
+  /* regenerate on resize (debounced) so the texture always fills the viewport */
+  var t;
+  window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(build, 200); }, { passive: true });
+})();

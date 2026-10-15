@@ -422,7 +422,10 @@ nav .nav-cta { border-radius: 100px !important; }
 .acc-header {
   display: flex; align-items: center; gap: 20px;
   padding: 28px 0; cursor: none;
+  width: 100%; text-align: left; background: none; border: 0;
+  font: inherit; color: inherit;
 }
+.acc-header:focus-visible, .faq-q:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .acc-num {
   font-size: 11px; color: var(--gray);
   letter-spacing: .1em; flex-shrink: 0; width: 36px;
@@ -680,6 +683,7 @@ footer { background: #111; color: #fff; }
 }
 .f-news-form button:hover { color: rgba(255,255,255,.5); }
 .f-main { padding: 56px 64px 36px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; }
+.f-main-4 { grid-template-columns: 2fr 1fr 1fr 1fr; }
 .f-logo { height: 120px; width: auto; filter: invert(1); mix-blend-mode: screen; margin-bottom: 14px; }
 .f-tag { font-size: 13px; color: rgba(255,255,255,.38); line-height: 1.5; }
 .f-col-title { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 18px; font-weight: 400; }

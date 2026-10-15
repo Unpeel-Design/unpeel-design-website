@@ -4,9 +4,8 @@
     {
       "name": "unpeel-site",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "/Users/arnaudboone/Documents/Arnaud Boone/UNPEEL/Website/Unpeel-Design-Website"],
-      "port": 3456,
-      "autoPort": true
+      "runtimeArgs": ["-y", "serve", "-l", "3456", "."],
+      "port": 3456
     }
   ]
 }

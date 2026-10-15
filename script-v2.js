@@ -64,8 +64,8 @@ accItems.forEach(item => {
   const header = item.querySelector('.acc-header');
   header.addEventListener('click', () => {
     const isOpen = item.classList.contains('open');
-    accItems.forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+    accItems.forEach(i => { i.classList.remove('open'); const h = i.querySelector('.acc-header'); if (h) h.setAttribute('aria-expanded', 'false'); });
+    if (!isOpen) { item.classList.add('open'); header.setAttribute('aria-expanded', 'true'); }
   });
 });
 
@@ -138,7 +138,12 @@ if (reviewsWindow) {
 
 /* ═══ FAQ ═══ */
 document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+  const toggle = () => {
+    const open = q.parentElement.classList.toggle('open');
+    q.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  q.addEventListener('click', toggle);
+  q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
 });
 
 /* ═══ CONTACT FORM — Formspree ═══ */

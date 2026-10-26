@@ -42,7 +42,7 @@
       "name": "Unpeel Design",
       "alternateName": "Unpeel Design · Arnaud Boone",
       "description": "Unpeel Design is the studio of Arnaud Boone, a freelance brand designer in Ghent, Belgium, building brand identities, logos, brand strategy, motion design, packaging, web design and AI video for startups, restaurants, hotels and creative founders across Belgium and Europe.",
-      "slogan": "Creating brands that feel honest and last.",
+      "slogan": "Brands that last, without the agency price.",
       "url": "https://unpeeldesign.com/",
       "inLanguage": "en",
       "image": "https://unpeeldesign.com/uploads/works/GAA3SWx40lK4K0KJKUyyydZEGRM.png",
@@ -203,7 +203,7 @@
       text-align: center;
     }
     .hero-h1 {
-      font-size: clamp(32px, 4.5vw, 58px) !important;
+      font-size: var(--title-size) !important;
       font-weight: 700 !important;
       letter-spacing: -0.02em !important;
       text-align: center !important;
@@ -531,9 +531,6 @@
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/works">Works</a></li>
-    <li><a href="/services">Services</a></li>
-    <li><a href="/packages">Packages</a></li>
-    <li><a href="/approach">Approach</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/contact">Contact</a></li>
   </ul>
@@ -553,9 +550,6 @@
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
       <li><a href="/works">Works</a></li>
-      <li><a href="/services">Services</a></li>
-      <li><a href="/packages">Packages</a></li>
-      <li><a href="/approach">Approach</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/contact">Contact</a></li>
     </ul>
@@ -580,8 +574,8 @@
 <section id="hero">
   <div class="hero-sticky">
     <div class="hero-top">
-      <h1 class="hero-h1 hero-anim ha0">Creating brands that<br>feel honest and last.</h1>
-      <p class="hero-sub hero-anim ha1">Freelance brand designer in Ghent, working globally.</p>
+      <h1 class="hero-h1 hero-anim ha0">Brands that last,<br>without the agency price.</h1>
+      <p class="hero-sub hero-anim ha1">Freelance brand designer in Ghent. Brand identities from €550, delivered in days, not months.</p>
     </div>
     <div class="hero-video-wrap hero-anim ha4" id="heroVideoWrap">
       <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="/uploads/hero-poster.jpg">
@@ -661,7 +655,7 @@
       <button type="button" class="acc-header" aria-expanded="false">
         <span class="acc-num">(01)</span>
         <div class="acc-main">
-          <span class="acc-name">Brand Strategy</span>
+          <div class="acc-title-row"><span class="acc-name">Brand Strategy</span><span class="acc-tag acc-tag--pk">Packages</span></div>
           <span class="acc-desc">Figuring out what your brand stands for.</span>
         </div>
         <span class="acc-icon" aria-hidden="true">+</span>
@@ -680,7 +674,7 @@
       <button type="button" class="acc-header" aria-expanded="false">
         <span class="acc-num">(02)</span>
         <div class="acc-main">
-          <span class="acc-name">Brand Identity</span>
+          <div class="acc-title-row"><span class="acc-name">Brand Identity</span><span class="acc-tag acc-tag--pk">Packages</span></div>
           <span class="acc-desc">The look and feel of your brand.</span>
         </div>
         <span class="acc-icon" aria-hidden="true">+</span>
@@ -699,7 +693,7 @@
       <button type="button" class="acc-header" aria-expanded="false">
         <span class="acc-num">(03)</span>
         <div class="acc-main">
-          <span class="acc-name">Web Design</span>
+          <div class="acc-title-row"><span class="acc-name">Web Design</span><span class="acc-tag">On request</span></div>
           <span class="acc-desc">Your brand online.</span>
         </div>
         <span class="acc-icon" aria-hidden="true">+</span>
@@ -717,7 +711,7 @@
       <button type="button" class="acc-header" aria-expanded="false">
         <span class="acc-num">(04)</span>
         <div class="acc-main">
-          <span class="acc-name">Packaging</span>
+          <div class="acc-title-row"><span class="acc-name">Packaging</span><span class="acc-tag">On request</span></div>
           <span class="acc-desc">Design that stands out on the shelf.</span>
         </div>
         <span class="acc-icon" aria-hidden="true">+</span>
@@ -735,7 +729,7 @@
       <button type="button" class="acc-header" aria-expanded="false">
         <span class="acc-num">(05)</span>
         <div class="acc-main">
-          <span class="acc-name">AI Video</span>
+          <div class="acc-title-row"><span class="acc-name">AI Video</span><span class="acc-tag">On request</span></div>
           <span class="acc-desc">Product, campaign and ad videos, made entirely with AI.</span>
         </div>
         <span class="acc-icon" aria-hidden="true">+</span>
@@ -751,7 +745,8 @@
     </div>
 
   </div>
-  <div class="services-cta fade-up">
+  <div class="services-cta fade-up" style="display:flex;gap:32px;flex-wrap:wrap;">
+    <a href="#packages" class="text-link">See the packages →</a>
     <a href="/approach" class="text-link">See my approach →</a>
   </div>
 </section>
@@ -839,46 +834,166 @@
 
 
 
+<!-- ═══ PACKAGES ═══ -->
+<style>
+.pk-section{padding:clamp(72px,8vw,120px) clamp(24px,6vw,80px);}
+#packages{background:transparent;}
+.pk-head{max-width:720px;}
+.pk-lead{margin-top:18px;font-size:clamp(15px,1.5vw,18px);color:var(--gray);line-height:1.6;max-width:50ch;}
+.pk-lead strong{color:var(--ink);font-weight:500;}
+.pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;align-items:start;}
+.pk-card{border:1px solid var(--border);border-radius:18px;padding:30px 26px 28px;display:flex;flex-direction:column;background:var(--bg);position:relative;}
+.pk-card.pop{background:var(--subtle);border-color:#DADADA;}
+.pk-badge{position:absolute;top:-11px;left:26px;background:var(--ink);color:#fff;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:40px;}
+.pk-num{font-size:12px;color:var(--gray);letter-spacing:.1em;}
+.pk-name{font-size:25px;font-weight:500;letter-spacing:-.02em;margin-top:10px;}
+.pk-desc{font-size:13.5px;color:var(--gray);line-height:1.55;margin-top:8px;}
+.pk-price{font-size:30px;font-weight:500;letter-spacing:-.02em;margin-top:20px;}
+.pk-price span{font-size:13px;color:var(--gray);font-weight:400;letter-spacing:0;margin-right:4px;vertical-align:1px;}
+.pk-meta{display:flex;gap:22px;margin-top:14px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+.pk-card.pop .pk-meta{border-color:#DADADA;}
+.pk-meta div{font-size:12px;color:var(--gray);}
+.pk-meta b{display:block;color:var(--ink);font-weight:500;font-size:13px;margin-top:3px;}
+.pk-plus{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin:18px 0 12px;}
+.pk-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0;padding:0;}
+.pk-list li{display:flex;gap:10px;font-size:13.5px;line-height:1.45;}
+.pk-list .c{color:var(--ink);flex-shrink:0;margin-top:1px;}
+.pk-list li.pk-off{color:#C4C4C4;}
+.pk-list li.pk-off .c{color:#D5D5D5;}
+.pk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:24px;background:var(--ink);color:#fff;font-size:14px;font-weight:500;padding:15px 20px;border-radius:40px;text-decoration:none;transition:.25s;}
+.pk-btn:hover{background:var(--bg);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);}
+.pk-note{margin-top:18px;font-size:12px;color:var(--gray);}
+.pk-how{margin-top:72px;border-top:1px solid var(--border);padding-top:48px;}
+.pk-how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:30px;}
+.pk-step-n{font-size:13px;color:var(--gray);letter-spacing:.1em;}
+.pk-step h4{font-size:18px;font-weight:500;margin-top:10px;letter-spacing:-.01em;}
+.pk-step p{font-size:14px;color:var(--gray);line-height:1.6;margin-top:8px;}
+.acc-title-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.acc-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:40px;border:1px solid var(--border);color:var(--gray);line-height:1.3;white-space:nowrap;}
+.acc-tag--pk{background:var(--ink);border-color:var(--ink);color:#fff;}
+#contact{min-height:auto;}
+#contact .c-sub{max-width:52ch;font-size:15px;}
+.c-cta-link{display:inline-flex;align-items:center;justify-content:center;width:auto;padding:16px 32px;text-decoration:none;}
+@media(max-width:920px){
+  .pk-grid{grid-template-columns:1fr;max-width:460px;}
+  .pk-how-grid{grid-template-columns:1fr;gap:26px;}
+}
+</style>
+<section id="packages" class="pk-section">
+  <div class="pk-head">
+    <p class="section-label fade-up">Packages</p>
+    <h2 class="section-title fade-up d1">Pick your starting point.</h2>
+    <p class="pk-lead fade-up d2"><strong>Studio-level brand identity, without the agency overhead.</strong> A fixed scope and a price you know upfront, from €550.</p>
+  </div>
+
+  <div class="pk-grid">
+
+    <div class="pk-card fade-up">
+      <span class="pk-num">01</span>
+      <h3 class="pk-name">Startup</h3>
+      <p class="pk-desc">A strong, distinctive logo and the essentials to launch. No big budget needed.</p>
+      <div class="pk-price"><span>From</span>€550</div>
+      <div class="pk-meta">
+        <div>Delivery<b>3–4 days</b></div>
+        <div>Revisions<b>2 rounds</b></div>
+      </div>
+      <p class="pk-plus">What you get</p>
+      <ul class="pk-list">
+        <li><span class="c">✓</span><span>2 logo routes → 1 finalised (primary + horizontal + icon)</span></li>
+        <li><span class="c">✓</span><span>Colour palette (3–4) + typography (2 fonts)</span></li>
+        <li><span class="c">✓</span><span>All file formats: PNG, SVG, PDF</span></li>
+        <li><span class="c">✓</span><span>Realistic mockups</span></li>
+        <li><span class="c">✓</span><span>Mini brand card (1 A4)</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Brand strategy &amp; moodboard</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Brand guidelines document</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Social media kit</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Website, motion &amp; packaging</span></li>
+      </ul>
+      <a class="pk-btn" href="/contact?package=startup">Choose Startup →</a>
+    </div>
+
+    <div class="pk-card pop fade-up d1">
+      <span class="pk-badge">★ Most popular</span>
+      <span class="pk-num">02</span>
+      <h3 class="pk-name">Studio</h3>
+      <p class="pk-desc">A complete, strategy-led identity your whole brand can run on.</p>
+      <div class="pk-price"><span>From</span>€1.200</div>
+      <div class="pk-meta">
+        <div>Delivery<b>1–2 weeks</b></div>
+        <div>Revisions<b>3 rounds</b></div>
+      </div>
+      <p class="pk-plus">Everything in Startup, plus</p>
+      <ul class="pk-list">
+        <li><span class="c">✓</span><span>Strategy call + brand strategy document</span></li>
+        <li><span class="c">✓</span><span>Moodboard to lock the visual direction first</span></li>
+        <li><span class="c">✓</span><span>3 logo routes → full logo system (+ submark)</span></li>
+        <li><span class="c">✓</span><span>Extended palette (5–6) + type system</span></li>
+        <li><span class="c">✓</span><span>Brand guidelines (±15 pages)</span></li>
+        <li><span class="c">✓</span><span>Social media kit with 5 templates</span></li>
+        <li><span class="c">✓</span><span>Realistic mockups</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Website design</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Motion / animation</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Packaging</span></li>
+      </ul>
+      <a class="pk-btn" href="/contact?package=studio">Choose Studio →</a>
+    </div>
+
+    <div class="pk-card fade-up d2">
+      <span class="pk-num">03</span>
+      <h3 class="pk-name">Full Brand</h3>
+      <p class="pk-desc">Everything, end to end: identity, motion, web and packaging.</p>
+      <div class="pk-price"><span>From</span>€2.500</div>
+      <div class="pk-meta">
+        <div>Delivery<b>2–3 weeks</b></div>
+        <div>Revisions<b>Unlimited*</b></div>
+      </div>
+      <p class="pk-plus">Everything in Studio, plus</p>
+      <ul class="pk-list">
+        <li><span class="c">✓</span><span>1h brand workshop + competitor analysis</span></li>
+        <li><span class="c">✓</span><span>2 full visual directions to choose from</span></li>
+        <li><span class="c">✓</span><span>Extended guidelines (±30 pages) + PDF presentation</span></li>
+        <li><span class="c">✓</span><span>Animated logo / brand intro (5–10 sec)</span></li>
+        <li><span class="c">✓</span><span>Homepage web design (Figma, handoff-ready)</span></li>
+        <li><span class="c">✓</span><span>1 packaging / print item + full social kit</span></li>
+        <li><span class="c">✓</span><span>Priority scheduling</span></li>
+      </ul>
+      <a class="pk-btn" href="/contact?package=fullbrand">Choose Full Brand →</a>
+    </div>
+
+  </div>
+  <p class="pk-note">*Unlimited refinements within the chosen visual direction.</p>
+
+  <div class="pk-how">
+    <p class="section-label fade-up">How it works</p>
+    <h2 class="section-title fade-up d1">From brief to brand, without the back-and-forth.</h2>
+    <div class="pk-how-grid">
+      <div class="pk-step fade-up">
+        <span class="pk-step-n">Step 01</span>
+        <h4>Pick a package &amp; brief me</h4>
+        <p>Choose the package that fits and fill in a short brief. It takes a few minutes, no meetings required to start.</p>
+      </div>
+      <div class="pk-step fade-up d1">
+        <span class="pk-step-n">Step 02</span>
+        <h4>A deposit to start</h4>
+        <p>A simple upfront deposit locks your spot in the planning and kicks off the work. Clear price, no surprises.</p>
+      </div>
+      <div class="pk-step fade-up d2">
+        <span class="pk-step-n">Step 03</span>
+        <h4>Delivered &amp; refined</h4>
+        <p>You receive your brand in days or weeks, then we refine it until you're genuinely happy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
   <div class="c-form-side">
-    <p class="section-label fade-up">Get in Touch</p>
+    <p class="section-label fade-up">Something else in mind?</p>
     <a href="mailto:design.arnaudboone@gmail.com" class="c-email fade-up d1">design.arnaudboone@gmail.com</a>
-    <p class="c-sub fade-up d2">Have a project in mind? Fill in the form below. I'll get back to you within 24 hours.</p>
-    <form class="c-form" id="contactForm" action="https://formspree.io/f/xgobvrgy" method="POST" autocomplete="off">
-      <input type="hidden" name="_subject" value="New project inquiry, Unpeel Design">
-      <div class="c-field">
-        <label for="c-name">Name</label>
-        <input type="text" id="c-name" name="name" placeholder="Your name" required>
-      </div>
-      <div class="c-field">
-        <label for="c-email">Email</label>
-        <input type="email" id="c-email" name="email" placeholder="your@email.com" required>
-      </div>
-      <div class="c-field">
-        <label for="c-type">Type of project</label>
-        <select id="c-type" name="type">
-          <option value="" disabled selected>Select...</option>
-          <option value="brand-identity">Brand Identity</option>
-          <option value="web-design">Web Design</option>
-          <option value="packaging">Packaging</option>
-          <option value="ai-video">AI Video</option>
-          <option value="not-sure">Not sure yet</option>
-        </select>
-      </div>
-      <div class="c-field">
-        <label for="c-desc">Tell me about your project</label>
-        <textarea id="c-desc" name="desc" placeholder="What are you building?" rows="4"></textarea>
-      </div>
-      <div class="c-field">
-        <label for="c-deadline">Deadline</label>
-        <input type="text" id="c-deadline" name="deadline" placeholder="e.g. before September, ASAP, flexible">
-      </div>
-      <button type="submit" class="c-submit">Send message →</button>
-      <p class="c-note">I respond within 24 hours.</p>
-    </form>
-    <div class="c-success" id="formSuccess">
-      <p>Message sent.<br>I'll be in touch within 24 hours.</p>
+    <p class="c-sub fade-up d2">The packages above are for branding. For AI video, web design, packaging or anything custom, just send me a message and I'll put together a tailored quote. I reply within 24 hours.</p>
+    <div class="fade-up d3">
+      <a href="/contact" class="c-submit c-cta-link">Send me a message →</a>
     </div>
   </div>
   <div class="c-img-side">
@@ -907,8 +1022,6 @@
       <ul class="f-links">
         <li><a href="/">Home</a></li>
         <li><a href="/works">Works</a></li>
-        <li><a href="/packages">Packages</a></li>
-        <li><a href="/approach">Approach</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>

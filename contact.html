@@ -264,9 +264,6 @@
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/works">Works</a></li>
-    <li><a href="/services">Services</a></li>
-    <li><a href="/packages">Packages</a></li>
-    <li><a href="/approach">Approach</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/contact">Contact</a></li>
   </ul>
@@ -285,9 +282,6 @@
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
       <li><a href="/works">Works</a></li>
-      <li><a href="/services">Services</a></li>
-      <li><a href="/packages">Packages</a></li>
-      <li><a href="/approach">Approach</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/contact">Contact</a></li>
     </ul>
@@ -307,7 +301,7 @@
 <section class="ct-header">
   <p class="section-label fade-up">Contact</p>
   <h1 class="ct-h1 fade-up d1">Let's build<br>something real.</h1>
-  <p class="ct-sub fade-up d2">Have a project in mind? Fill in the form below. I'll get back to you within 24 hours with honest thoughts on how I can help.</p>
+  <p class="ct-sub fade-up d2">Looking for branding? <a href="/#packages">Pick a package</a> and I'll take it from there. For anything else (AI video, web design, packaging or something custom), just write me below. I reply within 24 hours.</p>
   <div class="fade-up d3">
     <span class="ct-avail-badge"><span class="ct-avail-dot"></span>Currently available for new projects</span>
   </div>
@@ -320,8 +314,21 @@
   <div class="ct-left">
     <a href="mailto:design.arnaudboone@gmail.com" class="ct-email-link fade-up">design.arnaudboone@gmail.com</a>
 
+    <style>
+      .ct-sub a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+      .ct-pkg-chip{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;padding:8px 8px 8px 16px;border:1px solid var(--ink);border-radius:40px;font-size:14px;}
+      .ct-pkg-chip[hidden]{display:none;}
+      .ct-pkg-chip span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);}
+      .ct-pkg-chip strong{font-weight:500;}
+      .ct-pkg-chip button{width:24px;height:24px;border-radius:50%;background:var(--subtle);font-size:15px;line-height:1;display:inline-flex;align-items:center;justify-content:center;}
+    </style>
     <form class="c-form" id="contactForm" action="https://formspree.io/f/xgobvrgy" method="POST" autocomplete="off">
-      <input type="hidden" name="_subject" value="New project inquiry, Unpeel Design">
+      <input type="hidden" name="_subject" id="ct-subject" value="New message, Unpeel Design">
+      <input type="hidden" name="package" id="ct-package" value="">
+      <div class="ct-pkg-chip" id="ct-pkg-chip" hidden>
+        <span>Package</span><strong id="ct-pkg-name"></strong>
+        <button type="button" id="ct-pkg-clear" aria-label="Remove package">×</button>
+      </div>
       <div class="c-field fade-up" style="transition-delay:.10s">
         <label for="ct-name">Name</label>
         <input type="text" id="ct-name" name="name" placeholder="Your name" required>
@@ -331,29 +338,37 @@
         <input type="email" id="ct-email" name="email" placeholder="your@email.com" required>
       </div>
       <div class="c-field fade-up" style="transition-delay:.20s">
-        <label for="ct-type">Type of project</label>
-        <select id="ct-type" name="type">
-          <option value="" disabled selected>Select...</option>
-          <option value="brand-identity">Brand Identity</option>
-          <option value="web-design">Web Design</option>
-          <option value="packaging">Packaging</option>
-          <option value="ai-video">AI Video</option>
-          <option value="not-sure">Not sure yet</option>
-        </select>
+        <label for="ct-msg">Your message</label>
+        <textarea id="ct-msg" name="message" placeholder="What can I help you with?" rows="5" required></textarea>
       </div>
-      <div class="c-field fade-up" style="transition-delay:.25s">
-        <label for="ct-desc">Tell me about your project</label>
-        <textarea id="ct-desc" name="desc" placeholder="What are you building?" rows="5"></textarea>
-      </div>
-      <div class="c-field fade-up" style="transition-delay:.30s">
-        <label for="ct-deadline">Deadline</label>
-        <input type="text" id="ct-deadline" name="deadline" placeholder="e.g. before September, ASAP, flexible">
-      </div>
-      <div class="fade-up" style="transition-delay:.35s">
+      <div class="fade-up" style="transition-delay:.25s">
         <button type="submit" class="c-submit">Send message →</button>
         <p class="c-note" style="margin-top:12px">I respond within 24 hours.</p>
       </div>
     </form>
+    <script>
+    (function () {
+      var names = { startup: 'Startup', studio: 'Studio', fullbrand: 'Full Brand' };
+      var name = names[new URLSearchParams(location.search).get('package')];
+      if (!name) return;
+      var chip = document.getElementById('ct-pkg-chip');
+      var input = document.getElementById('ct-package');
+      var subject = document.getElementById('ct-subject');
+      var msg = document.getElementById('ct-msg');
+      document.getElementById('ct-pkg-name').textContent = name;
+      input.value = name;
+      subject.value = 'New ' + name + ' package request, Unpeel Design';
+      msg.placeholder = "Tell me a bit about your brand, and when you'd like to start.";
+      chip.hidden = false;
+      document.getElementById('ct-pkg-clear').addEventListener('click', function () {
+        input.value = '';
+        subject.value = 'New message, Unpeel Design';
+        msg.placeholder = 'What can I help you with?';
+        chip.hidden = true;
+        history.replaceState(null, '', location.pathname);
+      });
+    })();
+    </script>
 
     <div class="c-success" id="formSuccess" style="display:none;flex-direction:column;gap:12px;padding:48px 0;">
       <p style="font-family:var(--serif);font-size:clamp(22px,3vw,36px);line-height:1.3;">Message sent.<br>I'll be in touch within 24 hours.</p>
@@ -495,8 +510,6 @@
       <ul class="f-links">
         <li><a href="/">Home</a></li>
         <li><a href="/works">Works</a></li>
-        <li><a href="/packages">Packages</a></li>
-        <li><a href="/approach">Approach</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>

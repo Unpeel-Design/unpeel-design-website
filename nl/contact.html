@@ -264,9 +264,6 @@
   <ul>
     <li><a href="/nl/">Home</a></li>
     <li><a href="/nl/works">Werk</a></li>
-    <li><a href="/nl/services">Diensten</a></li>
-    <li><a href="/nl/packages">Pakketten</a></li>
-    <li><a href="/nl/approach">Aanpak</a></li>
     <li><a href="/nl/about">Over mij</a></li>
     <li><a href="/nl/contact">Contact</a></li>
   </ul>
@@ -285,9 +282,6 @@
     <ul class="nav-links">
       <li><a href="/nl/">Home</a></li>
       <li><a href="/nl/works">Werk</a></li>
-      <li><a href="/nl/services">Diensten</a></li>
-      <li><a href="/nl/packages">Pakketten</a></li>
-      <li><a href="/nl/approach">Aanpak</a></li>
       <li><a href="/nl/about">Over mij</a></li>
       <li><a href="/nl/contact">Contact</a></li>
     </ul>
@@ -307,7 +301,7 @@
 <section class="ct-header">
   <p class="section-label fade-up">Contact</p>
   <h1 class="ct-h1 fade-up d1">Laten we iets echts<br>bouwen.</h1>
-  <p class="ct-sub fade-up d2">Heb je een project in gedachten? Vul het formulier hieronder in, ik kom binnen 24 uur bij je terug met een eerlijke kijk op hoe ik kan helpen.</p>
+  <p class="ct-sub fade-up d2">Op zoek naar branding? <a href="/nl/#packages">Kies een pakket</a> en ik neem het van daar over. Voor al de rest (AI-video, webdesign, packaging of iets op maat) schrijf je me hieronder. Ik antwoord binnen 24 uur.</p>
   <div class="fade-up d3">
     <span class="ct-avail-badge"><span class="ct-avail-dot"></span>Momenteel beschikbaar voor nieuwe projecten</span>
   </div>
@@ -320,40 +314,61 @@
   <div class="ct-left">
     <a href="mailto:design.arnaudboone@gmail.com" class="ct-email-link fade-up">design.arnaudboone@gmail.com</a>
 
+    <style>
+      .ct-sub a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+      .ct-pkg-chip{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;padding:8px 8px 8px 16px;border:1px solid var(--ink);border-radius:40px;font-size:14px;}
+      .ct-pkg-chip[hidden]{display:none;}
+      .ct-pkg-chip span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);}
+      .ct-pkg-chip strong{font-weight:500;}
+      .ct-pkg-chip button{width:24px;height:24px;border-radius:50%;background:var(--subtle);font-size:15px;line-height:1;display:inline-flex;align-items:center;justify-content:center;}
+    </style>
     <form class="c-form" id="contactForm" action="https://formspree.io/f/xgobvrgy" method="POST" autocomplete="off">
-      <input type="hidden" name="_subject" value="New project inquiry, Unpeel Design">
+      <input type="hidden" name="_subject" id="ct-subject" value="New message (NL), Unpeel Design">
+      <input type="hidden" name="package" id="ct-package" value="">
+      <div class="ct-pkg-chip" id="ct-pkg-chip" hidden>
+        <span>Pakket</span><strong id="ct-pkg-name"></strong>
+        <button type="button" id="ct-pkg-clear" aria-label="Pakket verwijderen">×</button>
+      </div>
       <div class="c-field fade-up" style="transition-delay:.10s">
         <label for="ct-name">Naam</label>
         <input type="text" id="ct-name" name="name" placeholder="Je naam" required>
       </div>
       <div class="c-field fade-up" style="transition-delay:.15s">
         <label for="ct-email">E-mail</label>
-        <input type="email" id="ct-email" name="email" placeholder="your@email.com" required>
+        <input type="email" id="ct-email" name="email" placeholder="je@email.com" required>
       </div>
       <div class="c-field fade-up" style="transition-delay:.20s">
-        <label for="ct-type">Soort project</label>
-        <select id="ct-type" name="type">
-          <option value="" disabled selected>Kies...</option>
-          <option value="brand-identity">Brand Identity</option>
-          <option value="web-design">Web Design</option>
-          <option value="packaging">Packaging</option>
-          <option value="ai-video">AI Video</option>
-          <option value="not-sure">Nog niet zeker</option>
-        </select>
+        <label for="ct-msg">Je bericht</label>
+        <textarea id="ct-msg" name="message" placeholder="Waarmee kan ik je helpen?" rows="5" required></textarea>
       </div>
-      <div class="c-field fade-up" style="transition-delay:.25s">
-        <label for="ct-desc">Vertel me over je project</label>
-        <textarea id="ct-desc" name="desc" placeholder="Wat ben je aan het bouwen?" rows="5"></textarea>
-      </div>
-      <div class="c-field fade-up" style="transition-delay:.30s">
-        <label for="ct-deadline">Deadline</label>
-        <input type="text" id="ct-deadline" name="deadline" placeholder="bv. voor september, ASAP, flexibel">
-      </div>
-      <div class="fade-up" style="transition-delay:.35s">
+      <div class="fade-up" style="transition-delay:.25s">
         <button type="submit" class="c-submit">Verstuur bericht →</button>
         <p class="c-note" style="margin-top:12px">Ik antwoord binnen 24 uur.</p>
       </div>
     </form>
+    <script>
+    (function () {
+      var names = { startup: 'Startup', studio: 'Studio', fullbrand: 'Full Brand' };
+      var name = names[new URLSearchParams(location.search).get('package')];
+      if (!name) return;
+      var chip = document.getElementById('ct-pkg-chip');
+      var input = document.getElementById('ct-package');
+      var subject = document.getElementById('ct-subject');
+      var msg = document.getElementById('ct-msg');
+      document.getElementById('ct-pkg-name').textContent = name;
+      input.value = name;
+      subject.value = 'New ' + name + ' package request (NL), Unpeel Design';
+      msg.placeholder = 'Vertel me kort over je merk en wanneer je wil starten.';
+      chip.hidden = false;
+      document.getElementById('ct-pkg-clear').addEventListener('click', function () {
+        input.value = '';
+        subject.value = 'New message (NL), Unpeel Design';
+        msg.placeholder = 'Waarmee kan ik je helpen?';
+        chip.hidden = true;
+        history.replaceState(null, '', location.pathname);
+      });
+    })();
+    </script>
 
     <div class="c-success" id="formSuccess" style="display:none;flex-direction:column;gap:12px;padding:48px 0;">
       <p style="font-family:var(--serif);font-size:clamp(22px,3vw,36px);line-height:1.3;">Bericht verstuurd.<br>Ik kom binnen 24 uur bij je terug.</p>
@@ -495,8 +510,6 @@
       <ul class="f-links">
         <li><a href="/nl/">Home</a></li>
         <li><a href="/nl/works">Werk</a></li>
-        <li><a href="/nl/packages">Pakketten</a></li>
-        <li><a href="/nl/approach">Aanpak</a></li>
         <li><a href="/nl/about">Over mij</a></li>
         <li><a href="/nl/contact">Contact</a></li>
       </ul>

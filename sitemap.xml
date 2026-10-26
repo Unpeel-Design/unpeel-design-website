@@ -49,22 +49,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://unpeeldesign.com/services"/>
   </url>
   <url>
-    <loc>https://unpeeldesign.com/packages</loc>
-    <lastmod>2026-10-15</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://unpeeldesign.com/packages"/>
-    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://unpeeldesign.com/nl/packages"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://unpeeldesign.com/packages"/>
-  </url>
-  <url>
-    <loc>https://unpeeldesign.com/nl/packages</loc>
-    <lastmod>2026-10-15</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://unpeeldesign.com/packages"/>
-    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://unpeeldesign.com/nl/packages"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://unpeeldesign.com/packages"/>
-  </url>
-  <url>
     <loc>https://unpeeldesign.com/approach</loc>
     <lastmod>2026-10-15</lastmod>
     <priority>0.7</priority>

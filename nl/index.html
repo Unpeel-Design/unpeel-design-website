@@ -42,7 +42,7 @@
       "name": "Unpeel Design",
       "alternateName": "Unpeel Design · Arnaud Boone",
       "description": "Unpeel Design is de studio van Arnaud Boone, een freelance brand designer in Gent, België. Hij bouwt huisstijlen, logo's, merkstrategie, motion design, verpakkingsontwerp, webdesign en AI-video voor startups, restaurants, hotels en creatieve founders in heel België en Europa.",
-      "slogan": "Merken die eerlijk aanvoelen en blijven.",
+      "slogan": "Merken die blijven, zonder bureauprijzen.",
       "url": "https://unpeeldesign.com/nl/",
       "inLanguage": "nl",
       "image": "https://unpeeldesign.com/uploads/works/GAA3SWx40lK4K0KJKUyyydZEGRM.png",
@@ -203,7 +203,7 @@
       text-align: center;
     }
     .hero-h1 {
-      font-size: clamp(32px, 4.5vw, 58px) !important;
+      font-size: var(--title-size) !important;
       font-weight: 700 !important;
       letter-spacing: -0.02em !important;
       text-align: center !important;
@@ -531,9 +531,6 @@
   <ul>
     <li><a href="/nl/">Home</a></li>
     <li><a href="/nl/works">Werk</a></li>
-    <li><a href="/nl/services">Diensten</a></li>
-    <li><a href="/nl/packages">Pakketten</a></li>
-    <li><a href="/nl/approach">Aanpak</a></li>
     <li><a href="/nl/about">Over mij</a></li>
     <li><a href="/nl/contact">Contact</a></li>
   </ul>
@@ -553,9 +550,6 @@
     <ul class="nav-links">
       <li><a href="/nl/">Home</a></li>
       <li><a href="/nl/works">Werk</a></li>
-      <li><a href="/nl/services">Diensten</a></li>
-      <li><a href="/nl/packages">Pakketten</a></li>
-      <li><a href="/nl/approach">Aanpak</a></li>
       <li><a href="/nl/about">Over mij</a></li>
       <li><a href="/nl/contact">Contact</a></li>
     </ul>
@@ -580,8 +574,8 @@
 <section id="hero">
   <div class="hero-sticky">
     <div class="hero-top">
-      <h1 class="hero-h1 hero-anim ha0">Merken die eerlijk<br>aanvoelen en blijven.</h1>
-      <p class="hero-sub hero-anim ha1">Freelance brand designer in Gent, werkt wereldwijd.</p>
+      <h1 class="hero-h1 hero-anim ha0">Merken die blijven,<br>zonder bureauprijzen.</h1>
+      <p class="hero-sub hero-anim ha1">Freelance brand designer in Gent. Merkidentiteiten vanaf €550, opgeleverd in dagen, niet in maanden.</p>
     </div>
     <div class="hero-video-wrap hero-anim ha4" id="heroVideoWrap">
       <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="/uploads/hero-poster.jpg">
@@ -661,7 +655,7 @@
       <button type="button" class="acc-header" aria-expanded="false">
         <span class="acc-num">(01)</span>
         <div class="acc-main">
-          <span class="acc-name">Brand Strategy</span>
+          <div class="acc-title-row"><span class="acc-name">Brand Strategy</span><span class="acc-tag acc-tag--pk">Pakketten</span></div>
           <span class="acc-desc">Bepalen waar je merk voor staat.</span>
         </div>
         <span class="acc-icon" aria-hidden="true">+</span>
@@ -680,7 +674,7 @@
       <button type="button" class="acc-header" aria-expanded="false">
         <span class="acc-num">(02)</span>
         <div class="acc-main">
-          <span class="acc-name">Brand Identity</span>
+          <div class="acc-title-row"><span class="acc-name">Brand Identity</span><span class="acc-tag acc-tag--pk">Pakketten</span></div>
           <span class="acc-desc">De look en feel van je merk.</span>
         </div>
         <span class="acc-icon" aria-hidden="true">+</span>
@@ -699,7 +693,7 @@
       <button type="button" class="acc-header" aria-expanded="false">
         <span class="acc-num">(03)</span>
         <div class="acc-main">
-          <span class="acc-name">Web Design</span>
+          <div class="acc-title-row"><span class="acc-name">Web Design</span><span class="acc-tag">Op aanvraag</span></div>
           <span class="acc-desc">Je merk online.</span>
         </div>
         <span class="acc-icon" aria-hidden="true">+</span>
@@ -717,7 +711,7 @@
       <button type="button" class="acc-header" aria-expanded="false">
         <span class="acc-num">(04)</span>
         <div class="acc-main">
-          <span class="acc-name">Packaging</span>
+          <div class="acc-title-row"><span class="acc-name">Packaging</span><span class="acc-tag">Op aanvraag</span></div>
           <span class="acc-desc">Ontwerp dat opvalt in het schap.</span>
         </div>
         <span class="acc-icon" aria-hidden="true">+</span>
@@ -735,7 +729,7 @@
       <button type="button" class="acc-header" aria-expanded="false">
         <span class="acc-num">(05)</span>
         <div class="acc-main">
-          <span class="acc-name">AI Video</span>
+          <div class="acc-title-row"><span class="acc-name">AI Video</span><span class="acc-tag">Op aanvraag</span></div>
           <span class="acc-desc">Product-, campagne- en reclamevideo's, volledig gemaakt met AI.</span>
         </div>
         <span class="acc-icon" aria-hidden="true">+</span>
@@ -751,7 +745,8 @@
     </div>
 
   </div>
-  <div class="services-cta fade-up">
+  <div class="services-cta fade-up" style="display:flex;gap:32px;flex-wrap:wrap;">
+    <a href="#packages" class="text-link">Bekijk de pakketten →</a>
     <a href="/nl/approach" class="text-link">Bekijk mijn aanpak →</a>
   </div>
 </section>
@@ -839,46 +834,166 @@
 
 
 
+<!-- ═══ PACKAGES ═══ -->
+<style>
+.pk-section{padding:clamp(72px,8vw,120px) clamp(24px,6vw,80px);}
+#packages{background:transparent;}
+.pk-head{max-width:720px;}
+.pk-lead{margin-top:18px;font-size:clamp(15px,1.5vw,18px);color:var(--gray);line-height:1.6;max-width:50ch;}
+.pk-lead strong{color:var(--ink);font-weight:500;}
+.pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;align-items:start;}
+.pk-card{border:1px solid var(--border);border-radius:18px;padding:30px 26px 28px;display:flex;flex-direction:column;background:var(--bg);position:relative;}
+.pk-card.pop{background:var(--subtle);border-color:#DADADA;}
+.pk-badge{position:absolute;top:-11px;left:26px;background:var(--ink);color:#fff;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:40px;}
+.pk-num{font-size:12px;color:var(--gray);letter-spacing:.1em;}
+.pk-name{font-size:25px;font-weight:500;letter-spacing:-.02em;margin-top:10px;}
+.pk-desc{font-size:13.5px;color:var(--gray);line-height:1.55;margin-top:8px;}
+.pk-price{font-size:30px;font-weight:500;letter-spacing:-.02em;margin-top:20px;}
+.pk-price span{font-size:13px;color:var(--gray);font-weight:400;letter-spacing:0;margin-right:4px;vertical-align:1px;}
+.pk-meta{display:flex;gap:22px;margin-top:14px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+.pk-card.pop .pk-meta{border-color:#DADADA;}
+.pk-meta div{font-size:12px;color:var(--gray);}
+.pk-meta b{display:block;color:var(--ink);font-weight:500;font-size:13px;margin-top:3px;}
+.pk-plus{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin:18px 0 12px;}
+.pk-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0;padding:0;}
+.pk-list li{display:flex;gap:10px;font-size:13.5px;line-height:1.45;}
+.pk-list .c{color:var(--ink);flex-shrink:0;margin-top:1px;}
+.pk-list li.pk-off{color:#C4C4C4;}
+.pk-list li.pk-off .c{color:#D5D5D5;}
+.pk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:24px;background:var(--ink);color:#fff;font-size:14px;font-weight:500;padding:15px 20px;border-radius:40px;text-decoration:none;transition:.25s;}
+.pk-btn:hover{background:var(--bg);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);}
+.pk-note{margin-top:18px;font-size:12px;color:var(--gray);}
+.pk-how{margin-top:72px;border-top:1px solid var(--border);padding-top:48px;}
+.pk-how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:30px;}
+.pk-step-n{font-size:13px;color:var(--gray);letter-spacing:.1em;}
+.pk-step h4{font-size:18px;font-weight:500;margin-top:10px;letter-spacing:-.01em;}
+.pk-step p{font-size:14px;color:var(--gray);line-height:1.6;margin-top:8px;}
+.acc-title-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.acc-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:40px;border:1px solid var(--border);color:var(--gray);line-height:1.3;white-space:nowrap;}
+.acc-tag--pk{background:var(--ink);border-color:var(--ink);color:#fff;}
+#contact{min-height:auto;}
+#contact .c-sub{max-width:52ch;font-size:15px;}
+.c-cta-link{display:inline-flex;align-items:center;justify-content:center;width:auto;padding:16px 32px;text-decoration:none;}
+@media(max-width:920px){
+  .pk-grid{grid-template-columns:1fr;max-width:460px;}
+  .pk-how-grid{grid-template-columns:1fr;gap:26px;}
+}
+</style>
+<section id="packages" class="pk-section">
+  <div class="pk-head">
+    <p class="section-label fade-up">Pakketten</p>
+    <h2 class="section-title fade-up d1">Kies je startpunt.</h2>
+    <p class="pk-lead fade-up d2"><strong>Merkidentiteit op studioniveau, zonder de prijs van een bureau.</strong> Een vaste scope en een prijs die je vooraf kent, vanaf €550.</p>
+  </div>
+
+  <div class="pk-grid">
+
+    <div class="pk-card fade-up">
+      <span class="pk-num">01</span>
+      <h3 class="pk-name">Startup</h3>
+      <p class="pk-desc">Een sterk, onderscheidend logo en alles wat je nodig hebt om te lanceren. Geen groot budget nodig.</p>
+      <div class="pk-price"><span>Vanaf</span>€550</div>
+      <div class="pk-meta">
+        <div>Levertijd<b>3–4 dagen</b></div>
+        <div>Revisies<b>2 rondes</b></div>
+      </div>
+      <p class="pk-plus">Wat je krijgt</p>
+      <ul class="pk-list">
+        <li><span class="c">✓</span><span>2 logo-richtingen → 1 uitgewerkt (primair, horizontaal en icoon)</span></li>
+        <li><span class="c">✓</span><span>Kleurenpalet (3–4) + typografie (2 lettertypes)</span></li>
+        <li><span class="c">✓</span><span>Alle bestandsformaten: PNG, SVG, PDF</span></li>
+        <li><span class="c">✓</span><span>Realistische mockups</span></li>
+        <li><span class="c">✓</span><span>Mini merkkaart (1 A4)</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Merkstrategie en moodboard</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Huisstijlgids</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Social media kit</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Website, motion en packaging</span></li>
+      </ul>
+      <a class="pk-btn" href="/nl/contact?package=startup">Kies Startup →</a>
+    </div>
+
+    <div class="pk-card pop fade-up d1">
+      <span class="pk-badge">★ Meest gekozen</span>
+      <span class="pk-num">02</span>
+      <h3 class="pk-name">Studio</h3>
+      <p class="pk-desc">Een complete, strategisch onderbouwde identiteit waar je hele merk op draait.</p>
+      <div class="pk-price"><span>Vanaf</span>€1.200</div>
+      <div class="pk-meta">
+        <div>Levertijd<b>1–2 weken</b></div>
+        <div>Revisies<b>3 rondes</b></div>
+      </div>
+      <p class="pk-plus">Alles uit Startup, plus</p>
+      <ul class="pk-list">
+        <li><span class="c">✓</span><span>Strategiegesprek + merkstrategie-document</span></li>
+        <li><span class="c">✓</span><span>Moodboard om eerst de visuele richting vast te leggen</span></li>
+        <li><span class="c">✓</span><span>3 logo-richtingen → volledig logosysteem (+ submark)</span></li>
+        <li><span class="c">✓</span><span>Uitgebreid kleurenpalet (5–6) + typografiesysteem</span></li>
+        <li><span class="c">✓</span><span>Huisstijlgids (±15 pagina's)</span></li>
+        <li><span class="c">✓</span><span>Social media kit met 5 templates</span></li>
+        <li><span class="c">✓</span><span>Realistische mockups</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Webdesign</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Motion / animatie</span></li>
+        <li class="pk-off"><span class="c">–</span><span>Packaging</span></li>
+      </ul>
+      <a class="pk-btn" href="/nl/contact?package=studio">Kies Studio →</a>
+    </div>
+
+    <div class="pk-card fade-up d2">
+      <span class="pk-num">03</span>
+      <h3 class="pk-name">Full Brand</h3>
+      <p class="pk-desc">Alles van A tot Z: identiteit, motion, web en packaging.</p>
+      <div class="pk-price"><span>Vanaf</span>€2.500</div>
+      <div class="pk-meta">
+        <div>Levertijd<b>2–3 weken</b></div>
+        <div>Revisies<b>Onbeperkt*</b></div>
+      </div>
+      <p class="pk-plus">Alles uit Studio, plus</p>
+      <ul class="pk-list">
+        <li><span class="c">✓</span><span>Brand workshop van 1 uur + concurrentieanalyse</span></li>
+        <li><span class="c">✓</span><span>2 volledige visuele richtingen om uit te kiezen</span></li>
+        <li><span class="c">✓</span><span>Uitgebreide huisstijlgids (±30 pagina's) + PDF-presentatie</span></li>
+        <li><span class="c">✓</span><span>Geanimeerd logo / brand intro (5–10 sec)</span></li>
+        <li><span class="c">✓</span><span>Homepage-webdesign (Figma, klaar voor ontwikkeling)</span></li>
+        <li><span class="c">✓</span><span>1 packaging- of drukwerkitem + volledige social kit</span></li>
+        <li><span class="c">✓</span><span>Voorrang in de planning</span></li>
+      </ul>
+      <a class="pk-btn" href="/nl/contact?package=fullbrand">Kies Full Brand →</a>
+    </div>
+
+  </div>
+  <p class="pk-note">*Onbeperkt bijschaven binnen de gekozen visuele richting.</p>
+
+  <div class="pk-how">
+    <p class="section-label fade-up">Hoe het werkt</p>
+    <h2 class="section-title fade-up d1">Van brief tot merk, zonder eindeloos heen en weer.</h2>
+    <div class="pk-how-grid">
+      <div class="pk-step fade-up">
+        <span class="pk-step-n">Stap 01</span>
+        <h4>Kies een pakket en vul de brief in</h4>
+        <p>Kies het pakket dat past en vul een korte brief in. Dat duurt een paar minuten, er is geen meeting nodig om te starten.</p>
+      </div>
+      <div class="pk-step fade-up d1">
+        <span class="pk-step-n">Stap 02</span>
+        <h4>Een voorschot om te starten</h4>
+        <p>Met een eenvoudig voorschot reserveer je je plek in de planning en gaat het werk van start. Duidelijke prijs, geen verrassingen.</p>
+      </div>
+      <div class="pk-step fade-up d2">
+        <span class="pk-step-n">Stap 03</span>
+        <h4>Opgeleverd en bijgeschaafd</h4>
+        <p>Je krijgt je merk binnen enkele dagen of weken, en we schaven bij tot je er echt blij mee bent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
   <div class="c-form-side">
-    <p class="section-label fade-up">Neem contact op</p>
+    <p class="section-label fade-up">Iets anders in gedachten?</p>
     <a href="mailto:design.arnaudboone@gmail.com" class="c-email fade-up d1">design.arnaudboone@gmail.com</a>
-    <p class="c-sub fade-up d2">Heb je een project in gedachten? Vul het formulier hieronder in, ik antwoord binnen 24 uur.</p>
-    <form class="c-form" id="contactForm" action="https://formspree.io/f/xgobvrgy" method="POST" autocomplete="off">
-      <input type="hidden" name="_subject" value="New project inquiry, Unpeel Design">
-      <div class="c-field">
-        <label for="c-name">Naam</label>
-        <input type="text" id="c-name" name="name" placeholder="Je naam" required>
-      </div>
-      <div class="c-field">
-        <label for="c-email">E-mail</label>
-        <input type="email" id="c-email" name="email" placeholder="your@email.com" required>
-      </div>
-      <div class="c-field">
-        <label for="c-type">Soort project</label>
-        <select id="c-type" name="type">
-          <option value="" disabled selected>Kies...</option>
-          <option value="brand-identity">Brand Identity</option>
-          <option value="web-design">Web Design</option>
-          <option value="packaging">Packaging</option>
-          <option value="ai-video">AI Video</option>
-          <option value="not-sure">Nog niet zeker</option>
-        </select>
-      </div>
-      <div class="c-field">
-        <label for="c-desc">Vertel me over je project</label>
-        <textarea id="c-desc" name="desc" placeholder="Wat ben je aan het bouwen?" rows="4"></textarea>
-      </div>
-      <div class="c-field">
-        <label for="c-deadline">Deadline</label>
-        <input type="text" id="c-deadline" name="deadline" placeholder="bv. voor september, ASAP, flexibel">
-      </div>
-      <button type="submit" class="c-submit">Verstuur bericht →</button>
-      <p class="c-note">Ik antwoord binnen 24 uur.</p>
-    </form>
-    <div class="c-success" id="formSuccess">
-      <p>Bericht verstuurd.<br>Ik kom binnen 24 uur bij je terug.</p>
+    <p class="c-sub fade-up d2">De pakketten hierboven zijn voor branding. Voor AI-video, webdesign, packaging of iets op maat stuur je me gewoon een bericht, en ik maak een offerte op maat. Ik antwoord binnen 24 uur.</p>
+    <div class="fade-up d3">
+      <a href="/nl/contact" class="c-submit c-cta-link">Stuur me een bericht →</a>
     </div>
   </div>
   <div class="c-img-side">
@@ -907,8 +1022,6 @@
       <ul class="f-links">
         <li><a href="/nl/">Home</a></li>
         <li><a href="/nl/works">Werk</a></li>
-        <li><a href="/nl/packages">Pakketten</a></li>
-        <li><a href="/nl/approach">Aanpak</a></li>
         <li><a href="/nl/about">Over mij</a></li>
         <li><a href="/nl/contact">Contact</a></li>
       </ul>

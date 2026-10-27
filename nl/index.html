@@ -602,9 +602,14 @@
 <section id="works">
   <div class="works-sticky">
     <p class="works-mobile-title">Geselecteerd werk</p>
-    <h2 class="works-headline">Laat ze voelen <span class="works-word" id="worksWord">geworteld</span></h2>
+    <h2 class="works-headline">Laat ze <span class="works-word" id="worksWord">speels</span> voelen</h2>
     <div class="works-viewport">
       <div class="works-row" id="worksRow">
+
+        <a class="wtile" href="/nl/works/bocoeur" data-word="speels">
+          <div class="wtile-frame"><div class="wtile-media"><video src="/uploads/video/bocoeur-hero.mp4" muted loop playsinline preload="none" data-lazy-video aria-label="Bocoeur merkidentiteit door Unpeel Design"></video></div></div>
+          <p class="wtile-label"><span class="wtile-name">Bocoeur</span> · <span class="wtile-cat">Branding</span></p>
+        </a>
 
         <a class="wtile" href="/nl/works/tuinen-arnaud" data-word="geworteld">
           <div class="wtile-frame"><div class="wtile-media"><video src="/uploads/video/YXTMW11ZQrDM06YdtTzwwHI8xfA.mp4" muted loop playsinline preload="none" data-lazy-video aria-label="Tuinen Arnaud huisstijl door Unpeel Design"></video></div></div>
@@ -631,7 +636,7 @@
           <p class="wtile-label"><span class="wtile-name">Tuillerien</span> · <span class="wtile-cat">Branding</span></p>
         </a>
 
-        <a class="wtile" href="/nl/works/aaronblommaert" data-word="levend">
+        <a class="wtile wtile-desktop" href="/nl/works/aaronblommaert" data-word="levend">
           <div class="wtile-frame"><div class="wtile-media"><video src="/uploads/video/Vg51fPRpcSsYYgGT7TL8Sva1eIE.mp4" muted loop playsinline preload="none" data-lazy-video aria-label="Aaron Blommaert huisstijl door Unpeel Design"></video></div></div>
           <p class="wtile-label"><span class="wtile-name">Aaron Blommaert</span> · <span class="wtile-cat">Motion</span></p>
         </a>
@@ -872,6 +877,7 @@
 .acc-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:40px;border:1px solid var(--border);color:var(--gray);line-height:1.3;white-space:nowrap;}
 .acc-tag--pk{background:var(--ink);border-color:var(--ink);color:#fff;}
 #contact{min-height:auto;}
+@media(max-width:768px){.wtile-desktop{display:none !important;}}
 #contact .c-sub{max-width:52ch;font-size:15px;}
 .c-cta-link{display:inline-flex;align-items:center;justify-content:center;width:auto;padding:16px 32px;text-decoration:none;}
 @media(max-width:920px){

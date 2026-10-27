@@ -225,12 +225,28 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://unpeeldesign.com/works/tuillerien"/>
   </url>
   <url>
+    <loc>https://unpeeldesign.com/works/bocoeur</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unpeeldesign.com/works/bocoeur"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://unpeeldesign.com/nl/works/bocoeur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unpeeldesign.com/works/bocoeur"/>
+  </url>
+  <url>
     <loc>https://unpeeldesign.com/works/tuinen-arnaud</loc>
     <lastmod>2026-10-15</lastmod>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://unpeeldesign.com/works/tuinen-arnaud"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://unpeeldesign.com/nl/works/tuinen-arnaud"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://unpeeldesign.com/works/tuinen-arnaud"/>
+  </url>
+  <url>
+    <loc>https://unpeeldesign.com/nl/works/bocoeur</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://unpeeldesign.com/works/bocoeur"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://unpeeldesign.com/nl/works/bocoeur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unpeeldesign.com/works/bocoeur"/>
   </url>
   <url>
     <loc>https://unpeeldesign.com/nl/works/tuinen-arnaud</loc>

@@ -143,6 +143,9 @@
   width: 100%; height: 65vh; max-height: 65vh;
   object-fit: cover; object-position: center; display: block;
 }
+/* Per project: show the hero in its native 16:9 instead of the cropped band */
+.cs-hero.cs-hero--16x9 video,
+.cs-hero.cs-hero--16x9 img { height: auto !important; max-height: none !important; aspect-ratio: 16 / 9; }
 
 /* ═══ CASE STUDY — BODY ═══ */
 .cs-body { padding: 80px 80px; }
